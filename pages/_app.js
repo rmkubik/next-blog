@@ -1,6 +1,7 @@
 import { MDXProvider } from "@mdx-js/react";
 import "normalize.css";
 import "../styles/main.scss";
+
 import * as layoutComponents from "../src/layout";
 const { ListItem, Wrapper, Link, ...shortcodes } = layoutComponents;
 

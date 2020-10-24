@@ -109,7 +109,9 @@ const Wrapper = ({
   metadata: { template } = { template: "header header header" },
 }) => {
   return (
-    <div className="content" style={{ gridTemplate: stripIndents(template) }}>
+    <div
+      className="content" /*style={{ gridTemplate: stripIndents(template) }} */
+    >
       <Section area="header">
         <h1>
           <Link hideDots={true} hideArrow={true} to="/">

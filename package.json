@@ -9,9 +9,13 @@
   },
   "dependencies": {
     "@mdx-js/loader": "^1.6.18",
+    "@mdx-js/mdx": "^1.6.19",
+    "@mdx-js/react": "^1.6.19",
     "@next/mdx": "^9.5.5",
     "common-tags": "^1.8.0",
+    "gray-matter": "^4.0.2",
     "next": "9.5.5",
+    "next-mdx-remote": "^1.0.0",
     "normalize.css": "^8.0.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
