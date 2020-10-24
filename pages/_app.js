@@ -11,6 +11,15 @@ const components = {
   a: ({ children, href }) => {
     return <Link to={href}>{children}</Link>;
   },
+  img: ({ children, src, ...rest }) => {
+    const relativeStartStripped = src.replace(/^.\//, "");
+
+    return (
+      <img src={`/images/${relativeStartStripped}`} {...rest}>
+        {children}
+      </img>
+    );
+  },
   // expose following components as shortcodes
   Link,
   ...shortcodes,

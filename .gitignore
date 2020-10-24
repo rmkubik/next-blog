@@ -32,3 +32,6 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# copy webpack plugin is moving post images to next.js public directory
+public/images/posts
