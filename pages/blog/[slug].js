@@ -33,6 +33,8 @@ const components = {
   wrapper: Wrapper,
 };
 
+// Temporary
+// eslint-disable-next-line no-unused-vars
 const Post = ({ slug, source, frontmatter }) => {
   const content = hydrate(source, { components });
 

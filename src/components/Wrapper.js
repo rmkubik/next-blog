@@ -3,6 +3,8 @@ import Link from "./Link";
 
 const Wrapper = ({
   children,
+  // Temporary
+  // eslint-disable-next-line no-unused-vars
   metadata: { template } = { template: "header header header" },
 }) => {
   return (
