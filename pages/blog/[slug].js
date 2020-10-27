@@ -3,15 +3,12 @@ import { getAllPostSlugs, getMdxSourceBySlug } from "../../src/posts";
 import hydrate from "next-mdx-remote/hydrate";
 import { SlugContextProvider, useSlug } from "../../src/useSlug";
 
-// import * as layoutComponents from "../../src/layout";
-// const { ListItem, Wrapper, Link, Section, ...shortcodes } = layoutComponents;
 import Wrapper from "../../src/components/Wrapper";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import Icon from "../../src/components/Icon";
 
 const components = {
-  // li: ListItem,
   wrapper: Wrapper,
   a: ({ children, href }) => {
     return <Link to={href}>{children}</Link>;
@@ -26,11 +23,8 @@ const components = {
       </img>
     );
   },
-  // expose following components as shortcodes
-  // Link,
   Section,
   Icon,
-  // ...shortcodes,
 };
 
 const Post = ({ slug, source, frontmatter }) => {
