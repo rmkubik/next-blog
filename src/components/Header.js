@@ -56,7 +56,7 @@ const Header = () => {
             {"Ryan Kubik"}
           </Link>
         </h1>
-        <Link hideArrow hideDots to="https://ryankubik.com/blog">
+        <Link hideArrow hideDots to="/blog">
           {"Blog"}
         </Link>
         <Link hideArrow hideDots to="https://twitter.com/ryrykubes">
