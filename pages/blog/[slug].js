@@ -1,26 +1,46 @@
 import { MDXProvider } from "@mdx-js/react";
-import React from "react";
-import { getAllPostSlugs, getMdxSourceBySlug } from "../../lib/posts";
+import { getAllPostSlugs, getMdxSourceBySlug } from "../../src/posts";
 import hydrate from "next-mdx-remote/hydrate";
+import { SlugContextProvider, useSlug } from "../../src/useSlug";
 
-import * as layoutComponents from "../../src/layout";
-const { ListItem, Wrapper, Link, ...shortcodes } = layoutComponents;
+// import * as layoutComponents from "../../src/layout";
+// const { ListItem, Wrapper, Link, Section, ...shortcodes } = layoutComponents;
+import Wrapper from "../../src/components/Wrapper";
+import Link from "../../src/components/Link";
+import Section from "../../src/components/Section";
+import Icon from "../../src/components/Icon";
 
 const components = {
-  li: ListItem,
+  // li: ListItem,
   wrapper: Wrapper,
   a: ({ children, href }) => {
     return <Link to={href}>{children}</Link>;
   },
+  img: ({ children, src, ...rest }) => {
+    const relativeStartStripped = src.replace(/^.\//, "");
+    const slug = useSlug();
+
+    return (
+      <img src={`/images/posts/${slug}/${relativeStartStripped}`} {...rest}>
+        {children}
+      </img>
+    );
+  },
   // expose following components as shortcodes
-  Link,
-  ...shortcodes,
+  // Link,
+  Section,
+  Icon,
+  // ...shortcodes,
 };
 
 const Post = ({ slug, source, frontmatter }) => {
   const content = hydrate(source, { components });
 
-  return <MDXProvider components={components}>{content}</MDXProvider>;
+  return (
+    <SlugContextProvider value={slug}>
+      <MDXProvider components={components}>{content}</MDXProvider>
+    </SlugContextProvider>
+  );
 };
 
 export async function getStaticProps({ params }) {

@@ -12,15 +12,17 @@ const withMDX = require("@next/mdx")({
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
   webpack: (config, { isServer }) => {
-    const supportedImageExtentsions = [".png", ".jpg", ".gif"];
-    const postsDirName = "posts";
-    const outputDirectory = path.join(__dirname, "public", "images");
-
     /**
      * Copy images from the posts directory into the next.js
      * public directory so they can be server statically.
      */
+
+    const supportedImageExtentsions = [".png", ".jpg", ".gif"];
+    const postsDirName = "posts";
+    const outputDirectory = path.join(__dirname, "public", "images");
+
     config.plugins.push(
+      // Clean out previously loaded images in case there are changes
       new CleanWebpackPlugin({
         // dry: true,
         // verbose: true,
@@ -28,6 +30,7 @@ module.exports = withMDX({
           path.join(outputDirectory, postsDirName),
         ],
       }),
+      // Copy images from posts dir to public dir
       new CopyWebpackPlugin({
         patterns: [
           {
