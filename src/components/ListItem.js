@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 const ListItem = ({ children }) => {
   const liRef = useRef();
 
@@ -7,18 +9,18 @@ const ListItem = ({ children }) => {
 
   if (Array.isArray(children)) {
     return (
-      <li ref={liRef} onClick={onClick}>
+      <li onClick={onClick} onKeyPress={onClick} ref={liRef}>
         <p>{children[0]}</p>
         {children.slice(1)}
       </li>
     );
-  } else {
-    return (
-      <li ref={liRef} onClick={onClick}>
-        {children}
-      </li>
-    );
   }
+
+  return (
+    <li onClick={onClick} onKeyPress={onClick} ref={liRef}>
+      {children}
+    </li>
+  );
 };
 
 export default ListItem;

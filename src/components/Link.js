@@ -4,23 +4,25 @@ const Link = ({ to = "", hideDots = false, hideArrow = false, children }) => {
   if (to.includes("http")) {
     return (
       <>
-        <a href={to} className="external-link">
+        <a className="external-link" href={to}>
           {children}
           {hideDots || "..."}
         </a>
-        {hideArrow || <span className="external-arrow">➜</span>}
+        {hideArrow || <span className="external-arrow">{"➜"}</span>}
       </>
     );
-  } else {
-    return (
-      <NextLink href={to}>
-        <a>
-          {children}
-          {hideDots || "..."}
-        </a>
-      </NextLink>
-    );
   }
+
+  return (
+    <NextLink href={to}>
+      {/* Next.js applies the href attribute for us. */}
+      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+      <a>
+        {children}
+        {hideDots || "..."}
+      </a>
+    </NextLink>
+  );
 };
 
 export default Link;

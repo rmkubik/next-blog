@@ -7,6 +7,11 @@ export default class MyDocument extends Document {
     const originalRenderPage = ctx.renderPage;
 
     try {
+      /**
+       * This is copy & pasted from next.js + styled-components example
+       * https://github.com/vercel/next.js/blob/master/examples/with-styled-components/pages/_document.js
+       */
+      // eslint-disable-next-line no-param-reassign
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
@@ -14,6 +19,7 @@ export default class MyDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
+
       return {
         ...initialProps,
         styles: (

@@ -2,7 +2,10 @@ const Section = ({ children, area, color = "white" }) => {
   return (
     <section
       className={area}
-      style={{ gridArea: area, backgroundColor: color }}
+      style={{
+        backgroundColor: color,
+        gridArea: area,
+      }}
     >
       {/* <span>🔗</span> */}
       {children}

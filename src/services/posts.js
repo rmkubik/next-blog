@@ -1,39 +1,42 @@
-import renderToString from "next-mdx-remote/render-to-string";
-import matter from "gray-matter";
 import fs from "fs";
 import path from "path";
 
-async function doesPathExist(path) {
+import renderToString from "next-mdx-remote/render-to-string";
+import matter from "gray-matter";
+
+const doesPathExist = async (targetPath) => {
   try {
-    await fs.promises.stat(path);
-  } catch (err) {
-    if (err.code === "ENOENT") {
+    await fs.promises.stat(targetPath);
+  } catch (error) {
+    if (error.code === "ENOENT") {
       return false;
-    } else {
-      throw err;
     }
+
+    throw error;
   }
 
   return true;
-}
+};
 
-async function getIndexPath(slugPath) {
+const getIndexPath = async (slugPath) => {
   const indexMdxPath = path.join(slugPath, "index.mdx");
+
   if (await doesPathExist(indexMdxPath)) {
     return indexMdxPath;
   }
 
   const indexMdPath = path.join(slugPath, "index.md");
+
   if (await doesPathExist(indexMdPath)) {
     return indexMdPath;
   }
 
   return false;
-}
+};
 
 const postsDir = path.join("posts");
 
-async function getMdxSourceBySlug(slug) {
+const getMdxSourceBySlug = async (slug) => {
   const slugPath = path.join(postsDir, slug);
   const stats = await fs.promises.stat(slugPath);
 
@@ -53,16 +56,19 @@ async function getMdxSourceBySlug(slug) {
 
   const { content, data } = matter(fileContents);
 
-  return { frontmatter: data, source: await renderToString(content) };
-}
+  return {
+    frontmatter: data,
+    source: await renderToString(content),
+  };
+};
 
-async function getAllPostSlugs() {
+const getAllPostSlugs = async () => {
   return (
     (await fs.promises.readdir(postsDir))
       // Filter out all hidden dot files
       .filter((fileName) => fileName.charAt(0) !== ".")
       .map((fileName) => path.basename(fileName))
   );
-}
+};
 
 export { getMdxSourceBySlug, getAllPostSlugs };

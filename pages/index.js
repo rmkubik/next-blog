@@ -1,15 +1,17 @@
 import Head from "next/head";
 
-export default function Home() {
+const Home = () => {
   return (
     <div>
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{"Create Next App"}</title>
+        <link href="/favicon.ico" rel="icon" />
       </Head>
       <div>
-        <h1>Hello World</h1>
+        <h1>{"Hello World"}</h1>
       </div>
     </div>
   );
-}
+};
+
+export default Home;

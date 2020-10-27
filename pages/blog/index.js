@@ -1,14 +1,14 @@
-import { getAllPostSlugs } from "../../src/posts";
+import { getAllPostSlugs } from "../../src/services/posts";
 import Link from "../../src/components/Link";
 import Wrapper from "../../src/components/Wrapper";
 
 const Blog = ({ slugs }) => {
   return (
     <Wrapper>
-      <h1>Games & Code</h1>
+      <h1>{"Games & Code"}</h1>
       <ul>
         {slugs.map((slug) => (
-          <li>
+          <li key={slug}>
             <Link to={`/blog/${slug}`}>{slug}</Link>
           </li>
         ))}
@@ -17,7 +17,7 @@ const Blog = ({ slugs }) => {
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const slugs = await getAllPostSlugs();
 
   return {
@@ -25,6 +25,6 @@ export async function getStaticProps() {
       slugs,
     },
   };
-}
+};
 
 export default Blog;
