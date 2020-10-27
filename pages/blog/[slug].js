@@ -6,7 +6,6 @@ import { SlugContextProvider, useSlug } from "../../src/services/useSlug";
 import Icon from "../../src/components/Icon";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
-import Wrapper from "../../src/components/Wrapper";
 
 const Anchor = ({ children, href }) => {
   return <Link to={href}>{children}</Link>;
@@ -30,7 +29,6 @@ const components = {
   Icon,
   img: Image,
   Section,
-  wrapper: Wrapper,
 };
 
 // Temporary
