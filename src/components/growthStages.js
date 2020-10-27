@@ -14,6 +14,7 @@ const Seedling = ({ inline }) =>
       </span>
     </p>
   );
+
 const Growing = ({ inline }) =>
   inline ? (
     <span aria-hidden role="img">
@@ -30,6 +31,7 @@ const Growing = ({ inline }) =>
       </span>
     </p>
   );
+
 const Mature = ({ inline }) =>
   inline ? (
     <span aria-hidden role="img">

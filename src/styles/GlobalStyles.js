@@ -6,6 +6,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: wheat;
     font-family: Helvetica;
     color: #222;
+
+    font-size: 18px;
+    line-height: 1.5em
   }
 
   h1,

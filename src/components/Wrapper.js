@@ -6,11 +6,12 @@ import Section from "./Section";
 const ContentStyles = styled.div`
   padding: 20px;
 
-  // display: grid;
-  // grid-gap: 20px;
-
   max-width: 1000px;
   margin: 0 auto;
+
+  header {
+    margin-bottom: 32px;
+  }
 `;
 
 const Wrapper = ({ children }) => {

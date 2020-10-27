@@ -15,6 +15,8 @@ const HeaderStyles = styled.header`
 
   & > *:first-child {
     flex: 1;
+    font-size: 1.6em;
+    font-weight: bold;
   }
 
   & > *:not(:first-child) {
@@ -51,11 +53,9 @@ const Header = () => {
         <link href="/favicon.ico" rel="icon" />
       </Head>
       <HeaderStyles>
-        <h1>
-          <Link hideArrow hideDots to="/">
-            {"Ryan Kubik"}
-          </Link>
-        </h1>
+        <Link hideArrow hideDots to="/">
+          {"Ryan Kubik"}
+        </Link>
         <Link hideArrow hideDots to="/blog">
           {"Blog"}
         </Link>
