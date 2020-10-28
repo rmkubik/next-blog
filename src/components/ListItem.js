@@ -5,7 +5,6 @@ const ListStyles = styled.li`
   padding: 8px;
   border: 2px black solid;
   border-radius: 4px;
-  line-height: 1em;
   background-color: white;
   display: flex;
   margin: 8px 0;

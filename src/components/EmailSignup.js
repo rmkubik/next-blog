@@ -10,7 +10,6 @@ const EmailStyles = styled.div`
     padding: 8px;
     border: 2px black solid;
     border-radius: 4px;
-    line-height: 1em;
     background-color: white;
   }
 
@@ -19,7 +18,6 @@ const EmailStyles = styled.div`
     color: white;
     border: 2px black solid;
     border-radius: 4px;
-    line-height: 1em;
     cursor: pointer;
   }
 

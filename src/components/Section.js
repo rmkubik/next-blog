@@ -11,7 +11,7 @@ const SectionStyles = styled.section`
   }
 
   & > p {
-    line-height: 1.5em;
+    line-height: 1.5;
   }
 
   & > a {

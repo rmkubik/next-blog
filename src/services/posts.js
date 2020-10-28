@@ -5,6 +5,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 import matter from "gray-matter";
 import htmlToText from "html-to-text";
 import dateFnsCompareDesc from "date-fns/compareDesc";
+import readingTime from "reading-time";
 
 const doesPathExist = async (targetPath) => {
   try {
@@ -92,6 +93,7 @@ const getMdxSourceBySlug = async (slug) => {
   const { content, data } = matter(fileContents);
   const source = await renderToString(content);
   const { renderedOutput } = source;
+  const readingTimeStats = readingTime(renderedOutput);
 
   /*
    * date needs to be stringified because Next.js cannot serialize
@@ -104,6 +106,7 @@ const getMdxSourceBySlug = async (slug) => {
       date: date.toISOString(),
       ...remainingFrontmatter,
     },
+    readingTime: readingTimeStats.text,
     slug,
     source,
     summary: summarize(renderedOutput),

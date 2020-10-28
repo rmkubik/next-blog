@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     color: #222;
 
     font-size: 18px;
-    line-height: 1.5em
+    line-height: 1;
   }
 
   h1,

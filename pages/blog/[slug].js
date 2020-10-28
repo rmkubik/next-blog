@@ -54,7 +54,7 @@ const components = {
   wrapper: Wrapper,
 };
 
-const Post = ({ slug, source, frontmatter }) => {
+const Post = ({ slug, source, frontmatter, readingTime }) => {
   const content = hydrate(source, { components });
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
@@ -69,6 +69,7 @@ const Post = ({ slug, source, frontmatter }) => {
           <Section>
             <h1>{frontmatter.title}</h1>
             <p>{formattedDate}</p>
+            <p>{readingTime}</p>
           </Section>
         </PostHeaderStyles>
         <MDXProvider components={components}>{content}</MDXProvider>
@@ -78,11 +79,14 @@ const Post = ({ slug, source, frontmatter }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { source, frontmatter } = await getMdxSourceBySlug(params.slug);
+  const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
+    params.slug
+  );
 
   return {
     props: {
       frontmatter,
+      readingTime,
       slug: params.slug,
       source,
     },

@@ -14,17 +14,20 @@ const PostStyles = styled.div`
   }
 `;
 
-const PostItem = ({ slug, summary, frontmatter }) => {
+const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
   }).format(new Date(frontmatter.date));
+  const category = frontmatter.category
+    ? `${frontmatter.category.toUpperCase()} - `
+    : "";
 
   return (
     <Section key={slug}>
       <h2>{frontmatter.title}</h2>
-      <p>{formattedDate}</p>
+      <p>{`${category}${readingTime} - ${formattedDate}`}</p>
       <p>{summary}</p>
       <Link to={`/blog/${slug}`}>{"Read more"}</Link>
     </Section>
@@ -61,10 +64,11 @@ const Blog = ({ posts }) => {
         </p>
       </Section>
       <PostStyles>
-        {posts.map(({ slug, summary, frontmatter }) => (
+        {posts.map(({ slug, summary, frontmatter, readingTime }) => (
           <PostItem
             frontmatter={frontmatter}
             key={slug}
+            readingTime={readingTime}
             slug={slug}
             summary={summary}
           />
