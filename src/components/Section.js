@@ -3,8 +3,12 @@ import styled from "styled-components";
 const SectionStyles = styled.section`
   border: 2px solid black;
   box-shadow: black 4px 4px;
-  padding: 32px;
+  padding: 32px 64px;
   background-color: white;
+
+  & > :first-child {
+    margin-top: 0;
+  }
 
   & > p {
     line-height: 1.5em;

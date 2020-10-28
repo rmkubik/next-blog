@@ -8,6 +8,10 @@ const PostStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
+
+  section {
+    padding: 32px;
+  }
 `;
 
 const PostItem = ({ slug }) => {
@@ -40,11 +44,6 @@ const BlogStyles = styled.div`
       margin: 0;
     }
   }
-
-  /* ul {
-    list-style: none;
-    padding: 0;
-  } */
 `;
 
 const Blog = ({ slugs }) => {
