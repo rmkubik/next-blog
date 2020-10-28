@@ -31,6 +31,14 @@ const BlogStyles = styled.div`
 
   & > *:first-child {
     margin-bottom: 32px;
+
+    h1 {
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin: 0;
+    }
   }
 
   /* ul {

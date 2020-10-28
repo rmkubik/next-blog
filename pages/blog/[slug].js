@@ -1,8 +1,13 @@
 import { MDXProvider } from "@mdx-js/react";
 import hydrate from "next-mdx-remote/hydrate";
+import styled from "styled-components";
 
 import { getAllPostSlugs, getMdxSourceBySlug } from "../../src/services/posts";
 import { SlugContextProvider, useSlug } from "../../src/services/useSlug";
+import {
+  FrontmatterContextProvider,
+  useFrontmatter,
+} from "../../src/services/useFrontmatter";
 import Icon from "../../src/components/Icon";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
@@ -25,6 +30,18 @@ const Image = ({ children, src, alt, ...rest }) => {
   );
 };
 
+const PostHeaderStyles = styled.div`
+  margin-bottom: 32px;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin: 0;
+  }
+`;
+
 const components = {
   a: Anchor,
   Icon,
@@ -33,14 +50,25 @@ const components = {
   wrapper: Wrapper,
 };
 
-// Temporary
-// eslint-disable-next-line no-unused-vars
 const Post = ({ slug, source, frontmatter }) => {
   const content = hydrate(source, { components });
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(frontmatter.date));
 
   return (
     <SlugContextProvider value={slug}>
-      <MDXProvider components={components}>{content}</MDXProvider>
+      <FrontmatterContextProvider value={frontmatter}>
+        <PostHeaderStyles>
+          <Section>
+            <h1>{frontmatter.title}</h1>
+            <p>{formattedDate}</p>
+          </Section>
+        </PostHeaderStyles>
+        <MDXProvider components={components}>{content}</MDXProvider>
+      </FrontmatterContextProvider>
     </SlugContextProvider>
   );
 };
