@@ -18,6 +18,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "common-tags": "^1.8.0",
     "gray-matter": "^4.0.2",
+    "html-to-text": "^5.1.1",
     "next": "9.5.5",
     "next-mdx-remote": "^1.0.0",
     "normalize.css": "^8.0.1",

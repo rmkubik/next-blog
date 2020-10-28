@@ -19,7 +19,7 @@ For Global Game Jam 2019 we created a local multiplayer game called "Make for th
 
 This game was made using a technology called Air Console, a platform that allows you and your friends to play games in your browser while using your phones as gamepads.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We finished &quot;Make for the Waves!&quot; Its a local multiplayer turtle racing game built using <a href="https://twitter.com/AirConsole?ref_src=twsrc%5Etfw">@AirConsole</a> for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! Check out one of our play throughs of the final version! Made with <a href="https://twitter.com/LiaSnyde?ref_src=twsrc%5Etfw">@LiaSnyde</a> <a href="https://twitter.com/KavanBahrami?ref_src=twsrc%5Etfw">@KavanBahrami</a> <a href="https://twitter.com/EzraSandzer?ref_src=twsrc%5Etfw">@EzraSandzer</a> <a href="https://twitter.com/all_iver?ref_src=twsrc%5Etfw">@all_iver</a> <a href="https://twitter.com/Gigalithic?ref_src=twsrc%5Etfw">@Gigalithic</a> &amp; <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a>.<a href="https://t.co/fiGskhVu1b">https://t.co/fiGskhVu1b</a> <a href="https://t.co/Ymv9shOxYE">pic.twitter.com/Ymv9shOxYE</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089723719453310976?ref_src=twsrc%5Etfw">January 28, 2019</a></blockquote>
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We finished &quot;Make for the Waves!&quot; Its a local multiplayer turtle racing game built using <a href="https://twitter.com/AirConsole?ref_src=twsrc%5Etfw">@AirConsole</a> for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! Check out one of our play throughs of the final version! Made with <a href="https://twitter.com/LiaSnyde?ref_src=twsrc%5Etfw">@LiaSnyde</a> <a href="https://twitter.com/KavanBahrami?ref_src=twsrc%5Etfw">@KavanBahrami</a> <a href="https://twitter.com/EzraSandzer?ref_src=twsrc%5Etfw">@EzraSandzer</a> <a href="https://twitter.com/all_iver?ref_src=twsrc%5Etfw">@all_iver</a> <a href="https://twitter.com/Gigalithic?ref_src=twsrc%5Etfw">@Gigalithic</a> &amp; <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a>.<a href="https://t.co/fiGskhVu1b">https://t.co/fiGskhVu1b</a> <a href="https://t.co/Ymv9shOxYE">pic.twitter.com/Ymv9shOxYE</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089723719453310976?ref_src=twsrc%5Etfw">January 28, 2019</a></blockquote>
 
 # Prepare to Jam
 
@@ -42,7 +42,8 @@ For Global Game Jam 2019, my team decided to use Air Console, a technology we'd 
 We studied their [developer documentation](https://developers.airconsole.com/#!/getting_started). Then put together a super bare bones rock paper scissors game as a ["proof of concept" project](https://github.com/rmkubik/airconsole-poc) in an evening.
 
 ![Air Console POC in Action](./airconsole-poc.png)
-<p class="image-caption">A screenshot of the proof of concept project</p>
+
+<p className="image-caption">A screenshot of the proof of concept project</p>
 
 This project was barely a playable game, as it focused on the aspects of Air Console we were unfamiliar with. This included creating a web-hosted touch based controller, experimenting with how to pass data efficiently via websocket messages, and Air Console's API functions.
 
@@ -84,15 +85,15 @@ Or:
 
 We also diagramed level layouts:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Getting some rough sketch ideas going for <a href="https://twitter.com/hashtag/ggj19?src=hash&amp;ref_src=twsrc%5Etfw">#ggj19</a> at the <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> jam site! <a href="https://t.co/hudiX1M2y1">pic.twitter.com/hudiX1M2y1</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089047366110404608?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Getting some rough sketch ideas going for <a href="https://twitter.com/hashtag/ggj19?src=hash&amp;ref_src=twsrc%5Etfw">#ggj19</a> at the <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> jam site! <a href="https://t.co/hudiX1M2y1">pic.twitter.com/hudiX1M2y1</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089047366110404608?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
 
 And how our phone-controllers would iterate through UI states:
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Diagraming UI flows for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> <a href="https://t.co/7n66d1JN8h">pic.twitter.com/7n66d1JN8h</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089286766903713792?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Diagraming UI flows for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> <a href="https://t.co/7n66d1JN8h">pic.twitter.com/7n66d1JN8h</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089286766903713792?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
 
 We even watched some real life footage of turtles crawling:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T8eGw1oyYoQ?start=26" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T8eGw1oyYoQ?start=26" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 We still didn't end up exactly on the same page, but we were at least in the same book rather than on opposite sections of the library. We had different views of what a swipe would look like, and made different assumptions on other aspects of the game. But they were all close enough that a single game emerged.
 
@@ -102,9 +103,8 @@ If you ask any game jam veteran they'll all tell you to cut your scope and then 
 
 What I have gotten better at is chopping my over-blown scope into manageable chunks. For a jam idea to be successful, the smallest playable chunk of your idea must be almost trivial. Ideally, you should be able to finish it on the first night.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We got <a href="https://twitter.com/AirConsole?ref_src=twsrc%5Etfw">@AirConsole</a> working for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! Ran into some Wifi snafus, but its all sorted now! 🐢🐢🐢 <a href="https://t.co/SXCyl0VuGj">pic.twitter.com/SXCyl0VuGj</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089097117736435713?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
-<p class="image-caption">Our progress at the end of Friday</p>
-
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">We got <a href="https://twitter.com/AirConsole?ref_src=twsrc%5Etfw">@AirConsole</a> working for <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a>! Ran into some Wifi snafus, but its all sorted now! 🐢🐢🐢 <a href="https://t.co/SXCyl0VuGj">pic.twitter.com/SXCyl0VuGj</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089097117736435713?ref_src=twsrc%5Etfw">January 26, 2019</a></blockquote>
+<p className="image-caption">Our progress at the end of Friday</p>
 
 Beyond that first milestone, you should be able to plot out many more small steps of polish. After finishing any of these milestones your game should still be in a "shippable" state. This means that if you're part way through an iteration and the deadline is looming you can reset to your last milestone and publish your project.
 
@@ -123,7 +123,8 @@ Having a maintained set of tasks reduces the amount of time you spend staring bl
 Our task list manifested as a series of feature ideas or bugs to squish scrawled on notebooks, messaged in Slack, and dropped in Google Drive Sheets. We also created lists of art assets, animations, and sound effects needed as new features got implemented.
 
 ![Scrawled out task list](ggj19-task-notes.jpg)
-<p class="image-caption">Some of our tasklist scrawlings</p>
+
+<p className="image-caption">Some of our tasklist scrawlings</p>
 
 As the jam went on we continually checked in with each other to see how everyone was doing. When we finished one task we'd scratch it out, give it a short play test, and take on a new task.
 
@@ -143,9 +144,8 @@ You also need to actually play your game to share a recording of it. This makes 
 
 We tried to share at least one update before we went to bed each day, but got to show off iterations even more frequently. This was mainly possible due to the iterative approach we committed to during the first day.
 
-<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">One last play through of our Saturday progress before we head to bed! See upi tomorrow!  <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a> <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> <a href="https://t.co/36pB6TOquh">pic.twitter.com/36pB6TOquh</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089464458810781697?ref_src=twsrc%5Etfw">January 27, 2019</a></blockquote>
-<p class="image-caption">A playthrough at the end of Saturday, past the halfway mark</p>
-
+<blockquote className="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">One last play through of our Saturday progress before we head to bed! See upi tomorrow!  <a href="https://twitter.com/hashtag/GGJ19?src=hash&amp;ref_src=twsrc%5Etfw">#GGJ19</a> <a href="https://twitter.com/PIGSquad?ref_src=twsrc%5Etfw">@PIGSquad</a> <a href="https://t.co/36pB6TOquh">pic.twitter.com/36pB6TOquh</a></p>&mdash; Ryan Kubik (@ryrykubes) <a href="https://twitter.com/ryrykubes/status/1089464458810781697?ref_src=twsrc%5Etfw">January 27, 2019</a></blockquote>
+<p className="image-caption">A playthrough at the end of Saturday, past the halfway mark</p>
 
 # Be Prepared!
 

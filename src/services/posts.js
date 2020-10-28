@@ -3,6 +3,7 @@ import path from "path";
 
 import renderToString from "next-mdx-remote/render-to-string";
 import matter from "gray-matter";
+import htmlToText from "html-to-text";
 
 const doesPathExist = async (targetPath) => {
   try {
@@ -72,13 +73,30 @@ const getFileContents = async (slug) => {
   return "";
 };
 
+const summarize = (html) => {
+  const text = htmlToText.fromString(html, {
+    hideLinkHrefIfSameAsText: true,
+    ignoreHref: true,
+    ignoreImage: true,
+    noLinkBrackets: true,
+    uppercaseHeadings: false,
+  });
+  const trimmed = text.slice(0, 300);
+
+  return `${trimmed}...`;
+};
+
 const getMdxSourceBySlug = async (slug) => {
   const fileContents = await getFileContents(slug);
   const { content, data } = matter(fileContents);
+  const source = await renderToString(content);
+  const { renderedOutput } = source;
 
   return {
     frontmatter: data,
-    source: await renderToString(content),
+    slug,
+    source,
+    summary: summarize(renderedOutput),
   };
 };
 
@@ -91,4 +109,11 @@ const getAllPostSlugs = async () => {
   );
 };
 
-export { getMdxSourceBySlug, getAllPostSlugs };
+const getAllPosts = async () => {
+  const slugs = await getAllPostSlugs();
+  const sourcePromises = slugs.map(getMdxSourceBySlug);
+
+  return Promise.all(sourcePromises);
+};
+
+export { getMdxSourceBySlug, getAllPostSlugs, getAllPosts };
