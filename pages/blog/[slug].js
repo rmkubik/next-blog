@@ -80,18 +80,9 @@ const Post = ({ slug, source, frontmatter }) => {
 export const getStaticProps = async ({ params }) => {
   const { source, frontmatter } = await getMdxSourceBySlug(params.slug);
 
-  /*
-   * date needs to be stringified because Next.js cannot serialize
-   * Date objects in getStaticProps.
-   */
-  const { date, ...remainingFrontmatter } = frontmatter;
-
   return {
     props: {
-      frontmatter: {
-        date: date.toISOString(),
-        ...remainingFrontmatter,
-      },
+      frontmatter,
       slug: params.slug,
       source,
     },

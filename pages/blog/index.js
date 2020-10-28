@@ -14,10 +14,17 @@ const PostStyles = styled.div`
   }
 `;
 
-const PostItem = ({ slug, summary }) => {
+const PostItem = ({ slug, summary, frontmatter }) => {
+  const formattedDate = new Intl.DateTimeFormat("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(frontmatter.date));
+
   return (
     <Section key={slug}>
-      <h2>{slug}</h2>
+      <h2>{frontmatter.title}</h2>
+      <p>{formattedDate}</p>
       <p>{summary}</p>
       <Link to={`/blog/${slug}`}>{"Read more"}</Link>
     </Section>
@@ -54,8 +61,13 @@ const Blog = ({ posts }) => {
         </p>
       </Section>
       <PostStyles>
-        {posts.map(({ slug, summary }) => (
-          <PostItem key={slug} slug={slug} summary={summary} />
+        {posts.map(({ slug, summary, frontmatter }) => (
+          <PostItem
+            frontmatter={frontmatter}
+            key={slug}
+            slug={slug}
+            summary={summary}
+          />
         ))}
       </PostStyles>
     </BlogStyles>
@@ -63,14 +75,11 @@ const Blog = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-  // const slugs = await getAllPostSlugs();
   const posts = await getAllPosts();
-
-  // console.log(posts);
 
   return {
     props: {
-      posts: posts.map((post) => ({ slug: post.slug, summary: post.summary })),
+      posts,
     },
   };
 };

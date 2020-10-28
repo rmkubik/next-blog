@@ -4,6 +4,7 @@ import path from "path";
 import renderToString from "next-mdx-remote/render-to-string";
 import matter from "gray-matter";
 import htmlToText from "html-to-text";
+import dateFnsCompareDesc from "date-fns/compareDesc";
 
 const doesPathExist = async (targetPath) => {
   try {
@@ -92,8 +93,17 @@ const getMdxSourceBySlug = async (slug) => {
   const source = await renderToString(content);
   const { renderedOutput } = source;
 
+  /*
+   * date needs to be stringified because Next.js cannot serialize
+   * Date objects in getStaticProps.
+   */
+  const { date, ...remainingFrontmatter } = data;
+
   return {
-    frontmatter: data,
+    frontmatter: {
+      date: date.toISOString(),
+      ...remainingFrontmatter,
+    },
     slug,
     source,
     summary: summarize(renderedOutput),
@@ -112,8 +122,16 @@ const getAllPostSlugs = async () => {
 const getAllPosts = async () => {
   const slugs = await getAllPostSlugs();
   const sourcePromises = slugs.map(getMdxSourceBySlug);
+  const posts = await Promise.all(sourcePromises);
 
-  return Promise.all(sourcePromises);
+  posts.sort((a, b) => {
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
+
+    return dateFnsCompareDesc(dateA, dateB);
+  });
+
+  return posts;
 };
 
 export { getMdxSourceBySlug, getAllPostSlugs, getAllPosts };
