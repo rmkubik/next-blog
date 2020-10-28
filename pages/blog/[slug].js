@@ -4,14 +4,12 @@ import styled from "styled-components";
 
 import { getAllPostSlugs, getMdxSourceBySlug } from "../../src/services/posts";
 import { SlugContextProvider, useSlug } from "../../src/services/useSlug";
-import {
-  FrontmatterContextProvider,
-  useFrontmatter,
-} from "../../src/services/useFrontmatter";
+import { FrontmatterContextProvider } from "../../src/services/useFrontmatter";
 import Icon from "../../src/components/Icon";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import Wrapper from "../../src/components/Wrapper";
+import { H1, H2, H3, H4, H5, H6 } from "../../src/components/headings";
 
 const Anchor = ({ children, href }) => {
   return <Link to={href}>{children}</Link>;
@@ -44,6 +42,12 @@ const PostHeaderStyles = styled.div`
 
 const components = {
   a: Anchor,
+  h1: H1,
+  h2: H2,
+  h3: H3,
+  h4: H4,
+  h5: H5,
+  h6: H6,
   Icon,
   img: Image,
   Section,
