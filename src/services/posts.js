@@ -34,26 +34,46 @@ const getIndexPath = async (slugPath) => {
   return false;
 };
 
-const postsDir = path.join("posts");
+const getPostPath = async (slugPath) => {
+  const mdSlugPath = `${slugPath}.md`;
 
-const getMdxSourceBySlug = async (slug) => {
-  const slugPath = path.join(postsDir, slug);
-  const stats = await fs.promises.stat(slugPath);
-
-  let fileContents;
-
-  if (stats.isDirectory()) {
-    const indexPath = await getIndexPath(slugPath);
-
-    if (!indexPath) {
-      console.error(`There was no index file for the slugPath: ${slugPath}`);
-    }
-
-    fileContents = await fs.promises.readFile(indexPath, "utf8");
-  } else {
-    fileContents = await fs.promises.readFile(slugPath, "utf8");
+  if (await doesPathExist(mdSlugPath)) {
+    return mdSlugPath;
   }
 
+  const mdxSlugPath = `${slugPath}.mdx`;
+
+  if (await doesPathExist(mdxSlugPath)) {
+    return mdxSlugPath;
+  }
+
+  return false;
+};
+
+const postsDir = path.join("posts");
+
+const getFileContents = async (slug) => {
+  const slugPath = path.join(postsDir, slug);
+
+  const postPath = await getPostPath(slugPath);
+
+  if (postPath) {
+    return fs.promises.readFile(postPath, "utf8");
+  }
+
+  const indexPath = await getIndexPath(slugPath);
+
+  if (indexPath) {
+    return fs.promises.readFile(indexPath, "utf8");
+  }
+
+  console.error(`There was no index file for the slugPath: ${slugPath}`);
+
+  return "";
+};
+
+const getMdxSourceBySlug = async (slug) => {
+  const fileContents = await getFileContents(slug);
   const { content, data } = matter(fileContents);
 
   return {
@@ -67,7 +87,7 @@ const getAllPostSlugs = async () => {
     (await fs.promises.readdir(postsDir))
       // Filter out all hidden dot files
       .filter((fileName) => fileName.charAt(0) !== ".")
-      .map((fileName) => path.basename(fileName))
+      .map((fileName) => path.basename(fileName, path.extname(fileName)))
   );
 };
 
