@@ -15,8 +15,7 @@ const HeaderStyles = styled.header`
 
   & > *:first-child {
     flex: 1;
-    font-size: 1.6em;
-    font-weight: bold;
+    font-size: 1.2em;
   }
 
   & > *:not(:first-child) {
