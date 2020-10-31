@@ -11,6 +11,17 @@ const PostStyles = styled.div`
 
   section {
     padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    & > :nth-child(2) {
+      margin: 0;
+    }
+
+    & > :last-child {
+      margin-top: auto;
+    }
   }
 `;
 

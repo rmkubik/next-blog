@@ -10,6 +10,8 @@ import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import Wrapper from "../../src/components/Wrapper";
 import { H1, H2, H3, H4, H5, H6 } from "../../src/components/headings";
+import CodeBlock from "../../src/components/CodeBlock";
+import BlockQuote from "../../src/components/BlockQuote";
 
 const Anchor = ({ children, href }) => {
   return <Link to={href}>{children}</Link>;
@@ -42,6 +44,8 @@ const PostHeaderStyles = styled.div`
 
 const components = {
   a: Anchor,
+  blockquote: BlockQuote,
+  code: CodeBlock,
   h1: H1,
   h2: H2,
   h3: H3,
@@ -50,6 +54,7 @@ const components = {
   h6: H6,
   Icon,
   img: Image,
+  pre: (props) => <div {...props} />,
   Section,
   wrapper: Wrapper,
 };
