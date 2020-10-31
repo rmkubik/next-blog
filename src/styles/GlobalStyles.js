@@ -11,19 +11,21 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1;
   }
 
-  h1,
   h2 {
-    margin: 0;
-  }
-
-  h2 {
+    margin-top: 48px;
     padding-bottom: 10px;
     border-bottom: 2px solid black;
     margin-bottom: 32px;
   }
 
   h3 {
+    margin-top: 48px;
+    margin-bottom: 16px;
+  }
+
+  h4 {
     margin-top: 32px;
+    margin-bottom: 12px;
   }
 
   hr {
