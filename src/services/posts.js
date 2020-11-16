@@ -88,10 +88,10 @@ const summarize = (html) => {
   return `${trimmed}...`;
 };
 
-const getMdxSourceBySlug = async (slug) => {
+const getMdxSourceBySlug = async (slug, components) => {
   const fileContents = await getFileContents(slug);
   const { content, data } = matter(fileContents);
-  const source = await renderToString(content);
+  const source = await renderToString(content, { components });
   const { renderedOutput } = source;
   const readingTimeStats = readingTime(renderedOutput);
 

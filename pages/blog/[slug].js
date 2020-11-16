@@ -85,7 +85,8 @@ const Post = ({ slug, source, frontmatter, readingTime }) => {
 
 export const getStaticProps = async ({ params }) => {
   const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
-    params.slug
+    params.slug,
+    components
   );
 
   return {
