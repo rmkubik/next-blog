@@ -12,14 +12,14 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    margin-top: 48px;
+    margin-top: 64px;
     padding-bottom: 10px;
     border-bottom: 2px solid black;
     margin-bottom: 32px;
   }
 
   h3 {
-    margin-top: 48px;
+    margin-top: 52px;
     margin-bottom: 16px;
   }
 
@@ -31,6 +31,10 @@ const GlobalStyle = createGlobalStyle`
   hr {
     border: 1px solid black;
     margin: 32px 0;
+  }
+
+  li {
+    margin-bottom: 16px;
   }
 
   @keyframes headShake {

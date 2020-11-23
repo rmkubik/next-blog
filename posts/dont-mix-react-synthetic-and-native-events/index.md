@@ -22,11 +22,11 @@ Take the example HTML document and JavaScript code below.
 ```
 
 ```js
-const div = document.querySelector('div');
-const button = document.querySelector('button');
+const div = document.querySelector("div");
+const button = document.querySelector("button");
 
-div.addEventListener('click', (e) => console.log('Hello from div'));
-button.addEventListener('click', (e) => console.log('Hello from button'));
+div.addEventListener("click", (e) => console.log("Hello from div"));
+button.addEventListener("click", (e) => console.log("Hello from button"));
 ```
 
 Because the button gets to respond to the event first, the console will print out in this order:
@@ -43,9 +43,9 @@ Sometimes, you don't want a parent node to also respond to an event. JavaScript 
 Let's update the button event handler in the JavaScript code from above to the following:
 
 ```js
-button.addEventListener('click', (e) => {
+button.addEventListener("click", (e) => {
   e.stopPropagation();
-  console.log('Hello from button');
+  console.log("Hello from button");
 });
 ```
 
@@ -61,12 +61,12 @@ Hello from button
 
 Recently, I was creating a React app where I wanted to listen to global `click` events. To accomplish this, I was listening for click events on the body when my App mounted. Additionally, I wanted buttons to be able to override the default global behavior. Below is a sample React app I thought would accomplish these things.
 
-```js
+```jsx
 const App = () => {
   useEffect(() => {
     // attach a click event listener to the body of the HTML document when App "mounts"
-    document.body.addEventListener('click', (e) =>
-      console.log('Hello from body, default behavior'),
+    document.body.addEventListener("click", (e) =>
+      console.log("Hello from body, default behavior")
     );
   }, []);
 
@@ -75,7 +75,7 @@ const App = () => {
       <button
         onClick={(e) => {
           e.stopPropagation();
-          console.log('Hello from button, special behavior');
+          console.log("Hello from button, special behavior");
         }}
       >
         Click me to trigger a "click" event.
@@ -107,11 +107,11 @@ There's not a default way to actually listen to all click events in the body via
 ```js
 const App = () => {
   return (
-    <div onClick={(e) => console.log('Hello from body, default behavior')}>
+    <div onClick={(e) => console.log("Hello from body, default behavior")}>
       <button
         onClick={(e) => {
           e.stopPropagation();
-          console.log('Hello from button, special behavior');
+          console.log("Hello from button, special behavior");
         }}
       >
         Click me to trigger a "click" event.

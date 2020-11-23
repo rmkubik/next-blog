@@ -1,44 +1,47 @@
-import styled from "styled-components";
-
 import { slugify } from "../services/utils";
-
-const HeadingStyles = styled.div`
-  position: relative;
-
-  a:hover {
-    visibility: visible;
-  }
-
-  &:hover {
-    span {
-      visibility: visible;
-    }
-  }
-
-  a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    padding-right: 4px;
-    text-decoration: none;
-
-    span {
-      visibility: hidden;
-    }
-  }
-`;
 
 const Heading = ({ children }) => {
   const id = slugify(children);
 
   return (
-    <HeadingStyles>
-      <a href={`#${id}`} id={id}>
-        <span>{"#"}</span>
-      </a>
-      {children}
-    </HeadingStyles>
+    <>
+      <div>
+        <a href={`#${id}`} id={id}>
+          <span>{"#"}</span>
+        </a>
+        {children}
+      </div>
+      <style jsx>
+        {`
+          div {
+            position: relative;
+
+            &:hover {
+              span {
+                visibility: visible;
+              }
+            }
+          }
+
+          a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translateX(-100%);
+            padding-right: 4px;
+            text-decoration: none;
+
+            &:hover {
+              visibility: visible;
+            }
+
+            span {
+              visibility: hidden;
+            }
+          }
+        `}
+      </style>
+    </>
   );
 };
 

@@ -11,6 +11,7 @@
     "serve": "next start"
   },
   "dependencies": {
+    "@babel/core": "^7.12.3",
     "@mdx-js/loader": "^1.6.18",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
@@ -24,6 +25,7 @@
     "next-mdx-remote": "^1.0.0",
     "normalize.css": "^8.0.1",
     "prism-react-renderer": "^1.1.1",
+    "prism-themes": "^1.5.0",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "reading-time": "^1.2.0",
@@ -35,6 +37,8 @@
     "copy-webpack-plugin": "^6.2.1",
     "eslint": "^7.12.1",
     "eslint-config-get-off-my-lawn": "^5.0.1",
-    "prettier": "^2.1.2"
+    "node-sass": "^5.0.0",
+    "prettier": "^2.1.2",
+    "styled-jsx-plugin-sass": "^1.0.0"
   }
 }

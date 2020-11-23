@@ -1,40 +1,48 @@
 import { useRef } from "react";
-import styled from "styled-components";
 
-const ListStyles = styled.li`
-  padding: 8px;
-  border: 2px black solid;
-  border-radius: 4px;
-  background-color: white;
-  display: flex;
-  margin: 8px 0;
+const StyledListItem = ({ children, onClick, ref }) => (
+  <>
+    <li onClick={onClick} onKeyPress={onClick} ref={ref}>
+      {children}
+    </li>
+    <style jsx>{`
+      li {
+        padding: 8px;
+        border: 2px black solid;
+        border-radius: 4px;
+        background-color: white;
+        display: flex;
+        margin: 8px 0;
 
-  & > * {
-    margin: 0;
-  }
+        & > :global(*) {
+          margin: 0;
+        }
 
-  & > *:first-child {
-    flex: 1;
-  }
+        & > :global(*:first-child) {
+          flex: 1;
+        }
 
-  a {
-    color: black;
-    text-decoration: none;
-  }
+        :global(a) {
+          color: black;
+          text-decoration: none;
+        }
 
-  &:hover {
-    background-color: aliceblue;
-    cursor: pointer;
-    animation-name: headShake;
-    animation-duration: 800ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
+        &:hover {
+          background-color: aliceblue;
+          cursor: pointer;
+          animation-name: headShake;
+          animation-duration: 800ms;
+          animation-timing-function: ease-in-out;
+          animation-iteration-count: 1;
 
-    a {
-      text-decoration: underline;
-    }
-  }
-`;
+          :global(a) {
+            text-decoration: underline;
+          }
+        }
+      }
+    `}</style>
+  </>
+);
 
 const ListItem = ({ children }) => {
   const liRef = useRef();
@@ -45,17 +53,17 @@ const ListItem = ({ children }) => {
 
   if (Array.isArray(children)) {
     return (
-      <ListStyles onClick={onClick} onKeyPress={onClick} ref={liRef}>
+      <StyledListItem onClick={onClick} onKeyPress={onClick} ref={liRef}>
         <p>{children[0]}</p>
         {children.slice(1)}
-      </ListStyles>
+      </StyledListItem>
     );
   }
 
   return (
-    <ListStyles onClick={onClick} onKeyPress={onClick} ref={liRef}>
+    <StyledListItem onClick={onClick} onKeyPress={onClick} ref={liRef}>
       {children}
-    </ListStyles>
+    </StyledListItem>
   );
 };
 

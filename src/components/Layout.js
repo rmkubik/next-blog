@@ -1,24 +1,27 @@
-import styled from "styled-components";
-
 import Header from "./Header";
-
-const ContentStyles = styled.div`
-  padding: 20px;
-
-  max-width: 1000px;
-  margin: 0 auto;
-
-  header {
-    margin-bottom: 32px;
-  }
-`;
 
 const Wrapper = ({ children }) => {
   return (
-    <ContentStyles>
-      <Header />
-      {children}
-    </ContentStyles>
+    <>
+      <div>
+        <Header />
+        {children}
+      </div>
+      <style jsx>
+        {`
+          div {
+            padding: 20px;
+
+            max-width: 850px;
+            margin: 0 auto;
+
+            :global(header) {
+              margin-bottom: 32px;
+            }
+          }
+        `}
+      </style>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
 import hydrate from "next-mdx-remote/hydrate";
-import styled from "styled-components";
 
 import { getAllPostSlugs, getMdxSourceBySlug } from "../../src/services/posts";
 import { SlugContextProvider, useSlug } from "../../src/services/useSlug";
@@ -14,7 +13,11 @@ import CodeBlock from "../../src/components/CodeBlock";
 import BlockQuote from "../../src/components/BlockQuote";
 
 const Anchor = ({ children, href }) => {
-  return <Link to={href}>{children}</Link>;
+  return (
+    <Link hideArrow hideDots to={href}>
+      {children}
+    </Link>
+  );
 };
 
 const Image = ({ children, src, alt, ...rest }) => {
@@ -22,25 +25,23 @@ const Image = ({ children, src, alt, ...rest }) => {
   const slug = useSlug();
 
   return (
-    <img
-      alt={alt}
-      src={`/images/posts/${slug}/${relativeStartStripped}`}
-      {...rest}
-    />
+    <>
+      <img
+        alt={alt}
+        src={`/images/posts/${slug}/${relativeStartStripped}`}
+        {...rest}
+      />
+      <style jsx>{`
+        img {
+          max-width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+        }
+      `}</style>
+    </>
   );
 };
-
-const PostHeaderStyles = styled.div`
-  margin-bottom: 32px;
-
-  h1 {
-    margin-bottom: 16px;
-  }
-
-  p {
-    margin: 0;
-  }
-`;
 
 const components = {
   a: Anchor,
@@ -70,13 +71,26 @@ const Post = ({ slug, source, frontmatter, readingTime }) => {
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
-        <PostHeaderStyles>
+        <div>
           <Section>
             <h1>{frontmatter.title}</h1>
             <p>{formattedDate}</p>
             <p>{readingTime}</p>
           </Section>
-        </PostHeaderStyles>
+        </div>
+        <style jsx>{`
+          div {
+            margin-bottom: 2em;
+          }
+
+          h1 {
+            margin-bottom: 1em;
+          }
+
+          p {
+            margin: 0;
+          }
+        `}</style>
         <MDXProvider components={components}>{content}</MDXProvider>
       </FrontmatterContextProvider>
     </SlugContextProvider>

@@ -7,10 +7,10 @@ import Section from "../../src/components/Section";
 const PostStyles = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 32px;
+  grid-gap: 2em;
 
   section {
-    padding: 32px;
+    padding: 2em;
 
     display: flex;
     flex-direction: column;
@@ -47,14 +47,14 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
 
 const BlogStyles = styled.div`
   h1 {
-    margin-bottom: 32px;
+    margin-bottom: 2em;
   }
 
   & > *:first-child {
-    margin-bottom: 32px;
+    margin-bottom: 2em;
 
     h1 {
-      margin-bottom: 16px;
+      margin-bottom: 1em;
     }
 
     p {

@@ -13,6 +13,17 @@ const Link = ({ to = "", hideDots = false, hideArrow = false, children }) => {
     );
   }
 
+  if (to.startsWith("#")) {
+    return (
+      <>
+        <a href={to}>
+          {children}
+          {hideDots || "..."}
+        </a>
+      </>
+    );
+  }
+
   return (
     <NextLink href={to}>
       {/* Next.js applies the href attribute for us. */}
