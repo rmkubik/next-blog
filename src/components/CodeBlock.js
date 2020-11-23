@@ -27,8 +27,6 @@ const CodeBlock = ({ children, className }) => {
           editedTokens = tokens.slice(0, tokens.length - 1);
         }
 
-        console.log(tokens);
-
         return (
           <pre
             className={className}
