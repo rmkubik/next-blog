@@ -1,29 +1,6 @@
-import styled from "styled-components";
-
 import { getAllPosts } from "../../src/services/posts";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
-
-const PostStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2em;
-
-  section {
-    padding: 2em;
-
-    display: flex;
-    flex-direction: column;
-
-    & > :nth-child(2) {
-      margin: 0;
-    }
-
-    & > :last-child {
-      margin-top: auto;
-    }
-  }
-`;
 
 const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -36,36 +13,20 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
     : "";
 
   return (
-    <Section key={slug}>
-      <h2>{frontmatter.title}</h2>
-      <p>{`${category}${readingTime} - ${formattedDate}`}</p>
-      <p>{summary}</p>
-      <Link to={`/blog/${slug}`}>{"Read more"}</Link>
-    </Section>
+    <>
+      <Section key={slug}>
+        <h2>{frontmatter.title}</h2>
+        <p>{`${category}${readingTime} - ${formattedDate}`}</p>
+        <p>{summary}</p>
+        <Link to={`/blog/${slug}`}>{"Read more"}</Link>
+      </Section>
+    </>
   );
 };
 
-const BlogStyles = styled.div`
-  h1 {
-    margin-bottom: 2em;
-  }
-
-  & > *:first-child {
-    margin-bottom: 2em;
-
-    h1 {
-      margin-bottom: 1em;
-    }
-
-    p {
-      margin: 0;
-    }
-  }
-`;
-
 const Blog = ({ posts }) => {
   return (
-    <BlogStyles>
+    <div className="blog">
       <Section>
         <h1>{"Games & Code"}</h1>
         <p>
@@ -74,7 +35,7 @@ const Blog = ({ posts }) => {
           }
         </p>
       </Section>
-      <PostStyles>
+      <div className="posts">
         {posts.map(({ slug, summary, frontmatter, readingTime }) => (
           <PostItem
             frontmatter={frontmatter}
@@ -84,8 +45,47 @@ const Blog = ({ posts }) => {
             summary={summary}
           />
         ))}
-      </PostStyles>
-    </BlogStyles>
+      </div>
+      <style jsx>{`
+        .blog {
+          h1 {
+            margin-bottom: 2em;
+          }
+
+          & > :global(*:first-child) {
+            margin-bottom: 2em;
+
+            h1 {
+              margin-bottom: 1em;
+            }
+
+            p {
+              margin: 0;
+            }
+          }
+        }
+
+        .posts {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 2em;
+
+          :global(section) {
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+
+            & > :global(:nth-child(2)) {
+              margin: 0;
+            }
+
+            & > :global(:last-child) {
+              margin-top: auto;
+            }
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
