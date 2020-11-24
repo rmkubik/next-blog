@@ -6,10 +6,10 @@ const BlockQuote = ({ children }) => {
         blockquote {
           border-left: 4px solid gray;
 
-          margin-block-start: 2em;
-          margin-block-end: 2em;
+          margin-block-start: 2rem;
+          margin-block-end: 2rem;
 
-          padding-inline-start: 40px;
+          padding-inline-start: 2.5rem;
           margin-inline-start: 0;
 
           line-height: 1.5em;

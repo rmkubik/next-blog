@@ -12,29 +12,29 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h2 {
-    margin-top: 64px;
-    padding-bottom: 10px;
+    margin-top: 3.25rem;
+    padding-bottom: 0.65rem;
     border-bottom: 2px solid black;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 
   h3 {
-    margin-top: 52px;
-    margin-bottom: 16px;
+    margin-top: 2.875rem;
+    margin-bottom: 1rem;
   }
 
   h4 {
-    margin-top: 32px;
-    margin-bottom: 12px;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
   }
 
   hr {
     border: 1px solid black;
-    margin: 32px 0;
+    margin: 2rem 0;
   }
 
   li {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   @keyframes headShake {

@@ -31,17 +31,17 @@ const Header = () => {
 
           border: 2px solid black;
           box-shadow: black 4px 4px;
-          padding: 32px;
+          padding: 2rem;
           background-color: white;
 
           & > :global(*:first-child) {
             flex: 1;
-            font-size: 1.2em;
+            font-size: 1.2rem;
           }
 
           & > :global(*:not(:first-child)) {
             border-left: 2px solid black;
-            padding: 8px 16px;
+            padding: 0.5rem 1rem;
           }
 
           & > :global(*:not(:first-child):hover) {
@@ -51,7 +51,7 @@ const Header = () => {
 
           & > :global(*:not(:second-child)) {
             border-left: 2px solid black;
-            padding: 8px 16px;
+            padding: 0.5rem 1rem;
           }
 
           :global(a) {

@@ -15,7 +15,7 @@ const Section = ({ children, area, color = "white" }) => {
         section {
           border: 2px solid black;
           box-shadow: black 4px 4px;
-          padding: 32px 64px;
+          padding: 2rem 4rem;
           background-color: white;
 
           & > :global(:first-child) {
@@ -27,14 +27,14 @@ const Section = ({ children, area, color = "white" }) => {
           }
 
           & > :global(a) {
-            margin-left: 16px;
+            margin-left: 1rem;
             color: black;
             text-decoration: none;
             cursor: pointer;
           }
 
           :global(span.external-arrow) {
-            margin-left: 16px;
+            margin-left: 1rem;
           }
 
           & > :global(a:hover) {

@@ -7,12 +7,12 @@ const StyledListItem = ({ children, onClick, ref }) => (
     </li>
     <style jsx>{`
       li {
-        padding: 8px;
+        padding: 0.5rem;
         border: 2px black solid;
         border-radius: 4px;
         background-color: white;
         display: flex;
-        margin: 8px 0;
+        margin: 0.5rem 0;
 
         & > :global(*) {
           margin: 0;

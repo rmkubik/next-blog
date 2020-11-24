@@ -71,27 +71,26 @@ const Post = ({ slug, source, frontmatter, readingTime }) => {
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
-        <div>
-          <Section>
-            <h1>{frontmatter.title}</h1>
-            <p>{formattedDate}</p>
-            <p>{readingTime}</p>
-          </Section>
-        </div>
+        <Section>
+          <h1>{frontmatter.title}</h1>
+          <p>{formattedDate}</p>
+          <p>{readingTime}</p>
+        </Section>
+        <MDXProvider components={components}>{content}</MDXProvider>
+        <Section></Section>
         <style jsx>{`
-          div {
-            margin-bottom: 2em;
+          :global(section) {
+            margin-bottom: 2rem;
           }
 
           h1 {
-            margin-bottom: 1em;
+            margin-bottom: 0.75rem;
           }
 
           p {
             margin: 0;
           }
         `}</style>
-        <MDXProvider components={components}>{content}</MDXProvider>
       </FrontmatterContextProvider>
     </SlugContextProvider>
   );

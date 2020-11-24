@@ -12,8 +12,8 @@ const EmailSignup = () => {
 
           & > :global(*:first-child) {
             flex: 1;
-            margin-right: 8px;
-            padding: 8px;
+            margin-right: 0.5rem;
+            padding: 0.5rem;
             border: 2px black solid;
             border-radius: 4px;
             background-color: white;

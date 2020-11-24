@@ -49,14 +49,14 @@ const Blog = ({ posts }) => {
       <style jsx>{`
         .blog {
           h1 {
-            margin-bottom: 2em;
+            margin-bottom: 2rem;
           }
 
           & > :global(*:first-child) {
-            margin-bottom: 2em;
+            margin-bottom: 2rem;
 
             h1 {
-              margin-bottom: 1em;
+              margin-bottom: 1rem;
             }
 
             p {
@@ -68,10 +68,10 @@ const Blog = ({ posts }) => {
         .posts {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          grid-gap: 2em;
+          grid-gap: 2rem;
 
           :global(section) {
-            padding: 2em;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
 

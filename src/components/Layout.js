@@ -10,13 +10,13 @@ const Wrapper = ({ children }) => {
       <style jsx>
         {`
           div {
-            padding: 20px;
+            padding: 2rem;
 
             max-width: 850px;
             margin: 0 auto;
 
             :global(header) {
-              margin-bottom: 32px;
+              margin-bottom: 2rem;
             }
           }
         `}

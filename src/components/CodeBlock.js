@@ -31,8 +31,8 @@ const CodeBlock = ({ children, className }) => {
           <pre
             className={className}
             style={{
-              overflowX: "scroll",
-              padding: "20px",
+              overflowX: "auto",
+              padding: "1.25rem",
               ...style,
             }}
           >
