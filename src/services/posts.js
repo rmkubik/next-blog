@@ -88,6 +88,28 @@ const summarize = (html) => {
   return `${trimmed}...`;
 };
 
+const getFrontmatter = async (slug) => {
+  const fileContents = await getFileContents(slug);
+  const { content, data } = matter(fileContents);
+
+  return {
+    frontmatter: data,
+  };
+};
+
+const fixFrontmatter = (frontmatter) => {
+  /*
+   * date needs to be stringified because Next.js cannot serialize
+   * Date objects in getStaticProps.
+   */
+  const { date, ...remainingFrontmatter } = frontmatter;
+
+  return {
+    date: date.toISOString(),
+    ...remainingFrontmatter,
+  };
+};
+
 const getMdxSourceBySlug = async (slug, components) => {
   const fileContents = await getFileContents(slug);
   const { content, data } = matter(fileContents);
@@ -95,17 +117,8 @@ const getMdxSourceBySlug = async (slug, components) => {
   const { renderedOutput } = source;
   const readingTimeStats = readingTime(renderedOutput);
 
-  /*
-   * date needs to be stringified because Next.js cannot serialize
-   * Date objects in getStaticProps.
-   */
-  const { date, ...remainingFrontmatter } = data;
-
   return {
-    frontmatter: {
-      date: date.toISOString(),
-      ...remainingFrontmatter,
-    },
+    frontmatter: fixFrontmatter(data),
     readingTime: readingTimeStats.text,
     slug,
     source,
@@ -137,4 +150,39 @@ const getAllPosts = async () => {
   return posts;
 };
 
-export { getMdxSourceBySlug, getAllPostSlugs, getAllPosts };
+const getPrevNextSlugs = async (targetSlug) => {
+  const slugs = await getAllPostSlugs();
+  const filePromises = slugs.map(async (slug) => {
+    const frontmatter = await getFrontmatter(slug);
+
+    return {
+      ...frontmatter,
+      slug,
+    };
+  });
+  const files = await Promise.all(filePromises);
+  const sortedFiles = files.sort((a, b) => {
+    const dateA = new Date(a.frontmatter.date);
+    const dateB = new Date(b.frontmatter.date);
+
+    return dateFnsCompareDesc(dateA, dateB);
+  });
+
+  const slugIndex = sortedFiles.findIndex((file) => file.slug === targetSlug);
+
+  const prev = slugIndex === 0 ? null : files[slugIndex - 1];
+  const next = slugIndex === files.length - 1 ? null : files[slugIndex + 1];
+
+  return {
+    next: next && {
+      frontmatter: fixFrontmatter(next.frontmatter),
+      slug: next.slug,
+    },
+    prev: prev && {
+      frontmatter: fixFrontmatter(prev.frontmatter),
+      slug: prev.slug,
+    },
+  };
+};
+
+export { getMdxSourceBySlug, getAllPostSlugs, getAllPosts, getPrevNextSlugs };
