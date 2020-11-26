@@ -37,6 +37,19 @@ const GlobalStyle = createGlobalStyle`
     margin-bottom: 1rem;
   }
 
+  ul ul {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+  }
+
+  a {
+    white-space: pre-wrap; /* CSS3 */    
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */    
+    white-space: -o-pre-wrap; /* Opera 7 */    
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+  }
+
   @keyframes headShake {
     0% {
       transform: rotateZ(-1deg);

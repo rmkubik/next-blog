@@ -40,6 +40,13 @@ const Section = ({ children, area, color = "white" }) => {
           & > :global(a:hover) {
             text-decoration: underline;
           }
+
+          :global(iframe) {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+          }
         }
       `}</style>
     </>

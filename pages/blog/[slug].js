@@ -82,17 +82,15 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
         </Section>
         <MDXProvider components={components}>{content}</MDXProvider>
         <Section>
-          {prev && (
-            <Link
-              hideDots
-              to={prev.slug}
-            >{`<- ${prev.frontmatter.title}`}</Link>
+          {prev ? (
+            <Link hideDots to={prev.slug}>{`⭠ ${prev.frontmatter.title}`}</Link>
+          ) : (
+            <div />
           )}
-          {next && (
-            <Link
-              hideDots
-              to={next.slug}
-            >{`${next.frontmatter.title} ->`}</Link>
+          {next ? (
+            <Link hideDots to={next.slug}>{`${next.frontmatter.title} ⭢`}</Link>
+          ) : (
+            <div />
           )}
         </Section>
         <style jsx>{`
@@ -105,6 +103,10 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
 
             display: grid;
             grid-template-columns: 1fr 1fr;
+
+            :global(*:last-child) {
+              text-align: right;
+            }
           }
 
           h1 {

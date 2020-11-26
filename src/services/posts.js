@@ -110,10 +110,57 @@ const fixFrontmatter = (frontmatter) => {
   };
 };
 
+/**
+ * Image paths in MDX should be valid URLs. Even though
+ * filenames can have spaces in them, MDX doesn't recognize
+ * that as valid since it's an invalid URL.
+ *
+ * Ideally, image paths just wouldn't have spaces in them,
+ * but we can't guarantee that.
+ *
+ * This function will search for a string matching an image
+ * embed and use built in JavaScript URL encode.
+ */
+const fixImageUrls = (content) => {
+  const imageEmbedRegex = /!\[.+?\]\((.+?)\)/gu;
+
+  // Copy the string with repeat
+  let output = content.repeat(1);
+  let match;
+
+  while (true) {
+    /**
+     * Get the next matching imageEmbed.
+     *
+     * The regex maintains an internal cursor as it compares so
+     * subsequent calls will grab the next match.
+     */
+    match = imageEmbedRegex.exec(content);
+
+    if (match === null) {
+      break;
+    }
+
+    const [originalImageEmbed, filePath] = match;
+    const encodedFilePath = encodeURI(filePath);
+
+    const filePathRegex = /\(.+\)/u;
+    const updatedImageEmbed = originalImageEmbed.replace(
+      filePathRegex,
+      `(${encodedFilePath})`
+    );
+
+    output = output.replace(originalImageEmbed, updatedImageEmbed);
+  }
+
+  return output;
+};
+
 const getMdxSourceBySlug = async (slug, components) => {
   const fileContents = await getFileContents(slug);
   const { content, data } = matter(fileContents);
-  const source = await renderToString(content, { components });
+  const imageFixedContent = fixImageUrls(content);
+  const source = await renderToString(imageFixedContent, { components });
   const { renderedOutput } = source;
   const readingTimeStats = readingTime(renderedOutput);
 
