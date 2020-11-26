@@ -90,7 +90,7 @@ const summarize = (html) => {
 
 const getFrontmatter = async (slug) => {
   const fileContents = await getFileContents(slug);
-  const { content, data } = matter(fileContents);
+  const { data } = matter(fileContents);
 
   return {
     frontmatter: data,

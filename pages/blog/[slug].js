@@ -47,6 +47,8 @@ const Image = ({ children, src, alt, ...rest }) => {
   );
 };
 
+const Pre = (props) => <div {...props} />;
+
 const components = {
   a: Anchor,
   blockquote: BlockQuote,
@@ -59,7 +61,7 @@ const components = {
   h6: H6,
   Icon,
   img: Image,
-  pre: (props) => <div {...props} />,
+  pre: Pre,
   Section,
   wrapper: Wrapper,
 };
