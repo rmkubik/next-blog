@@ -31,7 +31,7 @@ const Blog = ({ posts }) => {
         <h1>{"Games & Code"}</h1>
         <p>
           {
-            "My problem I was having an ambient static noise in my QC35 II’s ONLY when connected to my Macbook Pro, not when connected to my iPhone. Additionally, the “action button” on my headphones that should change noise cancellation levels was non-functional. Skip my debugging steps, and head right to the…"
+            "I write about things I learn here. Usually these things are related to programming and making games."
           }
         </p>
       </Section>

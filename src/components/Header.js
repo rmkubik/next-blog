@@ -32,7 +32,8 @@ const Header = () => {
           border: 2px solid black;
           box-shadow: black 4px 4px;
           padding: 2rem;
-          background-color: white;
+          background-color: #fff2ed;
+          /* background-color: #fff4db; */
 
           & > :global(*:first-child) {
             flex: 1;

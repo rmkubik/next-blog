@@ -1,10 +1,9 @@
-const Section = ({ children, area, color = "white" }) => {
+const Section = ({ children, area }) => {
   return (
     <>
       <section
         className={area}
         style={{
-          backgroundColor: color,
           gridArea: area,
         }}
       >
@@ -16,7 +15,10 @@ const Section = ({ children, area, color = "white" }) => {
           border: 2px solid black;
           box-shadow: black 4px 4px;
           padding: 2rem 4rem;
-          background-color: white;
+
+          background-color: #fff2ed;
+
+          /* background-color: #fff4db; */
 
           & > :global(:first-child) {
             margin-top: 0;

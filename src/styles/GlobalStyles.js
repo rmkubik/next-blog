@@ -3,9 +3,10 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    background-color: wheat;
+    background-color: #ebcfc4;
     font-family: Helvetica;
-    color: #222;
+    /* color: #222; */
+    color: #202129;
 
     font-size: 18px;
     line-height: 1;
@@ -42,6 +43,7 @@ const GlobalStyle = createGlobalStyle`
     margin-block-end: 1em;
   }
 
+  /* Allow links to wrap if they're a long continuous string */
   a {
     white-space: pre-wrap; /* CSS3 */    
     white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
