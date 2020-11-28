@@ -16,7 +16,7 @@ const Section = ({ children, area }) => {
           box-shadow: black 4px 4px;
           padding: 2rem 4rem;
 
-          background-color: #fff2ed;
+          background-color: white;
 
           /* background-color: #fff4db; */
 
