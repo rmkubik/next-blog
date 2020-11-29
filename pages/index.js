@@ -156,8 +156,8 @@ const Home = ({ projects }) => {
       <Section>
         <h2>{"Some of my projects"}</h2>
         <ul>
-          {projects.map((project, index) => (
-            <Project key={index} project={project} />
+          {projects.map((project) => (
+            <Project key={project.slug} project={project} />
           ))}
         </ul>
       </Section>
