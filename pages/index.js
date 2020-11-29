@@ -91,6 +91,7 @@ const Project = ({ project }) => {
           border-top-right-radius: 22px;
 
           border: 3px outset #738e9e;
+          background-image: url("/images/french-stucco.png");
 
           box-shadow: 2px 2px 8px #222;
 
@@ -105,13 +106,15 @@ const Project = ({ project }) => {
 
         .logo {
           height: 1.8rem;
-          box-shadow: inset 0 0 16px #222;
+          box-shadow: inset 0 0 14px #222;
           margin-bottom: 1rem;
           border-radius: 12px;
 
           border: 3px inset #738e9e;
 
-          background-color: white;
+          background-color: #eee;
+          background-image: url("/images/white-brushed.png");
+
           text-align: center;
           color: #222;
           line-height: 1.8rem;

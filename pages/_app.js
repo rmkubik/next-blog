@@ -12,6 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
         body {
           margin: 0;
           background-color: #ebcfc4;
+          background-image: url("/images/wavecut.png");
           font-family: Helvetica;
           /* color: #222; */
           color: #202129;
