@@ -53,9 +53,7 @@ const getPostPath = async (slugPath) => {
   return false;
 };
 
-const postsDir = path.join("posts");
-
-const getFileContents = async (slug) => {
+const getFileContents = async (postsDir, slug) => {
   const slugPath = path.join(postsDir, slug);
 
   const postPath = await getPostPath(slugPath);
@@ -88,8 +86,8 @@ const summarize = (html) => {
   return `${trimmed}...`;
 };
 
-const getFrontmatter = async (slug) => {
-  const fileContents = await getFileContents(slug);
+const getFrontmatter = async (postsDir, slug) => {
+  const fileContents = await getFileContents(postsDir, slug);
   const { data } = matter(fileContents);
 
   return {
@@ -156,8 +154,8 @@ const fixImageUrls = (content) => {
   return output;
 };
 
-const getMdxSourceBySlug = async (slug, components) => {
-  const fileContents = await getFileContents(slug);
+const getMdxSourceBySlug = async (postsDir, slug, components) => {
+  const fileContents = await getFileContents(postsDir, slug);
   const { content, data } = matter(fileContents);
   const imageFixedContent = fixImageUrls(content);
   const source = await renderToString(imageFixedContent, { components });
@@ -173,7 +171,7 @@ const getMdxSourceBySlug = async (slug, components) => {
   };
 };
 
-const getAllPostSlugs = async () => {
+const getAllPostSlugs = async (postsDir) => {
   return (
     (await fs.promises.readdir(postsDir))
       // Filter out all hidden dot files
@@ -182,9 +180,11 @@ const getAllPostSlugs = async () => {
   );
 };
 
-const getAllPosts = async () => {
-  const slugs = await getAllPostSlugs();
-  const sourcePromises = slugs.map(getMdxSourceBySlug);
+const getAllPosts = async (postsDir) => {
+  const slugs = await getAllPostSlugs(postsDir);
+  const sourcePromises = slugs.map((slug) =>
+    getMdxSourceBySlug(postsDir, slug)
+  );
   const posts = await Promise.all(sourcePromises);
 
   posts.sort((a, b) => {
@@ -197,10 +197,10 @@ const getAllPosts = async () => {
   return posts;
 };
 
-const getPrevNextSlugs = async (targetSlug) => {
-  const slugs = await getAllPostSlugs();
+const getPrevNextSlugs = async (postsDir, targetSlug) => {
+  const slugs = await getAllPostSlugs(postsDir);
   const filePromises = slugs.map(async (slug) => {
-    const frontmatter = await getFrontmatter(slug);
+    const frontmatter = await getFrontmatter(postsDir, slug);
 
     return {
       ...frontmatter,

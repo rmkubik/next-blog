@@ -90,7 +90,7 @@ const Blog = ({ posts }) => {
 };
 
 export const getStaticProps = async () => {
-  const posts = await getAllPosts();
+  const posts = await getAllPosts("posts");
 
   return {
     props: {

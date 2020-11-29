@@ -126,10 +126,11 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
 
 export const getStaticProps = async ({ params }) => {
   const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
+    "posts",
     params.slug,
     components
   );
-  const { prev, next } = await getPrevNextSlugs(params.slug);
+  const { prev, next } = await getPrevNextSlugs("posts", params.slug);
 
   return {
     props: {
@@ -144,7 +145,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths = async () => {
-  const slugs = await getAllPostSlugs();
+  const slugs = await getAllPostSlugs("posts");
 
   return {
     fallback: false,
