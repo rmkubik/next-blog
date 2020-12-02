@@ -1,16 +1,13 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 
+import useSiteMetaData from "../services/useSiteMetaData";
+
 import Link from "./Link";
 
-const siteName = "Ryan Kubik";
-
-const Header = ({
-  title = siteName,
-  previewImage,
-  description = "Games & Code",
-}) => {
+const Header = () => {
   const [currentUrl, setCurrentUrl] = useState("");
+  const [siteMetaData] = useSiteMetaData();
 
   /**
    * Next.js cannot reference window at build time to get the current URL.
@@ -25,20 +22,40 @@ const Header = ({
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{siteMetaData.title}</title>
         <link href="/favicon.ico" rel="icon" />
 
         {/* Twitter specific tags */}
-        <meta content="@ryrykubes" key="twsite" property="twitter:site" />
-        <meta content="@ryrykubes" key="twhandle" property="twitter:creator" />
+        <meta
+          content={`@${siteMetaData.twitterHandle}`}
+          key="twsite"
+          property="twitter:site"
+        />
+        <meta
+          content={`@${siteMetaData.twitterHandle}`}
+          key="twhandle"
+          property="twitter:creator"
+        />
         <meta content="summary" key="twcard" property="twitter:card" />
 
         {/* Open graph tags */}
         <meta content={currentUrl} key="ogUrl" property="og:url" />
-        <meta content={previewImage} key="ogimage" property="og:image" />
-        <meta content={siteName} key="ogsitename" property="og:site_name" />
-        <meta content={title} key="ogtitle" property="og:title" />
-        <meta content={description} key="ogdesc" property="og:description" />
+        <meta
+          content={siteMetaData.previewImage}
+          key="ogimage"
+          property="og:image"
+        />
+        <meta
+          content={siteMetaData.siteName}
+          key="ogsitename"
+          property="og:site_name"
+        />
+        <meta content={siteMetaData.title} key="ogtitle" property="og:title" />
+        <meta
+          content={siteMetaData.description}
+          key="ogdesc"
+          property="og:description"
+        />
       </Head>
       <header>
         <Link hideArrow hideDots to="/">

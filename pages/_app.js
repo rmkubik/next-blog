@@ -1,13 +1,27 @@
 import "normalize.css";
 
 import Layout from "../src/components/Layout";
+import { SiteMetaDataProvider } from "../src/services/useSiteMetaData";
+
+const siteName = "Ryan Kubik";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <SiteMetaDataProvider
+        value={{
+          description: undefined,
+          previewImage: undefined,
+          siteName,
+          title: siteName,
+          twitterHandle: "ryrykubes",
+        }}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SiteMetaDataProvider>
+      {/* eslint-disable-next-line react/jsx-sort-props */}
       <style jsx global>{`
         body {
           margin: 0;
