@@ -1,5 +1,6 @@
 import Link from "../src/components/Link";
 import Section from "../src/components/Section";
+import Center from "../src/components/Center";
 import { getAllPosts, getMdxSourceBySlug } from "../src/services/posts";
 
 const Image = ({ children, src = "", alt, slug, ...rest }) => {
@@ -112,11 +113,16 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={post.frontmatter.title}>
               <h3>{post.frontmatter.title}</h3>
-              <Link to={`/blog/${post.slug}`}>{post.readingTime}</Link>
+              <Link
+                to={`/blog/${post.slug}`}
+              >{`Check out this ${post.readingTime}`}</Link>
             </Section>
           );
         })}
       </div>
+      <Section>
+        <Center>{"👋"}</Center>
+      </Section>
       <style jsx>{`
         .main {
           h1 {
