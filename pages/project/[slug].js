@@ -66,13 +66,8 @@ const components = {
   wrapper: Wrapper,
 };
 
-const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
+const Post = ({ slug, source, frontmatter, prev, next }) => {
   const content = hydrate(source, { components });
-  const formattedDate = new Intl.DateTimeFormat("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(new Date(frontmatter.date));
 
   return (
     <SlugContextProvider value={slug}>

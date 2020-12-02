@@ -86,12 +86,14 @@ const Home = ({ posts, projects }) => {
 
           return (
             <Section key={project.frontmatter.title}>
-              <h3>{project.frontmatter.title}</h3>
-              <Image
-                alt={project.frontmatter.title}
-                slug={project.slug}
-                src={imageSrc}
-              />
+              <Link hideDots to={`project/${project.slug}`}>
+                <h3>{project.frontmatter.title}</h3>
+                <Image
+                  alt={project.frontmatter.title}
+                  slug={project.slug}
+                  src={imageSrc}
+                />
+              </Link>
             </Section>
           );
         })}
@@ -150,6 +152,19 @@ const Home = ({ posts, projects }) => {
           :global(section) {
             padding: 1rem;
             text-align: center;
+          }
+
+          :global(a) {
+            margin: 0;
+
+            &:hover :global(.square-aspect-ratio) {
+              transform: scale(1.1);
+              transition: 200ms ease-out;
+            }
+          }
+
+          :global(h3) {
+            margin-top: 0;
           }
         }
 
