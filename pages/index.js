@@ -158,7 +158,7 @@ const Home = ({ posts, projects }) => {
             margin: 0;
 
             &:hover :global(.square-aspect-ratio) {
-              transform: scale(1.1);
+              transform: scale(1.05);
               transition: 200ms ease-out;
             }
           }
