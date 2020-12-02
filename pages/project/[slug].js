@@ -79,7 +79,6 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
       <FrontmatterContextProvider value={frontmatter}>
         <Section>
           <h1>{frontmatter.title}</h1>
-          <p>{formattedDate}</p>
         </Section>
         <MDXProvider components={components}>{content}</MDXProvider>
         <Section>
