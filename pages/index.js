@@ -1,6 +1,6 @@
 import Link from "../src/components/Link";
 import Section from "../src/components/Section";
-import Center from "../src/components/Center";
+import Footer from "../src/components/Footer";
 import { getAllPosts, getMdxSourceBySlug } from "../src/services/posts";
 
 const Image = ({ children, src = "", alt, slug, ...rest }) => {
@@ -120,9 +120,7 @@ const Home = ({ posts, projects }) => {
           );
         })}
       </div>
-      <Section>
-        <Center>{"👋"}</Center>
-      </Section>
+      <Footer />
       <style jsx>{`
         .main {
           h1 {
