@@ -1,13 +1,44 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 
 import Link from "./Link";
 
-const Header = () => {
+const siteName = "Ryan Kubik";
+
+const Header = ({
+  title = siteName,
+  previewImage,
+  description = "Games & Code",
+}) => {
+  const [currentUrl, setCurrentUrl] = useState("");
+
+  /**
+   * Next.js cannot reference window at build time to get the current URL.
+   * Window does not exist during static or server side rendering processes.
+   *
+   * Instead, we use useEffect to set this meta property at run time.
+   */
+  useEffect(() => {
+    setCurrentUrl(window.location);
+  }, []);
+
   return (
     <>
       <Head>
-        <title>{"Ryan Kubik"}</title>
+        <title>{title}</title>
         <link href="/favicon.ico" rel="icon" />
+
+        {/* Twitter specific tags */}
+        <meta content="@ryrykubes" key="twsite" property="twitter:site" />
+        <meta content="@ryrykubes" key="twhandle" property="twitter:creator" />
+        <meta content="summary" key="twcard" property="twitter:card" />
+
+        {/* Open graph tags */}
+        <meta content={currentUrl} key="ogUrl" property="og:url" />
+        <meta content={previewImage} key="ogimage" property="og:image" />
+        <meta content={siteName} key="ogsitename" property="og:site_name" />
+        <meta content={title} key="ogtitle" property="og:title" />
+        <meta content={description} key="ogdesc" property="og:description" />
       </Head>
       <header>
         <Link hideArrow hideDots to="/">
