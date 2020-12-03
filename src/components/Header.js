@@ -6,22 +6,22 @@ import Link from "./Link";
 import Head from "./Head";
 
 const Header = () => {
-  const [currentUrl, setCurrentUrl] = useState("");
+  // const [currentUrl, setCurrentUrl] = useState("");
   const [siteMetaData] = useSiteMetaData();
 
-  /**
-   * Next.js cannot reference window at build time to get the current URL.
-   * Window does not exist during static or server side rendering processes.
-   *
-   * Instead, we use useEffect to set this meta property at run time.
-   */
-  useEffect(() => {
-    setCurrentUrl(window.location);
-  }, []);
+  // /**
+  //  * Next.js cannot reference window at build time to get the current URL.
+  //  * Window does not exist during static or server side rendering processes.
+  //  *
+  //  * Instead, we use useEffect to set this meta property at run time.
+  //  */
+  // useEffect(() => {
+  //   setCurrentUrl(window.location);
+  // }, []);
 
   return (
     <>
-      <Head {...siteMetaData} currentUrl={currentUrl} />
+      <Head {...siteMetaData} />
       <header>
         <Link hideArrow hideDots to="/">
           {"Ryan Kubik"}

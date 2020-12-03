@@ -10,8 +10,9 @@ const MyApp = ({ Component, pageProps }) => {
     <>
       <SiteMetaDataProvider
         value={{
+          currentUrl: process.env.VERCEL_URL,
           description: undefined,
-          previewImage: undefined,
+          previewImage: "/images/logo-512x512.png",
           siteName,
           title: siteName,
           twitterHandle: "ryrykubes",
