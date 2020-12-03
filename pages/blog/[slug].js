@@ -6,66 +6,12 @@ import {
   getMdxSourceBySlug,
   getPrevNextSlugs,
 } from "../../src/services/posts";
-import { SlugContextProvider, useSlug } from "../../src/services/useSlug";
+import { SlugContextProvider } from "../../src/services/useSlug";
 import { FrontmatterContextProvider } from "../../src/services/useFrontmatter";
-import Icon from "../../src/components/Icon";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
-import Wrapper from "../../src/components/Wrapper";
-import { H1, H2, H3, H4, H5, H6 } from "../../src/components/headings";
-import CodeBlock from "../../src/components/CodeBlock";
-import BlockQuote from "../../src/components/BlockQuote";
 import Head from "../../src/components/Head";
-
-const Anchor = ({ children, href }) => {
-  return (
-    <Link hideArrow hideDots to={href}>
-      {children}
-    </Link>
-  );
-};
-
-const Image = ({ children, src, alt, ...rest }) => {
-  const relativeStartStripped = src.replace(/^.\//u, "");
-  const slug = useSlug();
-
-  return (
-    <>
-      <img
-        alt={alt}
-        src={`/images/posts/${slug}/${relativeStartStripped}`}
-        {...rest}
-      />
-      <style jsx>{`
-        img {
-          max-width: 100%;
-          margin-left: auto;
-          margin-right: auto;
-          display: block;
-        }
-      `}</style>
-    </>
-  );
-};
-
-const Pre = (props) => <div {...props} />;
-
-const components = {
-  a: Anchor,
-  blockquote: BlockQuote,
-  code: CodeBlock,
-  h1: H1,
-  h2: H2,
-  h3: H3,
-  h4: H4,
-  h5: H5,
-  h6: H6,
-  Icon,
-  img: Image,
-  pre: Pre,
-  Section,
-  wrapper: Wrapper,
-};
+import createComponents from "../../src/components/components";
 
 const Post = ({
   slug,
@@ -76,6 +22,10 @@ const Post = ({
   next,
   summary,
 }) => {
+  const components = createComponents({
+    imageDir: "posts",
+    slug,
+  });
   const content = hydrate(source, { components });
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
@@ -138,6 +88,10 @@ const Post = ({
 };
 
 export const getStaticProps = async ({ params }) => {
+  const components = createComponents({
+    imageDir: "posts",
+    slug: params.slug,
+  });
   const {
     source,
     frontmatter,

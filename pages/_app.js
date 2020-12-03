@@ -6,7 +6,7 @@ import { SiteMetaDataProvider } from "../src/services/useSiteMetaData";
 
 const siteName = "Ryan Kubik";
 
-const MyApp = ({ Component, pageProps }) => {
+const App = ({ Component, pageProps }) => {
   const router = useRouter();
 
   return (
@@ -93,4 +93,4 @@ const MyApp = ({ Component, pageProps }) => {
   );
 };
 
-export default MyApp;
+export default App;
