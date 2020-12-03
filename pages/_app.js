@@ -1,4 +1,5 @@
 import "normalize.css";
+import { useRouter } from "next/router";
 
 import Layout from "../src/components/Layout";
 import { SiteMetaDataProvider } from "../src/services/useSiteMetaData";
@@ -6,13 +7,15 @@ import { SiteMetaDataProvider } from "../src/services/useSiteMetaData";
 const siteName = "Ryan Kubik";
 
 const MyApp = ({ Component, pageProps }) => {
+  const router = useRouter();
+
   return (
     <>
       <SiteMetaDataProvider
         value={{
-          currentUrl: process.env.VERCEL_URL,
+          currentUrl: `${process.env.VERCEL_URL}${router.pathname}`,
           description: undefined,
-          previewImage: "/images/logo-512x512.png",
+          previewImage: `${process.env.VERCEL_URL}/images/logo-512x512.png`,
           siteName,
           title: siteName,
           twitterHandle: "ryrykubes",
