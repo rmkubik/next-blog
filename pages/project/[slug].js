@@ -73,7 +73,7 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
-        <Head title={frontmatter.title} />
+        <Head description={frontmatter.description} title={frontmatter.title} />
         <Section>
           <h1>{frontmatter.title}</h1>
         </Section>

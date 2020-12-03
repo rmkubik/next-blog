@@ -67,7 +67,15 @@ const components = {
   wrapper: Wrapper,
 };
 
-const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
+const Post = ({
+  slug,
+  source,
+  frontmatter,
+  readingTime,
+  prev,
+  next,
+  summary,
+}) => {
   const content = hydrate(source, { components });
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
@@ -78,7 +86,10 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
-        <Head title={frontmatter.title} />
+        <Head
+          description={frontmatter.description || summary}
+          title={frontmatter.title}
+        />
         <Section>
           <h1>{frontmatter.title}</h1>
           <p>{formattedDate}</p>
@@ -127,11 +138,12 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
-    "posts",
-    params.slug,
-    components
-  );
+  const {
+    source,
+    frontmatter,
+    readingTime,
+    summary,
+  } = await getMdxSourceBySlug("posts", params.slug, components);
   const { prev, next } = await getPrevNextSlugs("posts", params.slug);
 
   return {
@@ -142,6 +154,7 @@ export const getStaticProps = async ({ params }) => {
       readingTime,
       slug: params.slug,
       source,
+      summary,
     },
   };
 };
