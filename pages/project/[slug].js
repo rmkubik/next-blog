@@ -28,7 +28,7 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
           <h1>{frontmatter.title}</h1>
         </Section>
         <MDXProvider components={components}>{content}</MDXProvider>
-        <Section>
+        <Section className="footer">
           {prev ? (
             <Link hideDots to={prev.slug}>{`⭠ ${prev.frontmatter.title}`}</Link>
           ) : (
@@ -45,7 +45,7 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
             margin-bottom: 2rem;
           }
 
-          :global(section:last-child) {
+          :global(.footer) {
             margin-bottom: 0;
 
             display: grid;
