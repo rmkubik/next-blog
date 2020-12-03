@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import hydrate from "next-mdx-remote/hydrate";
+import Head from "next/head";
 
 import {
   getAllPostSlugs,
@@ -75,22 +76,25 @@ const Post = ({ slug, source, frontmatter, readingTime, prev, next }) => {
     month: "long",
     year: "numeric",
   }).format(new Date(frontmatter.date));
-  const [, setSiteMetaData] = useSiteMetaData();
+  // const [, setSiteMetaData] = useSiteMetaData();
 
-  useEffect(() => {
-    setSiteMetaData({
-      title: frontmatter.title,
-    });
-    /**
-     * The useSiteMetaData hook redefines setSiteMetaData on every
-     * execution. If we include it below it causes an infinite loop.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [frontmatter]);
+  // useEffect(() => {
+  //   setSiteMetaData({
+  //     title: frontmatter.title,
+  //   });
+  /**
+   * The useSiteMetaData hook redefines setSiteMetaData on every
+   * execution. If we include it below it causes an infinite loop.
+   */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [frontmatter]);
 
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
+        <Head>
+          <meta content={frontmatter.title} key="ogtitle" property="og:title" />
+        </Head>
         <Section>
           <h1>{frontmatter.title}</h1>
           <p>{formattedDate}</p>
