@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import hydrate from "next-mdx-remote/hydrate";
 
@@ -16,7 +15,7 @@ import Wrapper from "../../src/components/Wrapper";
 import { H1, H2, H3, H4, H5, H6 } from "../../src/components/headings";
 import CodeBlock from "../../src/components/CodeBlock";
 import BlockQuote from "../../src/components/BlockQuote";
-import useSiteMetaData from "../../src/services/useSiteMetaData";
+import Head from "../../src/components/Head";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -70,22 +69,11 @@ const components = {
 
 const Post = ({ slug, source, frontmatter, prev, next }) => {
   const content = hydrate(source, { components });
-  const [, setSiteMetaData] = useSiteMetaData();
-
-  useEffect(() => {
-    setSiteMetaData({
-      title: frontmatter.title,
-    });
-    /**
-     * The useSiteMetaData hook redefines setSiteMetaData on every
-     * execution. If we include it below it causes an infinite loop.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [frontmatter]);
 
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
+        <Head title={frontmatter.title} />
         <Section>
           <h1>{frontmatter.title}</h1>
         </Section>

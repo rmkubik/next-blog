@@ -1,9 +1,9 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 
 import useSiteMetaData from "../services/useSiteMetaData";
 
 import Link from "./Link";
+import Head from "./Head";
 
 const Header = () => {
   const [currentUrl, setCurrentUrl] = useState("");
@@ -21,42 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <Head>
-        <title>{siteMetaData.title}</title>
-        <link href="/favicon.ico" rel="icon" />
-
-        {/* Twitter specific tags */}
-        <meta
-          content={`@${siteMetaData.twitterHandle}`}
-          key="twsite"
-          property="twitter:site"
-        />
-        <meta
-          content={`@${siteMetaData.twitterHandle}`}
-          key="twhandle"
-          property="twitter:creator"
-        />
-        <meta content="summary" key="twcard" property="twitter:card" />
-
-        {/* Open graph tags */}
-        <meta content={currentUrl} key="ogUrl" property="og:url" />
-        <meta
-          content={siteMetaData.previewImage}
-          key="ogimage"
-          property="og:image"
-        />
-        <meta
-          content={siteMetaData.siteName}
-          key="ogsitename"
-          property="og:site_name"
-        />
-        <meta content={siteMetaData.title} key="ogtitle" property="og:title" />
-        <meta
-          content={siteMetaData.description}
-          key="ogdesc"
-          property="og:description"
-        />
-      </Head>
+      <Head {...siteMetaData} currentUrl={currentUrl} />
       <header>
         <Link hideArrow hideDots to="/">
           {"Ryan Kubik"}

@@ -14,24 +14,36 @@ const Head = ({
       <link href="/favicon.ico" rel="icon" />
 
       {/* Twitter specific tags */}
-      <meta
-        content={`@${twitterHandle}`}
-        key="twsite"
-        property="twitter:site"
-      />
-      <meta
-        content={`@${twitterHandle}`}
-        key="twhandle"
-        property="twitter:creator"
-      />
+      {twitterHandle && (
+        <meta
+          content={`@${twitterHandle}`}
+          key="twsite"
+          property="twitter:site"
+        />
+      )}
+      {twitterHandle && (
+        <meta
+          content={`@${twitterHandle}`}
+          key="twhandle"
+          property="twitter:creator"
+        />
+      )}
       <meta content="summary" key="twcard" property="twitter:card" />
 
       {/* Open graph tags */}
-      <meta content={currentUrl} key="ogUrl" property="og:url" />
-      <meta content={previewImage} key="ogimage" property="og:image" />
-      <meta content={siteName} key="ogsitename" property="og:site_name" />
-      <meta content={title} key="ogtitle" property="og:title" />
-      <meta content={description} key="ogdesc" property="og:description" />
+      {currentUrl && (
+        <meta content={currentUrl} key="ogUrl" property="og:url" />
+      )}
+      {previewImage && (
+        <meta content={previewImage} key="ogimage" property="og:image" />
+      )}
+      {siteName && (
+        <meta content={siteName} key="ogsitename" property="og:site_name" />
+      )}
+      {title && <meta content={title} key="ogtitle" property="og:title" />}
+      {description && (
+        <meta content={description} key="ogdesc" property="og:description" />
+      )}
     </NextHead>
   );
 };
