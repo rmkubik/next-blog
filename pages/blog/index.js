@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { getAllPosts } from "../../src/services/posts";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
-import useSiteMetaData from "../../src/services/useSiteMetaData";
+import Head from "../../src/components/Head";
 
 const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
   const formattedDate = new Intl.DateTimeFormat("en-US", {
@@ -28,21 +28,9 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
 };
 
 const Blog = ({ posts }) => {
-  const [, setSiteMetaData] = useSiteMetaData();
-
-  useEffect(() => {
-    setSiteMetaData({
-      title: "Games & Code",
-    });
-    /**
-     * The useSiteMetaData hook redefines setSiteMetaData on every
-     * execution. If we include it below it causes an infinite loop.
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="blog">
+      <Head title={"Games & Code"} />
       <Section>
         <h1>{"Games & Code"}</h1>
         <p>
