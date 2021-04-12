@@ -1,7 +1,7 @@
 ---
-title: 'Wildfire Swap: A puzzle game inspired by fires in the Pacific Northwest'
-desc: 'My first time experience with wildfires after moving to the PNW.'
-featuredImage: 'wildire-worldmap-idle.2019-10-03 21_33_13.gif'
+title: "Wildfire Swap: A puzzle game inspired by fires in the Pacific Northwest"
+desc: "My first time experience with wildfires after moving to the PNW."
+featuredImage: "wildire-worldmap-idle.2019-10-03 21_33_13.gif"
 date: 2019-11-27
 tags: indie, puzzle, game, wildfire, swap, fire, forest, pacific, north, west, pnw, northwest
 ---
@@ -30,7 +30,7 @@ When we woke up the next day, we learned that I-84 was now closed on the stretch
 
 The Columbia River Gorge continued to burn for three months before the wild fire was declared completely contained. The tireless efforts of over 1000 firefighters clearing miles of forest, shifting wind conditions, and a fortuitously timed bout of Pacific Northwest rain finally brought the fire to its knees.
 
-Living so near this new-to-me force of nature kindled an desire in learning more, so I started researching. Wildfires are different than house fires. We can't extinguish them. We do our best to control and contain them. But they have minds of their own and frequently stopping them comes down to concentrated human effort and a lucky break in the weather.
+Living so near this new-to-me force of nature kindled a desire to learn more, so I started researching. Wildfires are different than house fires. We can't extinguish them. We do our best to control and contain them. But they have minds of their own and frequently stopping them comes down to concentrated human effort and a lucky break in the weather.
 
 ![./wildire-worldmap-idle.2019-10-03 21_33_13.gif](./wildire-worldmap-idle.2019-10-03 21_33_13.gif)
 
