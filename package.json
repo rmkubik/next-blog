@@ -33,12 +33,12 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
+    "@styled-jsx/plugin-sass": "^3.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.2.1",
     "eslint": "^7.12.1",
     "eslint-config-get-off-my-lawn": "^5.0.1",
     "node-sass": "^5.0.0",
-    "prettier": "^2.1.2",
-    "styled-jsx-plugin-sass": "^1.0.0"
+    "prettier": "^2.1.2"
   }
 }
