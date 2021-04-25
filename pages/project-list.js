@@ -1,5 +1,4 @@
 import Footer from "../src/components/Footer";
-import Link from "../src/components/Link";
 import Section from "../src/components/Section";
 
 const Projects = () => {
