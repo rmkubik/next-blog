@@ -161,7 +161,7 @@ const Systems = () => {
           display: flex;
           flex-direction: column;
 
-          &:nth-child(2) {
+          & > *:nth-child(2) {
             flex: 1;
           }
         }
