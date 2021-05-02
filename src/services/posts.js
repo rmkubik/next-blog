@@ -6,6 +6,7 @@ import matter from "gray-matter";
 import htmlToText from "html-to-text";
 import dateFnsCompareDesc from "date-fns/compareDesc";
 import readingTime from "reading-time";
+import dynamic from "next/dynamic";
 
 const doesPathExist = async (targetPath) => {
   try {
@@ -171,14 +172,16 @@ const getMdxSourceBySlug = async (postsDir, slug, components) => {
   };
 };
 
-const getAllPostSlugs = async (postsDir) => {
+const readDir = async (dir) => {
   return (
-    (await fs.promises.readdir(postsDir))
+    (await fs.promises.readdir(dir))
       // Filter out all hidden dot files
       .filter((fileName) => fileName.charAt(0) !== ".")
       .map((fileName) => path.basename(fileName, path.extname(fileName)))
   );
 };
+
+const getAllPostSlugs = readDir;
 
 const getAllPosts = async (postsDir) => {
   const slugs = await getAllPostSlugs(postsDir);
@@ -195,6 +198,31 @@ const getAllPosts = async (postsDir) => {
   });
 
   return posts;
+};
+
+const getPageMetadataBySlug = async (root, slug) => {
+  const metadataPath = path.join("pages", root, slug, "metadata.json");
+
+  if (!(await doesPathExist(metadataPath))) {
+    return undefined;
+  }
+
+  const metadataContents = await fs.promises.readFile(metadataPath, "utf8");
+  const metadata = JSON.parse(metadataContents);
+
+  return metadata;
+};
+
+const getAllPageMetadata = async (root) => {
+  const rootPath = path.join("pages", root);
+  const slugs = await readDir(rootPath);
+  const metadataPromises = slugs.map((slug) =>
+    getPageMetadataBySlug(root, slug)
+  );
+
+  const metadatas = await Promise.all(metadataPromises);
+
+  return metadatas.filter((metadata) => metadata !== undefined);
 };
 
 const getPrevNextSlugs = async (postsDir, targetSlug) => {
@@ -232,4 +260,11 @@ const getPrevNextSlugs = async (postsDir, targetSlug) => {
   };
 };
 
-export { getMdxSourceBySlug, getAllPostSlugs, getAllPosts, getPrevNextSlugs };
+export {
+  getMdxSourceBySlug,
+  getPageMetadataBySlug,
+  getAllPageMetadata,
+  getAllPostSlugs,
+  getAllPosts,
+  getPrevNextSlugs,
+};
