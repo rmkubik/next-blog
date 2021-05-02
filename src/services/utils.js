@@ -18,4 +18,19 @@ const slugify = (string) => {
     .replace(/-+$/u, ""); // Trim - from end of text
 };
 
-export { slugify };
+const randIntBetween = (low, high) => {
+  return Math.floor(Math.random() * (high - low + 1)) + low;
+};
+
+const randomString = (length) => {
+  return new Array(length)
+    .fill()
+    .map(() => {
+      const randChar = randIntBetween(65, 90);
+
+      return String.fromCharCode(randChar);
+    })
+    .join("");
+};
+
+export { slugify, randIntBetween, randomString };
