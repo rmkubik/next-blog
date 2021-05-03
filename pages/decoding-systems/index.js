@@ -1,56 +1,9 @@
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import { getAllPageMetadata } from "../../src/services/posts";
+import useSaveData from "../../src/services/systems/useSaveData";
 
 const MAX_STARS = 3;
-
-// const systems = [
-//   {
-//     icon: "🔥",
-//     img: "",
-//     key: "flood-the-flames",
-//     stars: 0,
-//     title: "Flood the Flames",
-//   },
-//   {
-//     icon: "🦠",
-//     img: "",
-//     key: "infection",
-//     stars: 0,
-//     title: "Infection",
-//   },
-//   {
-//     icon: "🌊",
-//     img: "",
-//     key: "tsunami-showdown",
-//     stars: 0,
-//     title: "Tsunami Showdown",
-//   },
-//   {
-//     icon: "🦓",
-//     img: "",
-//     key: "zoo",
-//     stars: 0,
-//     title: "Zoo",
-//     unlockCost: 5,
-//   },
-//   {
-//     icon: "🏘",
-//     img: "",
-//     key: "test",
-//     stars: 0,
-//     title: "Test Town",
-//     unlockCost: 5,
-//   },
-//   {
-//     icon: "¿",
-//     img: "https://image.flaticon.com/icons/png/512/61/61457.png",
-//     key: "unknown",
-//     stars: 0,
-//     title: "???",
-//     unlockCost: 10,
-//   },
-// ];
 
 const countCurrentStars = (objects) => {
   return Object.values(objects).reduce((total, obj) => obj.stars + total, 0);
@@ -62,6 +15,8 @@ const countTotalStars = (objects) => {
 };
 
 const Systems = ({ systems }) => {
+  const { saveData, getSystem } = useSaveData();
+
   return (
     <div className="main">
       <Section>
@@ -73,7 +28,7 @@ const Systems = ({ systems }) => {
         </p>
       </Section>
       <Section>
-        <p>{`${countCurrentStars(systems)} / ${countTotalStars(
+        <p>{`${countCurrentStars(saveData.systems)} / ${countTotalStars(
           systems
         )} ⭐️`}</p>
       </Section>
@@ -87,8 +42,8 @@ const Systems = ({ systems }) => {
                   <p className="system-icon">{system.icon}</p>
                 </Link>
                 <p>
-                  {"⭐️".repeat(system.stars) +
-                    "◻️".repeat(MAX_STARS - system.stars)}
+                  {"⭐️".repeat(getSystem(system.key).stars) +
+                    "◻️".repeat(MAX_STARS - getSystem(system.key).stars)}
                 </p>
               </>
             ) : (

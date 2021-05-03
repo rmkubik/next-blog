@@ -14,9 +14,11 @@ import { pipe } from "ramda";
 import Section from "../../../src/components/Section";
 import Grid from "../../../src/components/systems/Grid";
 import { randomString } from "../../../src/services/utils";
+import useSaveData from "../../../src/services/systems/useSaveData";
 
 import metadata from "./metadata";
 
+const MAX_STARS = 3;
 const SEED_LENGTH = 12;
 const WIDTH = 9;
 const HEIGHT = 11;
@@ -49,7 +51,7 @@ const spreadFlames = (tiles) => {
 const countPlants = (tiles) => {
   let total = 0;
 
-  // misuse mapMatrix, there's not forEach or reduce yet
+  // misuse mapMatrix, there's no .forEach or .reduce yet
   mapMatrix((tile) => {
     if (tile === "🌱") {
       total += 1;
@@ -88,15 +90,58 @@ const generateInitialTiles = (seed) => {
   return initialTiles;
 };
 
+const isSimulationFinished = (tiles) => {
+  let isFinished = true;
+
+  // misuse mapMatrix, there's no .some or .every yet
+  mapMatrix((tile, location) => {
+    const neighborLocations = getNeighbors(getCrossDirections, tiles, location);
+    const neighbors = neighborLocations.map(getLocation(tiles));
+
+    if (tile === "🌱" && neighbors.some((neighbor) => neighbor === "🔥")) {
+      isFinished = false;
+    }
+  }, tiles);
+
+  return isFinished;
+};
+
 const FloodTheFlames = ({ initialSeed }) => {
   const [seed, setSeed] = useState(initialSeed);
-  const [tiles, setTiles] = useState([["a"]]);
+  const [tiles, setTiles] = useState([[""]]);
+  const { getSystem, setSystem } = useSaveData();
+
+  const saveData = getSystem(metadata.key);
+  const setSaveData = setSystem(metadata.key);
 
   useEffect(() => {
     const initialTiles = generateInitialTiles(seed);
 
     setTiles(initialTiles);
   }, [seed, setTiles]);
+
+  useEffect(() => {
+    if (isSimulationFinished(tiles)) {
+      const plantCount = countPlants(tiles);
+      const starThresholds = [10, 25, 40];
+      const achieved = starThresholds.filter(
+        (threshold) => plantCount >= threshold
+      );
+      const currentStarCount = achieved.length;
+      const { stars } = saveData;
+      const newStarCount = Math.max(currentStarCount, stars);
+
+      if (stars !== newStarCount) {
+        /*
+         * We only want to update our save data if our data doesn't match.
+         * If we indiscriminately set save data here we loop infinitely.
+         */
+        setSaveData({ stars: newStarCount });
+      }
+    }
+  }, [tiles, saveData, setSaveData]);
+
+  console.log(saveData);
 
   return (
     <div className="main">
@@ -131,6 +176,11 @@ const FloodTheFlames = ({ initialSeed }) => {
               </span>
             </button>
           </span>
+        </p>
+        <p>
+          {"⭐️".repeat(saveData.stars) +
+            "◻️".repeat(MAX_STARS - saveData.stars)}{" "}
+          <span>{isSimulationFinished(tiles) ? "🛑" : "🟢"}</span>
         </p>
       </Section>
       <Section className="grid">
@@ -179,9 +229,6 @@ const FloodTheFlames = ({ initialSeed }) => {
               cursor: pointer;
             }
           }
-        }
-
-        .refresh {
         }
 
         .seed {
