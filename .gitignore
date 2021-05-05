@@ -35,3 +35,4 @@ yarn-error.log*
 
 # copy webpack plugin is moving post images to next.js public directory
 public/images/posts
+public/images/projects
