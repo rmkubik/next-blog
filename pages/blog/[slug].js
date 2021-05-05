@@ -12,6 +12,8 @@ import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import Head from "../../src/components/Head";
 import createComponents from "../../src/components/components";
+import Icon from "../../src/components/Icon";
+import Center from "../../src/components/Center";
 
 const Post = ({
   slug,
@@ -45,15 +47,41 @@ const Post = ({
           <p>{formattedDate}</p>
           <p>{readingTime}</p>
         </Section>
+        {frontmatter.wip && (
+          <Section backgroundColor="gold">
+            <Center>
+              <Icon>{`🚧`}</Icon>
+              <Icon>{`🚧`}</Icon>
+              <Icon>{`🚧`}</Icon>
+              <p
+                style={{
+                  flex: 1,
+                  textAlign: "center",
+                }}
+              >
+                <b>{`This post is still a work in progress!`}</b>
+              </p>
+              <Icon>{`🚧`}</Icon>
+              <Icon>{`🚧`}</Icon>
+              <Icon>{`🚧`}</Icon>
+            </Center>
+          </Section>
+        )}
         <MDXProvider components={components}>{content}</MDXProvider>
         <Section className="footer">
           {prev ? (
-            <Link hideDots to={prev.slug}>{`⭠ ${prev.frontmatter.title}`}</Link>
+            <Link
+              hideDots
+              to={`/blog/${prev.slug}`}
+            >{`⭠ ${prev.frontmatter.title}`}</Link>
           ) : (
             <div />
           )}
           {next ? (
-            <Link hideDots to={next.slug}>{`${next.frontmatter.title} ⭢`}</Link>
+            <Link
+              hideDots
+              to={`/blog/${next.slug}`}
+            >{`${next.frontmatter.title} ⭢`}</Link>
           ) : (
             <div />
           )}

@@ -36,7 +36,7 @@ const App = ({ Component, pageProps }) => {
           color: #202129;
 
           font-size: 18px;
-          line-height: 1;
+          line-height: 1.25;
         }
 
         h2 {
