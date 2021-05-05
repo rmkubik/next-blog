@@ -56,10 +56,11 @@ const Post = ({
               <p
                 style={{
                   flex: 1,
+                  fontWeight: "bold",
                   textAlign: "center",
                 }}
               >
-                <b>{`This post is still a work in progress!`}</b>
+                {`This post is still a work in progress!`}
               </p>
               <Icon>{`🚧`}</Icon>
               <Icon>{`🚧`}</Icon>
