@@ -1,4 +1,4 @@
-const Section = ({ children, area, className }) => {
+const Section = ({ children, area, className, backgroundColor = "white" }) => {
   return (
     <>
       <section
@@ -12,11 +12,14 @@ const Section = ({ children, area, className }) => {
       </section>
       <style jsx>{`
         section {
+          background-color: ${backgroundColor};
+        }
+      `}</style>
+      <style jsx>{`
+        section {
           border: 2px solid black;
           box-shadow: black 4px 4px;
           padding: 2rem 4rem;
-
-          background-color: white;
 
           /* background-color: #fff4db; */
 

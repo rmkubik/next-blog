@@ -12,7 +12,7 @@ const BlockQuote = ({ children }) => {
           padding-inline-start: 2.5rem;
           margin-inline-start: 0;
 
-          line-height: 1.5em;
+          line-height: 1.5;
 
           font-style: italic;
         }

@@ -114,7 +114,7 @@ const Cartridge = ({ project }) => {
 
           text-align: center;
           color: #222;
-          line-height: 1.8rem;
+          line-height: 1.8;
         }
 
         .label {
