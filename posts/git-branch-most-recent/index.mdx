@@ -1,0 +1,50 @@
+---
+title: What branch was I working on last?
+date: 2021-07-06
+tags: git, branch, last, recent,
+category: til
+---
+
+Sometimes when I come back to work after the weekend I forget what I was working on the previous week. This gets even worse when I'm working on multiple tasks at once. The good news is that since most of my work accompanies a branch in git I can use some commands to see what I was working on most recently.
+
+## Sorting branches in reverse chronological order
+
+The `git branch` command will list all of the branches in the current repository. By default, this list of branches is sorted alphabetically. To change this order, we can use the `--sort` flag. There are a lot of different [fields we can use to sort](https://git-scm.com/docs/git-for-each-ref/2.5.6#_field_names). To list branches chronologically by most recent commit we're only interested in the `committerdate` field.
+
+```bash
+git branch --sort=-committerdate
+```
+
+We used a `-` before the `committerdate` sort field in the command above. This is because we want to sort in reverse chronological order (most recent comes first).
+
+Sort lets you sort in both ascending and descending order with this `-` character omission or addition. We only care about descending order for this post though!
+
+```bash
+git branch --sort=-committerdate  # DESCENDING
+git branch --sort=committerdate  # ASCENDING
+```
+
+## Setting this sort pattern as default
+
+Most often when I run `git branch` I would rather see my branches sorted by most recent commit date than alphabetically. Thankfully, the `branch` command lets us set our default sorting order via a [git config](https://git-scm.com/docs/git-config/) variable called `branch.sort`.
+
+```bash
+git config --global branch.sort -committerdate
+```
+
+I chose to set this sort default using `--global` because I want this behavior in all repositories on my computer, not just one. With the above variable set, I can now just run `git branch` to see my most recently edited branch.
+
+## Restoring alphabetical sorting order
+
+In case you decide you no longer like your branches sorted in reverse chronological order, you can unset the global variable `branch.sort`.
+
+```bash
+ git config --global --unset branch.sort
+```
+
+## Sources
+
+- [https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit](https://stackoverflow.com/questions/5188320/how-can-i-get-a-list-of-git-branches-ordered-by-most-recent-commit)
+- [https://git-scm.com/docs/git-branch](https://git-scm.com/docs/git-branch)
+- [https://git-scm.com/docs/git-for-each-ref](https://git-scm.com/docs/git-for-each-ref)
+- [https://git-scm.com/docs/git-config](https://git-scm.com/docs/git-config)
