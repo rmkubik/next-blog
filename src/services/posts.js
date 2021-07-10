@@ -7,6 +7,7 @@ import htmlToText from "html-to-text";
 import dateFnsCompareDesc from "date-fns/compareDesc";
 import readingTime from "reading-time";
 import dynamic from "next/dynamic";
+import { forceDateToTimeZone } from "./utils";
 
 const doesPathExist = async (targetPath) => {
   try {
@@ -97,14 +98,26 @@ const getFrontmatter = async (postsDir, slug) => {
 };
 
 const fixFrontmatter = (frontmatter) => {
-  /*
+  const { date: utcDate, ...remainingFrontmatter } = frontmatter;
+
+  /**
+   * Dates are parsed by gray-matter as UTC-0:00 if no time information
+   * is added to the frontmatter field.
+   *
+   * Because this project doesn't make use of the time component of dates,
+   * we'll remove this information and coerce all frontmatter dates to
+   * PST.
+   */
+  let date = forceDateToTimeZone(utcDate, "PST");
+
+  /**
    * date needs to be stringified because Next.js cannot serialize
    * Date objects in getStaticProps.
    */
-  const { date, ...remainingFrontmatter } = frontmatter;
+  date = date.toISOString();
 
   return {
-    date: date.toISOString(),
+    date,
     ...remainingFrontmatter,
   };
 };

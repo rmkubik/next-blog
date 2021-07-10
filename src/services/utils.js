@@ -33,4 +33,30 @@ const randomString = (length) => {
     .join("");
 };
 
-export { slugify, randIntBetween, randomString };
+/**
+ * This function will discard the time component of the provided
+ * date and then convert it to the provided time zone. This can be used to
+ * persist the year/month/day components of a Date in a new time zone.
+ *
+ *
+ * ex.
+ * Without this function:
+ * new Date('2021-07-09T00:00:00.000Z') would convert to
+ * Thu Jul 08 2021 17:00:00 GMT-0700 (Pacific Daylight Time).
+ *
+ * Note that we've ended with a July 8th date, instead of the 9th.
+ *
+ *
+ * With this function:
+ * forceDateToTimeZone(new Date('2021-07-09T00:00:00.000Z'), 'PST') you get
+ * Fri Jul 09 2021 01:00:00 GMT-0700 (Pacific Daylight Time).
+ *
+ * Note that both dates read July 9th now.
+ */
+const forceDateToTimeZone = (date, timeZone) => {
+  const [isoDate, isoTime] = date.toISOString().split("T");
+
+  return new Date(`${isoDate} ${timeZone}`);
+};
+
+export { slugify, randIntBetween, randomString, forceDateToTimeZone };
