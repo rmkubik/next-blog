@@ -6,7 +6,7 @@ import matter from "gray-matter";
 import htmlToText from "html-to-text";
 import dateFnsCompareDesc from "date-fns/compareDesc";
 import readingTime from "reading-time";
-import dynamic from "next/dynamic";
+
 import { forceDateToTimeZone } from "./utils";
 
 const doesPathExist = async (targetPath) => {

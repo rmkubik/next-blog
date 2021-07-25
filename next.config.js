@@ -1,4 +1,5 @@
 const path = require("path");
+
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const withMDX = require("@next/mdx")({
@@ -27,7 +28,7 @@ const createCopyWebpackPattern = (
 
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     /**
      * Copy images from the posts directory into the next.js
      * public directory so they can be server statically.
@@ -62,6 +63,20 @@ module.exports = withMDX({
         ],
       })
     );
+
+    if (isServer) {
+      return {
+        ...config,
+        entry: () => {
+          return config.entry().then((entry) => {
+            return {
+              ...entry,
+              generateRssFeed: "./scripts/generateRssFeed.js",
+            };
+          });
+        },
+      };
+    }
 
     return config;
   },

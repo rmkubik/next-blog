@@ -7,8 +7,9 @@
   },
   "scripts": {
     "start": "next dev",
-    "build": "next build",
-    "serve": "next start"
+    "build": "next build && npm run build:rss",
+    "serve": "next start",
+    "build:rss": "node .next/server/generateRssFeed"
   },
   "dependencies": {
     "@babel/core": "^7.12.3",
@@ -19,6 +20,7 @@
     "babel-plugin-styled-components": "^1.11.1",
     "common-tags": "^1.8.0",
     "date-fns": "^2.16.1",
+    "feed": "^4.2.2",
     "functional-game-utils": "^2.4.0",
     "gray-matter": "^4.0.2",
     "html-to-text": "^5.1.1",
