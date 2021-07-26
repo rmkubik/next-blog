@@ -44,6 +44,16 @@ const Head = ({
       {description && (
         <meta content={description} key="ogdesc" property="og:description" />
       )}
+
+      {/* Blog RSS feed*/}
+      {currentUrl && currentUrl.includes("blog") && (
+        <link
+          href="https://ryankubik.com/blog/rss.xml"
+          rel="alternate"
+          title="Ryan Kubik's Blog RSS Feed"
+          type="application/rss+xml"
+        />
+      )}
     </NextHead>
   );
 };

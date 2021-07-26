@@ -1,6 +1,5 @@
-import { useEffect } from "react";
-
 import { getAllPosts } from "../../src/services/posts";
+import generateRssFeed from "../../src/services/generateRssFeed";
 import Link from "../../src/components/Link";
 import Section from "../../src/components/Section";
 import Head from "../../src/components/Head";
@@ -95,6 +94,15 @@ const Blog = ({ posts }) => {
 
 export const getStaticProps = async () => {
   const posts = await getAllPosts("posts");
+
+  /**
+   * Generate blog/rss.xml as a side effect of the static
+   * rendering of this /blog index.js page's creation.
+   *
+   * Inspiration:
+   * https://ashleemboyer.com/how-i-added-an-rss-feed-to-my-nextjs-site
+   */
+  await generateRssFeed("posts");
 
   return {
     props: {

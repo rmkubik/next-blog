@@ -1,8 +1,11 @@
+import { writeFile } from "fs/promises";
+import path from "path";
+
 import { Feed } from "feed";
 
 import { getAllPosts } from "./posts";
 
-const generateRssFeed = async (postsDir) => {
+const generateRssFeedData = async (postsDir) => {
   const baseUrl = "https://ryankubik.com/blog";
   const author = {
     link: "https://twitter.com/ryrykubes",
@@ -46,6 +49,14 @@ const generateRssFeed = async (postsDir) => {
   });
 
   return feed.rss2();
+};
+
+const generateRssFeed = async () => {
+  const feed = await generateRssFeedData("posts");
+
+  const rssPath = path.join("public", "blog", "rss.xml");
+
+  await writeFile(rssPath, feed);
 };
 
 export default generateRssFeed;
