@@ -7,6 +7,7 @@ import CodeBlock from "./CodeBlock";
 import BlockQuote from "./BlockQuote";
 import createImage from "./Image";
 import CloudList from "./CloudList";
+import Center from "./Center";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -22,6 +23,7 @@ const createComponents = ({ imageDir, slug }) => {
   const components = {
     a: Anchor,
     blockquote: BlockQuote,
+    Center,
     CloudList,
     code: CodeBlock,
     h1: H1,
