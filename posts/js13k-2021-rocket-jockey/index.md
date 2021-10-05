@@ -7,7 +7,7 @@ tags: javascript, js13k, 2021, rocket, jockey, captain, pick-a-card, pick, card,
 
 [The JS13k jam](https://js13kgames.com/) is one of my favorite game jams. The challenge is to make a game in JavaScript, in under 13kb over the course of a month. I really enjoy the explicit challenge of making something small in JavaScript. I love the language, and this jam challenges me to use lighter parts of the ecosystem. Additionally, month long jams are my favorite scope these days. They give me plenty of time to ruminate and be unproductive.
 
-I just finished my entry for this year's jam alone with my friend [Brendan](https://twitter.com/icynotesdx). We made a turn based shoot 'em up game called "[Rocket Jockey: Captain Pick-a-Card's Great Escape](https://js13kgames.com/entries/rocket-jockey-captain-pick-a-cards-great-escape)". You play action cards to dodge asteroids and try to reach the end of the board.
+I just finished my entry for this year's jam with my friend [Brendan](https://twitter.com/icynotesdx). We made a turn based shoot 'em up game called "[Rocket Jockey: Captain Pick-a-Card's Great Escape](https://js13kgames.com/entries/rocket-jockey-captain-pick-a-cards-great-escape)". You play action cards to dodge asteroids and try to reach the end of the board.
 
 ![Short gameplay gif of moving the Rocket Jockey spaceship around with cards](./rocket-jockey-gameplay-short.gif)
 
@@ -59,9 +59,9 @@ These additional mechanics didn't make the initial seed of an idea any more fun.
 
 Part way through the jam, I had my pile of deck building mechanics and no interesting gameplay. I was very discouraged since I'd spent so much time implementing all of these mechanics I put the project aside for weeks.
 
-During this break, I shared what I built with some other designer friends. They had a fresh enthusiasm for the idea that I had lost. Their excitement was _incredibly_ helpful for getting me to back into development. This was yet another reminder that building a game in isolation is incredibly challenging and I should reach out much sooner.
+During this break, I shared what I built with some other designer friends, [Brendan](https://twitter.com/icynotesdx) and [Mickey](https://twitter.com/mickanio). They had a fresh enthusiasm for the idea that I had lost. Their excitement was _incredibly_ helpful for getting me to back into development. This was yet another reminder that building a game in isolation is incredibly challenging and I should reach out much sooner.
 
-In addition to the motivation, my friend [Brendan](https://twitter.com/icynotesdx) joined me in the last weekend of the jam and helped unblock me a TON on the design front. His skillset plus fresh perspective allowed him to break free of the over-ambitious deck building expectations I had piled onto the game.
+In addition to the motivation, Brendan joined me in the last weekend of the jam and helped unblock me a TON on the design front. His skillset plus fresh perspective allowed him to break free of the over-ambitious deck building expectations I had piled onto the game.
 
 With Brendan's advice and design skills, we added many small improvements to the card-based shmup seed I'd planted. I'm not sure I would've found my way here on my own. And if I did, it certainly would've taken me way more time than I had available in the jam!
 
