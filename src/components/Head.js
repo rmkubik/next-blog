@@ -54,6 +54,12 @@ const Head = ({
           type="application/rss+xml"
         />
       )}
+
+      <script
+        data-goatcounter="https://rmkubik.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js"
+      ></script>
     </NextHead>
   );
 };
