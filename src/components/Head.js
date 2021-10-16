@@ -1,5 +1,7 @@
 import NextHead from "next/head";
 
+import useAnalytics from "../services/useAnalytics";
+
 const Head = ({
   currentUrl,
   description,
@@ -8,6 +10,8 @@ const Head = ({
   title,
   twitterHandle,
 }) => {
+  useAnalytics();
+
   return (
     <NextHead>
       {title && <title>{title}</title>}
@@ -56,10 +60,11 @@ const Head = ({
       )}
 
       <script
-        data-goatcounter="https://rmkubik.goatcounter.com/count"
         async
+        data-goatcounter="https://rmkubik.goatcounter.com/count"
+        data-goatcounter-settings='{"allow_local": true}'
         src="//gc.zgo.at/count.js"
-      ></script>
+      />
     </NextHead>
   );
 };
