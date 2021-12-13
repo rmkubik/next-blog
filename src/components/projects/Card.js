@@ -1,4 +1,7 @@
+import useTheme from "../../services/useTheme";
+
 const Image = ({ children, src = "", alt, slug, ...rest }) => {
+  const { theme } = useTheme();
   const relativeStartStripped = src.replace(/^.\//u, "");
 
   return (
@@ -26,7 +29,7 @@ const Image = ({ children, src = "", alt, slug, ...rest }) => {
           left: 0;
           width: 100%;
           height: 100%;
-          box-shadow: inset 0 0 16px #222;
+          box-shadow: inset 0 0 16px ${theme.overlayColor};
         }
 
         .center {
@@ -61,6 +64,8 @@ const Image = ({ children, src = "", alt, slug, ...rest }) => {
 };
 
 const Cartridge = ({ project }) => {
+  const { theme } = useTheme();
+
   const imageSrc =
     typeof project.frontmatter.thumbnail === "object"
       ? project.frontmatter.thumbnail.src

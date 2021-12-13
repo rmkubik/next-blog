@@ -1,4 +1,8 @@
-const Section = ({ children, area, className, backgroundColor = "white" }) => {
+import useTheme from "../services/useTheme";
+
+const Section = ({ children, area, className, backgroundColor }) => {
+  const { theme } = useTheme();
+
   return (
     <>
       <section
@@ -12,13 +16,15 @@ const Section = ({ children, area, className, backgroundColor = "white" }) => {
       </section>
       <style jsx>{`
         section {
-          background-color: ${backgroundColor};
+          background-color: ${backgroundColor
+            ? backgroundColor
+            : theme.sectionColor};
         }
       `}</style>
       <style jsx>{`
         section {
-          border: 2px solid black;
-          box-shadow: black 4px 4px;
+          border: 2px solid ${theme.borderColor};
+          box-shadow: ${theme.borderColor} 4px 4px;
           padding: 2rem 4rem;
 
           /* background-color: #fff4db; */
@@ -33,7 +39,7 @@ const Section = ({ children, area, className, backgroundColor = "white" }) => {
 
           & > :global(a) {
             margin-left: 1rem;
-            color: black;
+            color: ${theme.fontColor};
             text-decoration: none;
             cursor: pointer;
           }

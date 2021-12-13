@@ -3,37 +3,26 @@ import { useRouter } from "next/router";
 
 import Layout from "../src/components/Layout";
 import { SiteMetaDataProvider } from "../src/services/useSiteMetaData";
+import useTheme, { ThemeContextProvider } from "../src/services/useTheme";
 
 const siteName = "Ryan Kubik";
 
 const App = ({ Component, pageProps }) => {
-  const router = useRouter();
+  const { theme } = useTheme();
 
   return (
     <>
-      <SiteMetaDataProvider
-        value={{
-          currentUrl: `${process.env.VERCEL_URL}${router.pathname}`,
-          description: undefined,
-          previewImage: `${process.env.VERCEL_URL}/images/logo-512x512.png`,
-          siteName,
-          title: siteName,
-          twitterHandle: "ryrykubes",
-        }}
-      >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SiteMetaDataProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       {/* eslint-disable-next-line react/jsx-sort-props */}
       <style jsx global>{`
         body {
           margin: 0;
-          background-color: #ebcfc4;
-          background-image: url("/images/wavecut.png");
+          background-color: ${theme.backgroundColor};
+          background-image: url("/images/${theme.backgroundImage}");
           font-family: Helvetica;
-          /* color: #222; */
-          color: #202129;
+          color: ${theme.fontColor};
 
           font-size: 18px;
           line-height: 1.25;
@@ -42,7 +31,7 @@ const App = ({ Component, pageProps }) => {
         h2 {
           margin-top: 3.25rem;
           padding-bottom: 0.65rem;
-          border-bottom: 2px solid black;
+          border-bottom: 2px solid ${theme.borderColor};
           margin-bottom: 2rem;
         }
 
@@ -57,7 +46,7 @@ const App = ({ Component, pageProps }) => {
         }
 
         hr {
-          border: 1px solid black;
+          border: 1px solid ${theme.borderColor};
           margin: 2rem 0;
         }
 
@@ -93,4 +82,25 @@ const App = ({ Component, pageProps }) => {
   );
 };
 
-export default App;
+const AppWithProviders = ({ Component, pageProps }) => {
+  const router = useRouter();
+
+  return (
+    <SiteMetaDataProvider
+      value={{
+        currentUrl: `${process.env.VERCEL_URL}${router.pathname}`,
+        description: undefined,
+        previewImage: `${process.env.VERCEL_URL}/images/logo-512x512.png`,
+        siteName,
+        title: siteName,
+        twitterHandle: "ryrykubes",
+      }}
+    >
+      <ThemeContextProvider>
+        <App Component={Component} pageProps={pageProps} />
+      </ThemeContextProvider>
+    </SiteMetaDataProvider>
+  );
+};
+
+export default AppWithProviders;

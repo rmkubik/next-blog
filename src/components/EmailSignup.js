@@ -1,4 +1,8 @@
+import useTheme from "../services/useTheme";
+
 const EmailSignup = () => {
+  const { theme } = useTheme();
+
   return (
     <>
       <div>
@@ -14,15 +18,15 @@ const EmailSignup = () => {
             flex: 1;
             margin-right: 0.5rem;
             padding: 0.5rem;
-            border: 2px black solid;
+            border: 2px ${theme.borderColor} solid;
             border-radius: 4px;
-            background-color: white;
+            background-color: ${theme.sectionColor};
           }
 
           & > :global(button) {
-            background-color: black;
-            color: white;
-            border: 2px black solid;
+            background-color: ${theme.borderColor};
+            color: ${theme.sectionColor};
+            border: 2px ${theme.borderColor} solid;
             border-radius: 4px;
             cursor: pointer;
           }

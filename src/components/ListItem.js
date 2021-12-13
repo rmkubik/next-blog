@@ -1,48 +1,54 @@
 import { useRef } from "react";
 
-const StyledListItem = ({ children, onClick, ref }) => (
-  <>
-    <li onClick={onClick} onKeyPress={onClick} ref={ref}>
-      {children}
-    </li>
-    <style jsx>{`
-      li {
-        padding: 0.5rem;
-        border: 2px black solid;
-        border-radius: 4px;
-        background-color: white;
-        display: flex;
-        margin: 0.5rem 0;
+import useTheme from "../services/useTheme";
 
-        & > :global(*) {
-          margin: 0;
-        }
+const StyledListItem = ({ children, onClick, ref }) => {
+  const { theme } = useTheme();
 
-        & > :global(*:first-child) {
-          flex: 1;
-        }
+  return (
+    <>
+      <li onClick={onClick} onKeyPress={onClick} ref={ref}>
+        {children}
+      </li>
+      <style jsx>{`
+        li {
+          padding: 0.5rem;
+          border: 2px ${theme.borderColor} solid;
+          border-radius: 4px;
+          background-color: ${theme.sectionColor};
+          display: flex;
+          margin: 0.5rem 0;
 
-        :global(a) {
-          color: black;
-          text-decoration: none;
-        }
+          & > :global(*) {
+            margin: 0;
+          }
 
-        &:hover {
-          background-color: aliceblue;
-          cursor: pointer;
-          animation-name: headShake;
-          animation-duration: 800ms;
-          animation-timing-function: ease-in-out;
-          animation-iteration-count: 1;
+          & > :global(*:first-child) {
+            flex: 1;
+          }
 
           :global(a) {
-            text-decoration: underline;
+            color: ${theme.borderColor};
+            text-decoration: none;
+          }
+
+          &:hover {
+            background-color: ${theme.hoverColor};
+            cursor: pointer;
+            animation-name: headShake;
+            animation-duration: 800ms;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 1;
+
+            :global(a) {
+              text-decoration: underline;
+            }
           }
         }
-      }
-    `}</style>
-  </>
-);
+      `}</style>
+    </>
+  );
+};
 
 const ListItem = ({ children }) => {
   const liRef = useRef();
