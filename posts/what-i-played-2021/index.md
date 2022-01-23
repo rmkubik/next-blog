@@ -212,7 +212,7 @@ I played a lot more small games this year. At least, I have memory of playing th
 
 - **[Mimic](https://sourencho.itch.io/mimic)** - This is little puzzler by [Sourencho](https://twitter.com/sourencho) about copying the moves animals are making in order to become them. The game explores a lot of the interesting ramifications of these mechanics. Mimic focuses on being interesting instead of difficult in this exploration which I very much appreciated.
 
-- **[Wordle](https://www.powerlanguage.co.uk/wordle/)** - The most popular word game on the Internet over the 2021-2022 winter holiday season by [Josh Wardle](https://twitter.com/powerlanguish)! It’s a lot of fun. I’m still playing it daily!
+- **[Wordle](https://www.powerlanguage.co.uk/wordle/)** - The most popular word game on the Internet over the 2021-2022 winter holiday season! It was created by [Josh Wardle](https://twitter.com/powerlanguish) and it’s a lot of fun. I’m still playing it daily!
 
 ## My Backlog
 
