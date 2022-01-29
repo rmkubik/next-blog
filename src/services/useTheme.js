@@ -6,11 +6,11 @@ const themes = {
   dark: {
     backgroundColor: "#002",
     backgroundImage: "french-stucco.png",
-    borderColor: "#bbb",
-    fontColor: "#eee",
+    borderColor: "#99b",
+    fontColor: "#eef",
     hoverColor: "aliceblue",
     overlayColor: "#222",
-    sectionColor: "#223",
+    sectionColor: "#112",
     themeIcon: "🌒",
   },
   light: {
