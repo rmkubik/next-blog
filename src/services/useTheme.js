@@ -4,6 +4,8 @@ const { useState, createContext, useContext } = require("react");
 
 const themes = {
   dark: {
+    anchorColor: "#00ffff",
+    anchorColorVisited: "#9A29F2",
     backgroundColor: "#002",
     backgroundImage: "cartographer.png",
     borderColor: "#669",
@@ -15,6 +17,8 @@ const themes = {
     themeIcon: "🌒",
   },
   light: {
+    anchorColor: "rgb(0, 0, 238)",
+    anchorColorVisited: "rgb(85, 26, 139)",
     backgroundColor: "#ebcfc4",
     backgroundImage: "wavecut.png",
     borderColor: "black",
