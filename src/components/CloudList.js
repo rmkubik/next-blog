@@ -1,4 +1,8 @@
+import useTheme from "../services/useTheme";
+
 const CloudList = ({ children }) => {
+  const { theme } = useTheme();
+
   const listItems = children.props.children;
 
   return (
@@ -16,7 +20,7 @@ const CloudList = ({ children }) => {
           :global(li) {
             margin: 0.5rem 0.25rem;
             padding: 0.5rem 1rem;
-            border: 1px solid black;
+            border: 1px solid ${theme.borderColor};
 
             :global(a) {
               text-decoration: none;
@@ -29,7 +33,7 @@ const CloudList = ({ children }) => {
             &:hover {
               transition: 0.2s;
               transition-timing-function: ease-out;
-              box-shadow: black 0px 0px 3px;
+              box-shadow: ${theme.borderShadowColor} 0px 0px 3px;
             }
           }
         }
