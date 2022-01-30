@@ -5,8 +5,9 @@ const { useState, createContext, useContext } = require("react");
 const themes = {
   dark: {
     backgroundColor: "#002",
-    backgroundImage: "french-stucco.png",
-    borderColor: "#99b",
+    backgroundImage: "cartographer.png",
+    borderColor: "#669",
+    borderShadowColor: "#669",
     fontColor: "#eef",
     hoverColor: "aliceblue",
     overlayColor: "#222",
@@ -17,6 +18,7 @@ const themes = {
     backgroundColor: "#ebcfc4",
     backgroundImage: "wavecut.png",
     borderColor: "black",
+    borderShadowColor: "black",
     fontColor: "#202129",
     hoverColor: "aliceblue",
     overlayColor: "#222",

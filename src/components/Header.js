@@ -35,7 +35,7 @@ const Header = () => {
           align-items: center;
 
           border: 2px solid ${theme.borderColor};
-          box-shadow: ${theme.borderColor} 4px 4px;
+          box-shadow: 4px 4px ${theme.borderShadowColor};
           padding: 2rem;
           background-color: ${theme.sectionColor};
           /* background-color: #fff4db; */
