@@ -192,10 +192,10 @@ export const getStaticProps = async () => {
   const projects = await getAllPosts("projects");
   const featuredPostSlugs = [
     "wildfire-swap-inspiration",
+    "js13k-2021-rocket-jockey",
+    "most-influential-games",
     "deliberate-game-jamming",
     "wildfire-swap-design-pillars",
-    "eslint-internal-state",
-    "showcases-season-retrospective",
   ];
   const postPromises = featuredPostSlugs.map(async (slug) => {
     const { frontmatter, readingTime } = await getMdxSourceBySlug(
