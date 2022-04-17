@@ -1,7 +1,7 @@
 import Link from "../src/components/Link";
 import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
-import { getAllPosts, getMdxSourceBySlug } from "../src/services/posts";
+import { getMdxSourceBySlugs } from "../src/services/posts";
 
 const Image = ({ children, src = "", alt, slug, ...rest }) => {
   const relativeStartStripped = src.replace(/^.\//u, "");
@@ -189,7 +189,11 @@ const Home = ({ posts, projects }) => {
 };
 
 export const getStaticProps = async () => {
-  const projects = await getAllPosts("projects");
+  const featuredProjectSlugs = ["wildfire-swap", "twilioquest"];
+  const projects = await getMdxSourceBySlugs("projects", featuredProjectSlugs);
+
+  console.log("asdf", projects);
+
   const featuredPostSlugs = [
     "wildfire-swap-inspiration",
     "js13k-2021-rocket-jockey",
@@ -197,20 +201,7 @@ export const getStaticProps = async () => {
     "deliberate-game-jamming",
     "wildfire-swap-design-pillars",
   ];
-  const postPromises = featuredPostSlugs.map(async (slug) => {
-    const { frontmatter, readingTime } = await getMdxSourceBySlug(
-      "posts",
-      slug,
-      {}
-    );
-
-    return {
-      frontmatter,
-      readingTime,
-      slug,
-    };
-  });
-  const posts = await Promise.all(postPromises);
+  const posts = await getMdxSourceBySlugs("posts", featuredPostSlugs);
 
   return {
     props: {

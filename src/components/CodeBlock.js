@@ -4,6 +4,33 @@ import theme from "prism-react-renderer/themes/nightOwl";
 const CodeBlock = ({ children, className }) => {
   const language = className ? className.replace(/language-/u, "") : "markup";
 
+  // Migrating to MDX v2 from v2, inlineCode component
+  // was removed.
+  //
+  // This means both inline `code`
+  // ```js
+  // fenced code
+  // ```
+  // All come through the same code component.
+  //
+  // There seems to be no good, base way to distinguish
+  // between inline and fenced code.
+  //
+  // Instead, here, we see if the code block has a
+  // language className and assume this is a fenced
+  // block.
+  //
+  // If a fenced block does NOT have a language, it
+  // still be treated as an inline block erroneously
+  // though.
+  //
+  // This should end up being fine practically since
+  // we usually (always?) want to have syntax
+  // highlighting on code blocks.
+  if (!className) {
+    return <code>{children}</code>;
+  }
+
   return (
     <Highlight
       {...defaultProps}
@@ -36,25 +63,27 @@ const CodeBlock = ({ children, className }) => {
               ...style,
             }}
           >
-            {editedTokens.map((line, i) => (
-              <div
-                key={i}
-                {...getLineProps({
-                  key: i,
-                  line,
-                })}
-              >
-                {line.map((token, key) => (
-                  <span
-                    key={key}
-                    {...getTokenProps({
-                      key,
-                      token,
-                    })}
-                  />
-                ))}
-              </div>
-            ))}
+            <code>
+              {editedTokens.map((line, i) => (
+                <div
+                  key={i}
+                  {...getLineProps({
+                    key: i,
+                    line,
+                  })}
+                >
+                  {line.map((token, key) => (
+                    <span
+                      key={key}
+                      {...getTokenProps({
+                        key,
+                        token,
+                      })}
+                    />
+                  ))}
+                </div>
+              ))}
+            </code>
           </pre>
         );
       }}
