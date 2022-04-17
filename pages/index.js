@@ -71,11 +71,6 @@ const Home = ({ posts, projects }) => {
       <Section>
         <h1>{"Hi, I make games"}</h1>
         <p>{"Usually with JavaScript."}</p>
-        <p>
-          {
-            "Below are some of the better projects I've made by myself or in teams. A lot of them were made for game jams. A few of them are longer term personal or work projects."
-          }
-        </p>
       </Section>
       <div className="projects">
         {projects.map((project) => {
@@ -87,12 +82,19 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={project.frontmatter.title}>
               <Link hideDots to={`project/${project.slug}`}>
-                <h3>{project.frontmatter.title}</h3>
-                <Image
-                  alt={project.frontmatter.title}
-                  slug={project.slug}
-                  src={imageSrc}
-                />
+                <div className="row">
+                  <div className="image-container">
+                    <Image
+                      alt={project.frontmatter.title}
+                      slug={project.slug}
+                      src={imageSrc}
+                    />
+                  </div>
+                  <div>
+                    <h3>{project.frontmatter.title}</h3>
+                    <p>{project.summary}</p>
+                  </div>
+                </div>
               </Link>
             </Section>
           );
@@ -115,6 +117,7 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={post.frontmatter.title}>
               <h3>{post.frontmatter.title}</h3>
+              <p>{post.summary}</p>
               <Link
                 to={`/blog/${post.slug}`}
               >{`Check out this ${post.readingTime}`}</Link>
@@ -145,13 +148,21 @@ const Home = ({ posts, projects }) => {
         }
 
         .projects {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-gap: 1rem;
-
           :global(section) {
-            padding: 1rem;
-            text-align: center;
+            margin-bottom: 1rem;
+
+            :global(.image-container) {
+              height: fit-content;
+              width: 300px;
+
+              margin-right: 2rem;
+            }
+          }
+
+          :global(.row) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
           }
 
           :global(a) {
@@ -192,14 +203,10 @@ export const getStaticProps = async () => {
   const featuredProjectSlugs = ["wildfire-swap", "twilioquest"];
   const projects = await getMdxSourceBySlugs("projects", featuredProjectSlugs);
 
-  console.log("asdf", projects);
-
   const featuredPostSlugs = [
     "wildfire-swap-inspiration",
     "js13k-2021-rocket-jockey",
     "most-influential-games",
-    "deliberate-game-jamming",
-    "wildfire-swap-design-pillars",
   ];
   const posts = await getMdxSourceBySlugs("posts", featuredPostSlugs);
 

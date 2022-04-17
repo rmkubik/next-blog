@@ -282,16 +282,10 @@ const getPrevNextSlugs = async (postsDir, targetSlug) => {
 
 const getMdxSourceBySlugs = (directory, slugs) => {
   const postPromises = slugs.map(async (slug) => {
-    const { frontmatter, readingTime: _readingTime } = await getMdxSourceBySlug(
-      directory,
-      slug,
-      {}
-    );
+    const parsedDetails = await getMdxSourceBySlug(directory, slug, {});
 
     return {
-      frontmatter,
-      readingTime: _readingTime,
-      slug,
+      ...parsedDetails,
     };
   });
 
