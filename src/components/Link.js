@@ -15,12 +15,10 @@ const Link = ({ to = "", hideDots = false, hideArrow = false, children }) => {
 
   if (to.startsWith("#")) {
     return (
-      <>
-        <a href={to}>
+      <a href={to}>
           {children}
           {hideDots || "..."}
         </a>
-      </>
     );
   }
 

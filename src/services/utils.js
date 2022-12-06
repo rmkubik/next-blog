@@ -4,14 +4,14 @@ const slugify = (string) => {
     "àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;";
   const b =
     "aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------";
-  const p = new RegExp(a.split("").join("|"), "gu");
+  const p = new RegExp([...a].join("|"), "gu");
 
   return string
     .toString()
     .toLowerCase()
     .replace(/\s+/gu, "-") // Replace spaces with -
     .replace(p, (c) => b.charAt(a.indexOf(c))) // Replace special characters
-    .replace(/&/gu, "-and-") // Replace & with 'and'
+    .replaceAll("&", "-and-") // Replace & with 'and'
     .replace(/[^\w-]+/gu, "") // Remove all non-word characters
     .replace(/--+/gu, "-") // Replace multiple - with single -
     .replace(/^-+/u, "") // Trim - from start of text
@@ -23,11 +23,13 @@ const randIntBetween = (low, high) => {
 };
 
 const randomString = (length) => {
+  // eslint-disable-next-line unicorn/no-new-array
   return new Array(length)
     .fill()
     .map(() => {
       const randChar = randIntBetween(65, 90);
 
+      // eslint-disable-next-line unicorn/prefer-code-point
       return String.fromCharCode(randChar);
     })
     .join("");
@@ -54,7 +56,7 @@ const randomString = (length) => {
  * Note that both dates read July 9th now.
  */
 const forceDateToTimeZone = (date, timeZone) => {
-  const [isoDate, isoTime] = date.toISOString().split("T");
+  const [isoDate] = date.toISOString().split("T");
 
   return new Date(`${isoDate} ${timeZone}`);
 };

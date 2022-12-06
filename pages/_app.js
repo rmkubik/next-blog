@@ -1,3 +1,5 @@
+import process from "process";
+
 import "normalize.css";
 import { useRouter } from "next/router";
 

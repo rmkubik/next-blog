@@ -5,5 +5,6 @@ module.exports = {
     "no-console": ["error", { allow: ["warn", "error"] }],
     "react/jsx-filename-extension": "off",
     "react/react-in-jsx-scope": "off",
+    "unicorn/filename-case": "off",
   },
 };

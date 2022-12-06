@@ -70,7 +70,7 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
   );
 };
 
-export const getStaticProps = async ({ params }) => {
+const getStaticProps = async ({ params }) => {
   const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
     "projects",
     params.slug
@@ -80,7 +80,9 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       frontmatter,
+      // eslint-disable-next-line unicorn/no-null
       next: next ? next : null,
+      // eslint-disable-next-line unicorn/no-null
       prev: prev ? prev : null,
       readingTime,
       slug: params.slug,
@@ -89,7 +91,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
+const getStaticPaths = async () => {
   const slugs = await getAllPostSlugs("projects");
 
   return {
@@ -104,4 +106,5 @@ export const getStaticPaths = async () => {
   };
 };
 
+export { getStaticProps, getStaticPaths };
 export default Post;

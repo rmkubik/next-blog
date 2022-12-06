@@ -156,6 +156,7 @@ const fixImageUrls = (content) => {
      */
     match = imageEmbedRegex.exec(content);
 
+    // eslint-disable-next-line unicorn/no-null
     if (match === null) {
       break;
     }
@@ -193,8 +194,10 @@ const getMdxSourceBySlug = async (postsDir, slug) => {
 };
 
 const readDir = async (dir) => {
+  const fileNames = await fs.promises.readdir(dir);
+
   return (
-    (await fs.promises.readdir(dir))
+    fileNames
       // Filter out all hidden dot files
       .filter((fileName) => fileName.charAt(0) !== ".")
       .map((fileName) => path.basename(fileName, path.extname(fileName)))
@@ -227,7 +230,7 @@ const getPageMetadataBySlug = async (root, slug) => {
     return undefined;
   }
 
-  const metadataContents = await fs.promises.readFile(metadataPath, "utf8");
+  const metadataContents = await fs.promises.readFile(metadataPath);
   const metadata = JSON.parse(metadataContents);
 
   return metadata;
@@ -265,7 +268,10 @@ const getPrevNextSlugs = async (postsDir, targetSlug) => {
 
   const slugIndex = sortedFiles.findIndex((file) => file.slug === targetSlug);
 
+  // eslint-disable-next-line unicorn/no-null
   const prev = slugIndex === 0 ? null : files[slugIndex - 1];
+
+  // eslint-disable-next-line unicorn/no-null
   const next = slugIndex === files.length - 1 ? null : files[slugIndex + 1];
 
   return {

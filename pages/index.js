@@ -10,6 +10,7 @@ const Image = ({ children, src = "", alt, slug, ...rest }) => {
     <>
       <div className="square-aspect-ratio">
         <div className="inner center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt={alt}
             src={`/images/projects/${slug}/${relativeStartStripped}`}

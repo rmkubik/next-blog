@@ -15,21 +15,19 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
     : "";
 
   return (
-    <>
-      <Section key={slug}>
+    <Section key={slug}>
         <h2>{frontmatter.title}</h2>
         <p>{`${category}${readingTime} - ${formattedDate}`}</p>
         <p>{summary}</p>
         <Link to={`/blog/${slug}`}>{"Read more"}</Link>
       </Section>
-    </>
   );
 };
 
 const Blog = ({ posts }) => {
   return (
     <div className="blog">
-      <Head title={"Games & Code"} />
+      <Head title="Games & Code" />
       <Section>
         <h1>{"Games & Code"}</h1>
         <p>

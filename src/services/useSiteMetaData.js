@@ -14,6 +14,7 @@ const SiteMetaDataProvider = ({ value, children, ...props }) => {
 
   return (
     <SiteMetaDataContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={[siteMetaData, mergeSiteMetaData]}
       {...props}
     >
