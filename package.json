@@ -2,9 +2,6 @@
   "name": "next-blog",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "^14.21.1"
-  },
   "scripts": {
     "start": "next dev",
     "build": "next build",
