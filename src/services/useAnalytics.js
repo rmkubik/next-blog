@@ -6,7 +6,7 @@ const useAnalytics = () => {
 
   useEffect(() => {
     const onRouteChangeComplete = (url) => {
-      window.goatcounter.count({
+      window.goatcounte?.count({
         path: url,
         title: document.title,
       });
