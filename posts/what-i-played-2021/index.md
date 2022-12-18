@@ -157,7 +157,6 @@ In the end, I still played this game for over 10 hours and had a blast with it! 
 
 The primary innovation of SNKRX is that it's single player. Like with [Super Auto Pets](##super-auto-pets-best-auto-battler-inspiring-indie), removing the need to queue up with 7 other players is huge for making this genre accessible. The other notable feature in SNKRX is that you have some control of your units during the battle phase. You steer your adventuring party around sort of like a snake, hence the game's name.
 
-<!-- prettier-ignore -->
 SNKRX didn’t have legs after I beat it a couple times, which didn't take many attempts. There are a few different builds to check out. But after a few hours they all collapsed into similar feeling runs. Still, this was a great time at the $3 mark!
 
 ### Loop Hero - 👽 Weird Genre

@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 
 const SlugContext = React.createContext();
 
-export const SlugContextProvider = SlugContext.Provider;
+const SlugContextProvider = SlugContext.Provider;
 
-export const useSlug = () => useContext(SlugContext);
+const useSlug = () => useContext(SlugContext);
+
+export { SlugContextProvider, useSlug };

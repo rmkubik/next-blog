@@ -1,6 +1,8 @@
 const path = require("path");
 
+// eslint-disable-next-line node/no-unpublished-require
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// eslint-disable-next-line node/no-unpublished-require
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/u,

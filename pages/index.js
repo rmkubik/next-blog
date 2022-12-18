@@ -1,99 +1,47 @@
 import Link from "../src/components/Link";
 import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
-import { getAllPosts, getMdxSourceBySlug } from "../src/services/posts";
-
-const Image = ({ children, src = "", alt, slug, ...rest }) => {
-  const relativeStartStripped = src.replace(/^.\//u, "");
-
-  return (
-    <>
-      <div className="square-aspect-ratio">
-        <div className="inner center">
-          <img
-            alt={alt}
-            src={`/images/projects/${slug}/${relativeStartStripped}`}
-            {...rest}
-          />
-          <div className="overlay" />
-        </div>
-      </div>
-      <style jsx>{`
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          box-shadow: inset 0 0 16px #222;
-        }
-
-        .center {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .square-aspect-ratio {
-          position: relative;
-
-          &:before {
-            display: block;
-            content: "";
-            width: 100%;
-            padding-top: (1 / 1) * 100%;
-          }
-
-          > .inner {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      `}</style>
-    </>
-  );
-};
+import { getMdxSourceBySlugs } from "../src/services/posts";
+import createImage from "../src/components/Image";
 
 const Home = ({ posts, projects }) => {
   return (
     <div className="main">
+      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+      <a
+        aria-hidden="true"
+        href="https://mastodon.gamedev.place/@rmkubik"
+        // eslint-disable-next-line react/no-invalid-html-attribute
+        rel="me"
+        tabIndex="-1"
+      />
       <Section>
         <h1>{"Hi, I make games"}</h1>
         <p>{"Usually with JavaScript."}</p>
-        <p>
-          {
-            "Below are some of the better projects I've made by myself or in teams. A lot of them were made for game jams. A few of them are longer term personal or work projects."
-          }
-        </p>
       </Section>
       <div className="projects">
         {projects.map((project) => {
-          const imageSrc =
-            typeof project.frontmatter.thumbnail === "object"
-              ? project.frontmatter.thumbnail.src
-              : project.frontmatter.thumbnail;
+          const Image = createImage({
+            imageDir: "projects",
+            slug: project.slug,
+          });
 
           return (
             <Section key={project.frontmatter.title}>
-              <Link hideDots to={`project/${project.slug}`}>
+              <div>
                 <h3>{project.frontmatter.title}</h3>
-                <Image
-                  alt={project.frontmatter.title}
-                  slug={project.slug}
-                  src={imageSrc}
-                />
-              </Link>
+                <p>{project.frontmatter.description}</p>
+                <Link to={`project/${project.slug}`}>{"More details"}</Link>
+                <div className="image-container">
+                  {project.frontmatter.images?.map((src) => (
+                    <Image
+                      alt={project.frontmatter.title}
+                      key={src}
+                      src={src}
+                    />
+                  ))}
+                </div>
+              </div>
             </Section>
           );
         })}
@@ -115,6 +63,7 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={post.frontmatter.title}>
               <h3>{post.frontmatter.title}</h3>
+              <p>{post.summary}</p>
               <Link
                 to={`/blog/${post.slug}`}
               >{`Check out this ${post.readingTime}`}</Link>
@@ -145,13 +94,29 @@ const Home = ({ posts, projects }) => {
         }
 
         .projects {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-gap: 1rem;
-
           :global(section) {
-            padding: 1rem;
-            text-align: center;
+            margin-bottom: 1rem;
+            padding: 2rem;
+
+            :global(.image-container) {
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-gap: 1rem;
+
+              margin-top: 2rem;
+
+              :global(img) {
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+
+          :global(.row) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
           }
 
           :global(a) {
@@ -189,28 +154,15 @@ const Home = ({ posts, projects }) => {
 };
 
 export const getStaticProps = async () => {
-  const projects = await getAllPosts("projects");
+  const featuredProjectSlugs = ["island-maker", "wildfire-swap", "twilioquest"];
+  const projects = await getMdxSourceBySlugs("projects", featuredProjectSlugs);
+
   const featuredPostSlugs = [
     "wildfire-swap-inspiration",
     "js13k-2021-rocket-jockey",
     "most-influential-games",
-    "deliberate-game-jamming",
-    "wildfire-swap-design-pillars",
   ];
-  const postPromises = featuredPostSlugs.map(async (slug) => {
-    const { frontmatter, readingTime } = await getMdxSourceBySlug(
-      "posts",
-      slug,
-      {}
-    );
-
-    return {
-      frontmatter,
-      readingTime,
-      slug,
-    };
-  });
-  const posts = await Promise.all(postPromises);
+  const posts = await getMdxSourceBySlugs("posts", featuredPostSlugs);
 
   return {
     props: {

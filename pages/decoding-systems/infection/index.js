@@ -1,6 +1,6 @@
 import Section from "../../../src/components/Section";
 
-import metadata from "./metadata";
+import metadata from "./metadata.json";
 
 const Infection = () => {
   return (

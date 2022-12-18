@@ -44,4 +44,4 @@ html {
 - https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model
 - https://css-tricks.com/international-box-sizing-awareness-day/
 - https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
-- http://asciiflow.com/ <-- ASCII Charting Webtool
+- http://asciiflow.com/ (ASCII Charting Webtool)
