@@ -146,7 +146,7 @@ const Home = ({ posts, projects }) => {
 };
 
 export const getStaticProps = async () => {
-  const featuredProjectSlugs = ["wildfire-swap", "twilioquest"];
+  const featuredProjectSlugs = ["island-maker", "wildfire-swap", "twilioquest"];
   const projects = await getMdxSourceBySlugs("projects", featuredProjectSlugs);
 
   const featuredPostSlugs = [

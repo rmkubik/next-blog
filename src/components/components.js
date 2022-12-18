@@ -8,6 +8,7 @@ import BlockQuote from "./BlockQuote";
 import createImage from "./Image";
 import CloudList from "./CloudList";
 import Center from "./Center";
+import NoSsrIslandMakerEmbed from "./projects/NoSsrIslandMakerEmbed";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -37,6 +38,7 @@ const createComponents = ({ imageDir, slug }) => {
       imageDir,
       slug,
     }),
+    NoSsrIslandMakerEmbed,
     pre: Pre,
     Section,
     wrapper: Wrapper,
