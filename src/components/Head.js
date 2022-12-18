@@ -65,8 +65,6 @@ const Head = ({
         data-goatcounter-settings='{"allow_local": false}'
         src="//gc.zgo.at/count.js"
       />
-      
-      <a rel="me" href="https://mastodon.gamedev.place/@rmkubik"></a>
     </NextHead>
   );
 };
