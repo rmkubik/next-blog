@@ -2,69 +2,7 @@ import Link from "../src/components/Link";
 import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
 import { getMdxSourceBySlugs } from "../src/services/posts";
-
-const Image = ({ children, src = "", alt, slug, ...rest }) => {
-  const relativeStartStripped = src.replace(/^.\//u, "");
-
-  return (
-    <>
-      <div className="square-aspect-ratio">
-        <div className="inner center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt={alt}
-            src={`/images/projects/${slug}/${relativeStartStripped}`}
-            {...rest}
-          />
-          <div className="overlay" />
-        </div>
-      </div>
-      <style jsx>{`
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          box-shadow: inset 0 0 16px #222;
-        }
-
-        .center {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .square-aspect-ratio {
-          position: relative;
-
-          &:before {
-            display: block;
-            content: "";
-            width: 100%;
-            padding-top: (1 / 1) * 100%;
-          }
-
-          > .inner {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      `}</style>
-    </>
-  );
-};
+import createImage from "../src/components/Image";
 
 const Home = ({ posts, projects }) => {
   return (
@@ -75,28 +13,27 @@ const Home = ({ posts, projects }) => {
       </Section>
       <div className="projects">
         {projects.map((project) => {
-          const imageSrc =
-            typeof project.frontmatter.thumbnail === "object"
-              ? project.frontmatter.thumbnail.src
-              : project.frontmatter.thumbnail;
+          const Image = createImage({
+            imageDir: "projects",
+            slug: project.slug,
+          });
 
           return (
             <Section key={project.frontmatter.title}>
-              <Link hideDots to={`project/${project.slug}`}>
-                <div className="row">
-                  <div className="image-container">
+              <div>
+                <h3>{project.frontmatter.title}</h3>
+                <p>{project.frontmatter.description}</p>
+                <Link to={`project/${project.slug}`}>{"More details"}</Link>
+                <div className="image-container">
+                  {project.frontmatter.images?.map((src) => (
                     <Image
                       alt={project.frontmatter.title}
-                      slug={project.slug}
-                      src={imageSrc}
+                      key={src}
+                      src={src}
                     />
-                  </div>
-                  <div>
-                    <h3>{project.frontmatter.title}</h3>
-                    <p>{project.summary}</p>
-                  </div>
+                  ))}
                 </div>
-              </Link>
+              </div>
             </Section>
           );
         })}
@@ -151,12 +88,20 @@ const Home = ({ posts, projects }) => {
         .projects {
           :global(section) {
             margin-bottom: 1rem;
+            padding: 2rem;
 
             :global(.image-container) {
-              height: fit-content;
-              width: 300px;
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+              grid-gap: 1rem;
 
-              margin-right: 2rem;
+              margin-top: 2rem;
+
+              :global(img) {
+                max-width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
             }
           }
 
