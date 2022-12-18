@@ -7,6 +7,14 @@ import createImage from "../src/components/Image";
 const Home = ({ posts, projects }) => {
   return (
     <div className="main">
+      {/* eslint-disable-next-line jsx-a11y/anchor-has-content */}
+      <a
+        aria-hidden="true"
+        href="https://mastodon.gamedev.place/@rmkubik"
+        // eslint-disable-next-line react/no-invalid-html-attribute
+        rel="me"
+        tabIndex="-1"
+      />
       <Section>
         <h1>{"Hi, I make games"}</h1>
         <p>{"Usually with JavaScript."}</p>
