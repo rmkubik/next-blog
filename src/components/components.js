@@ -9,6 +9,9 @@ import createImage from "./Image";
 import CloudList from "./CloudList";
 import Center from "./Center";
 import NoSsrIslandMakerEmbed from "./projects/NoSsrIslandMakerEmbed";
+import createVideo from "./Video";
+import Grid from "./Grid";
+import Note from "./Note";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -27,6 +30,7 @@ const createComponents = ({ imageDir, slug }) => {
     Center,
     CloudList,
     code: CodeBlock,
+    Grid,
     h1: H1,
     h2: H2,
     h3: H3,
@@ -39,8 +43,13 @@ const createComponents = ({ imageDir, slug }) => {
       slug,
     }),
     NoSsrIslandMakerEmbed,
+    Note,
     pre: Pre,
     Section,
+    Video: createVideo({
+      imageDir,
+      slug,
+    }),
     wrapper: Wrapper,
   };
 

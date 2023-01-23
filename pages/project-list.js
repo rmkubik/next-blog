@@ -12,6 +12,10 @@ const Projects = () => {
           }
         </p>
         <ul>
+          <li>{"Island Maker - February 2022"}</li>
+          <li>{"Fruit Golf - January 2022"}</li>
+          <li>{"Explore Your Area"}</li>
+          <li>{"Making Magic"}</li>
           <li>{"Flood the Flames - April 2021"}</li>
           <li>{"Wildfire Swap - March 2021"}</li>
           <li>{"Status Code"}</li>
