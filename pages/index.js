@@ -105,6 +105,11 @@ const Home = ({ posts, projects }) => {
 
               margin-top: 2rem;
 
+              // screen size xs
+              @media (max-width: 500px) {
+                grid-template-columns: 1fr;
+              }
+
               :global(img) {
                 max-width: 100%;
                 height: 100%;
@@ -137,6 +142,11 @@ const Home = ({ posts, projects }) => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-gap: 1rem;
+
+          // screen size md
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+          }
 
           :global(section) {
             display: flex;

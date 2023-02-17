@@ -21,6 +21,16 @@ const Section = ({ children, area, className, backgroundColor = "white" }) => {
           box-shadow: black 4px 4px;
           padding: 2rem 4rem;
 
+          // screen size xs
+          @media (max-width: 500px) {
+            padding: 1rem 2rem;
+          }
+
+          // screen size 2xs
+          @media (max-width: 375px) {
+            padding: 1rem 1rem;
+          }
+
           /* background-color: #fff4db; */
 
           & > :global(:first-child) {

@@ -35,6 +35,11 @@ const Header = () => {
           background-color: white;
           /* background-color: #fff4db; */
 
+          // screen size xs
+          @media (max-width: 500px) {
+            padding: 1rem;
+          }
+
           & > :global(*:first-child) {
             flex: 1;
             font-size: 1.2rem;
