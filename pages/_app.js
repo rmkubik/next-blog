@@ -39,6 +39,8 @@ const App = ({ Component, pageProps }) => {
 
           font-size: 18px;
           line-height: 1.25;
+
+          word-wrap: break-word;
         }
 
         h2 {
