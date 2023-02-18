@@ -92,16 +92,25 @@ const CodeBlock = ({ children, className }) => {
                 overflow-x: scroll;
                 // white-space: pre-wrap;
 
+                // screen size md
+                @media (max-width: 768px) {
+                  padding: 1rem;
+                  font-size: 0.9em;
+
+                  margin-left: -1rem;
+                  margin-right: -1rem;
+                }
+
                 // screen size xs
                 @media (max-width: 500px) {
                   padding: 0.5rem;
                   font-size: 0.8em;
                 }
 
-                // screen size md
-                @media (max-width: 768px) {
-                  padding: 1rem;
-                  font-size: 0.9em;
+                // screen size 2xs
+                @media (max-width: 375px) {
+                  margin-left: -0.5rem;
+                  margin-right: -0.5rem;
                 }
               }
             `}</style>
