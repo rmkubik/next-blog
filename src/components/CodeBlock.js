@@ -89,7 +89,8 @@ const CodeBlock = ({ children, className }) => {
             <style jsx>{`
               pre {
                 padding: 1.25rem;
-                white-space: pre-wrap;
+                overflow-x: scroll;
+                // white-space: pre-wrap;
 
                 // screen size xs
                 @media (max-width: 500px) {
