@@ -60,38 +60,51 @@ const CodeBlock = ({ children, className }) => {
         }
 
         return (
-          <pre
-            className={innerClassName}
-            style={{
-              overflowX: "auto",
-              padding: "1.25rem",
-              ...style,
-            }}
-          >
-            <code>
-              {editedTokens.map((line, i) => (
-                <div
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={i}
-                  {...getLineProps({
-                    key: i,
-                    line,
-                  })}
-                >
-                  {line.map((token, key) => (
-                    <span
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={key}
-                      {...getTokenProps({
-                        key,
-                        token,
-                      })}
-                    />
-                  ))}
-                </div>
-              ))}
-            </code>
-          </pre>
+          <>
+            <pre className={innerClassName} style={style}>
+              <code>
+                {editedTokens.map((line, i) => (
+                  <div
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={i}
+                    {...getLineProps({
+                      key: i,
+                      line,
+                    })}
+                  >
+                    {line.map((token, key) => (
+                      <span
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={key}
+                        {...getTokenProps({
+                          key,
+                          token,
+                        })}
+                      />
+                    ))}
+                  </div>
+                ))}
+              </code>
+            </pre>
+            <style jsx>{`
+              pre {
+                padding: 1.25rem;
+                white-space: pre-wrap;
+
+                // screen size xs
+                @media (max-width: 500px) {
+                  padding: 0.5rem;
+                  font-size: 0.8em;
+                }
+
+                // screen size md
+                @media (max-width: 768px) {
+                  padding: 1rem;
+                  font-size: 0.9em;
+                }
+              }
+            `}</style>
+          </>
         );
       }}
     </Highlight>
