@@ -112,7 +112,13 @@ const Home = ({ posts, projects }) => {
 
               :global(img) {
                 max-width: 100%;
-                height: 100%;
+
+                // For some reason, "height: 100%" wasn't
+                // working in Safari. Replacing it with
+                // min/max height 100% does work in both
+                // Chrome and Safari... Eesh.
+                max-height: 100%;
+                min-height: 100%;
                 object-fit: cover;
               }
             }
