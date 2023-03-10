@@ -12,5 +12,6 @@ module.exports = {
     "react/jsx-filename-extension": "off",
     "react/react-in-jsx-scope": "off",
     "unicorn/filename-case": "off",
+    "react/jsx-curly-brace-presence": "never",
   },
 };

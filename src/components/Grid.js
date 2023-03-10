@@ -1,4 +1,4 @@
-const Grid = ({ children, columns = 2 }) => {
+const Grid = ({ children, columns = 2, gridGap = "0.5rem" }) => {
   return (
     <>
       <div>{children}</div>
@@ -7,6 +7,7 @@ const Grid = ({ children, columns = 2 }) => {
           width: 100%;
           height: 100%;
           display: grid;
+          grid-gap: ${gridGap};
           grid-template-columns: ${`1fr `.repeat(columns)};
         }
       `}</style>

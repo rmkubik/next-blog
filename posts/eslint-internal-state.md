@@ -1,7 +1,7 @@
 ---
-title: "Create a Custom ESLint Rule: Automatically Share Your Team's Tribal Knowledge"
+title: "Create a Custom ESLint Rule: Automatically Share Your Team's Institutional Knowledge"
 date: 2019-03-08
-tags: javascript, eslint, custom, state, node, program, team, tribal, knowledge
+tags: javascript, eslint, custom, state, node, program, team, institutional, knowledge
 ---
 
 ESLint is a tool built to provide linting of JavaScript code. Linting is a form of static analysis that detects patterns in code that could cause errors. By running ESLint as you write code you're able to catch these errors without even running your code. This speeds up development time and helps you write less error prone code.
@@ -29,10 +29,10 @@ An ESLint rule is defined by creating a "visitor function" for a given [selector
 The following example selector rule operates only on one [`Identifier`](https://github.com/benjamn/ast-types/blob/master/def/core.ts#L334) node at a time. The visitor function checks to see if the node is named `'badName'` and then reports it if found. The `context.report` function allows you to report a provided node with an error message.
 
 ```js
-export default function(context) {
+export default function (context) {
   return {
     Identifier(node) {
-      if (node.name === 'badName') {
+      if (node.name === "badName") {
         context.report(node, "Don't create an identifier with badName");
       }
     },
@@ -51,15 +51,15 @@ ESLint rules can contain multiple selectors and visitor functions. This enables 
 This rule builds on the previous rule, also reporting any [`Literal`](https://github.com/benjamn/ast-types/blob/master/def/core.ts#L341) nodes that have a value of `'wrongValue'`.
 
 ```js
-export default function(context) {
+export default function (context) {
   return {
     Identifier(node) {
-      if (node.name === 'badName') {
+      if (node.name === "badName") {
         context.report(node, "Don't create an identifier with badName");
       }
     },
     Literal(node) {
-      if (node.value === 'wrongValue') {
+      if (node.value === "wrongValue") {
         context.report(node, "Don't create a literal with wrongValue");
       }
     },
@@ -126,20 +126,20 @@ const targetFunctionStack = [];
 
 const isFunctionOnStack = () => targetFunctionStack.length > 0;
 
-export default function(context) {
+export default function (context) {
   return {
     FunctionDeclaration(node) {
-      if (node.id.name === 'target') {
+      if (node.id.name === "target") {
         targetFunctionStack.push(node);
       }
     },
     Identifier(node) {
-      if (isFunctionOnStack() && node.name === 'badName') {
+      if (isFunctionOnStack() && node.name === "badName") {
         context.report(node, "Don't create an identifier with badName");
       }
     },
-    'FunctionDeclaration:exit': function(node) {
-      if (node.id.name === 'target') {
+    "FunctionDeclaration:exit": function (node) {
+      if (node.id.name === "target") {
         targetFunctionStack.pop();
       }
     },
@@ -149,7 +149,7 @@ export default function(context) {
 
 You can adjust and run the [final rule on ASTExplorer](https://astexplorer.net/#/gist/1ff99fca3f85c2e7676ac041a88d7b53/179cf88e3a77c133741d9f96f0dc982b9f11ce4d).
 
-## Share Tribal Knowledge with ESLint
+## Share Institutional Knowledge with ESLint
 
 Many trivial problems with code like incorrect variable names or missing function parameters can be resolved by visiting a single AST node. For everything else, these complex ESLint rules begin to shine.
 
