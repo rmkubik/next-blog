@@ -333,19 +333,19 @@ const Projects = () => {
         </p>
         <Grid columns="2">
           <img
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", margin: "0 auto" }}
             src="https://img.itch.zone/aW1nLzExMjgxNjM0LnBuZw==/315x250%23c/r8lzRz.png"
           />
           <img
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", margin: "0 auto" }}
             src="https://img.itch.zone/aW1nLzI5NDcyODAucG5n/315x250%23c/DoD%2BkR.png"
           />
           <img
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", margin: "0 auto" }}
             src="https://img.itch.zone/aW1hZ2UvMjE4NjA2LzEwMzE5NDAucG5n/315x250%23c/4jfBtF.png"
           />
           <img
-            style={{ maxWidth: "100%" }}
+            style={{ maxWidth: "100%", margin: "0 auto" }}
             src="https://img.itch.zone/aW1nLzMwNzkxODAucG5n/315x250%23c/C8w21U.png"
           />
         </Grid>
