@@ -180,7 +180,10 @@ const Projects = () => {
           positive reception on Steam.
         </p>
         <Center>
-          <img src="/images/projects/wildfire-swap/wildfire-swap-gameplay-1.gif" />
+          <img
+            style={{ maxWidth: "100%" }}
+            src="/images/projects/wildfire-swap/wildfire-swap-gameplay-1.gif"
+          />
         </Center>
         <p>
           Swap tiles, fight fires! Consider your moves carefully: fire spreads
