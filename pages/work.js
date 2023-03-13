@@ -28,9 +28,9 @@ const Projects = () => {
           <Icon>🛠</Icon> Work Overview
         </h2>
         <p>
-          I'm comfortable with game development, web development, and front end
-          web dev. I frequently use React, JavaScript, TypeScript, Electron,
-          Firebase, and Node.js.
+          I'm comfortable with game development and front end web dev. I
+          frequently use React, JavaScript, TypeScript, Electron, Firebase, and
+          Node.js.
         </p>
         <h3>My most recent work experience</h3>
         <h4>
@@ -38,7 +38,8 @@ const Projects = () => {
         </h4>
         <p>
           <span style={{ fontStyle: "italic" }}>
-            Contract, Remote - Game Developer & Designer
+            Part-Time Contract, Remote - Game Developer & Designer - 3 mo,
+            Current
           </span>
           <br />
           Designing and building a logic puzzle game using React,
@@ -53,7 +54,7 @@ const Projects = () => {
         </h4>
         <p>
           <span style={{ fontStyle: "italic" }}>
-            Full Time, Remote - Team Lead, Staff Software Engineer
+            Full-Time, Remote - Team Lead, Staff Software Engineer - 3.75 yrs
           </span>
           <br />
           Lead team creating educational role playing game that teaches people
@@ -68,7 +69,7 @@ const Projects = () => {
         </h4>
         <p>
           <span style={{ fontStyle: "italic" }}>
-            Full Time, Portland, OR - Software Engineer
+            Full Time, Portland, OR - Software Engineer - 1.5 yrs
           </span>
           <br />
           Built cross platform login library for all Nike digital properties in
@@ -99,8 +100,8 @@ const Projects = () => {
         <h3>My work</h3>
         <p>
           I'm currently working on a part time contract for The Puzzle Society
-          building and designing a new logic game. I'm working with React and
-          TypeScript.
+          building and designing a new logic game. I'm working with React,
+          MobX-state-tree, and TypeScript.
         </p>
         <p>
           This project is not yet released, so I cannot share more details at
