@@ -41,7 +41,8 @@ const Projects = () => {
             Contract, Remote - Game Developer & Designer
           </span>
           <br />
-          Designing and building a logic puzzle game using React and TypeScript.
+          Designing and building a logic puzzle game using React,
+          MobX-state-tree, and TypeScript.
           <br />
         </p>
         <p>
