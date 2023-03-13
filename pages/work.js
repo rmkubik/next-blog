@@ -259,7 +259,7 @@ const Projects = () => {
         </p>
         <h3>My work</h3>
         <p>
-          I used an aspect pack for the graphics, but built and designed
+          I used an asset pack for the graphics, but built and designed
           everything else in Island Maker with JavaScript and React.
         </p>
         <h3>More info</h3>
