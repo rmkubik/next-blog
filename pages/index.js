@@ -18,6 +18,10 @@ const Home = ({ posts, projects }) => {
       <Section>
         <h1>{"Hi, I make games"}</h1>
         <p>{"Usually with JavaScript."}</p>
+        <p>
+          <Icon>👀</Icon>
+          <a href="/work">Learn more about working with me...</a>
+        </p>
       </Section>
       <div className="projects">
         {projects.map((project) => {
