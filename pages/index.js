@@ -3,6 +3,7 @@ import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
 import { getMdxSourceBySlugs } from "../src/services/posts";
 import createImage from "../src/components/Image";
+import Icon from "../src/components/Icon";
 
 const Home = ({ posts, projects }) => {
   return (
@@ -19,7 +20,7 @@ const Home = ({ posts, projects }) => {
         <h1>{"Hi, I make games"}</h1>
         <p>{"Usually with JavaScript."}</p>
         <p>
-          <Icon>👀</Icon>
+          <Icon>👀</Icon>{" "}
           <a href="/work">Learn more about working with me...</a>
         </p>
       </Section>
