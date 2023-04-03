@@ -12,7 +12,7 @@ const Projects = () => {
         <h1>I'm looking for work!</h1>
         <p>
           <strong>Hi! I'm Ryan. </strong>
-          I've been a web and game developer for around eight years.
+          I've been a web and game developer for seven years.
         </p>
         <p>
           I'm looking for senior+ roles where I am primarily doing front end web
