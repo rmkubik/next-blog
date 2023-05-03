@@ -410,6 +410,12 @@ const Projects = () => {
           <Icon>{"📧"}</Icon>{" "}
           <a href="mailto:rmkubik@me.com">{"rmkubik@me.com"}</a>
         </p>
+        <p>
+          <Icon>{"💬"}</Icon>
+          <a href="https://www.linkedin.com/in/ryankubik/">
+            {"Message me on LinkedIn"}
+          </a>
+        </p>
       </Section>
       <Footer />
       <style jsx>{`
