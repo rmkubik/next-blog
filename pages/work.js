@@ -38,7 +38,7 @@ const Projects = () => {
         </h4>
         <p>
           <span style={{ fontStyle: "italic" }}>
-            Part-Time Contract, Remote - Game Developer & Designer - 3 mo,
+            Part-Time Contract, Remote - Game Developer & Designer - 6 mo,
             Current
           </span>
           <br />
