@@ -311,7 +311,7 @@ const Projects = () => {
         <p>I wrote custom ESLint rules for our team's specific needs.</p>
         <p>
           I led a large code base migration using an Abstract Syntax Tree
-          library JSCodeShift. I wrote about
+          library JSCodeShift.
         </p>
         <p>
           I helped plan a transition from a custom JavaScript component library
