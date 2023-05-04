@@ -12,68 +12,86 @@ const Projects = () => {
         <h1>I'm looking for work!</h1>
         <p>
           <strong>Hi! I'm Ryan. </strong>
-          I've been a web and game developer for seven years.
+          I've been a software engineer for seven years.
         </p>
         <p>
-          I'm looking for senior+ roles where I am primarily doing front end web
-          development.
+          I'm looking for senior+ roles where I am primarily doing{" "}
+          <strong>front end web development.</strong>
         </p>
         <p>
-          I enjoy environments where I can branch outside of this box. I enjoy
-          working on games or other highly interactive web apps.
+          I relish iterating on{" "}
+          <strong>rich interactive web applications</strong> with quick user
+          feedback cycles.
+        </p>
+        <p>
+          At Twilio, I led a cross-functional team shipping monthly educational
+          technical content. I built features to support 30,000+ new developers’
+          learning in response to feedback and analytics.
+        </p>
+        <p>
+          At Nike, I worked on a highly tested, performant web app handling
+          millions of visitors a month from all over the globe.
         </p>
       </Section>
-      <Section>
+      <Section className="work-overview">
         <h2>
           <Icon>🛠</Icon> Work Overview
         </h2>
         <p>
-          I'm comfortable with game development and front end web dev. I
+          I'm comfortable with front end web dev and game development. I
           frequently use React, JavaScript, TypeScript, Electron, Firebase, and
           Node.js.
         </p>
-        <h3>My most recent work experience</h3>
+        <h3>Recent work experience</h3>
         <h4>
-          <Icon>🧩</Icon> The Puzzle Society, Andrews McMeel Universal
+          <Icon>🧩</Icon> Andrews McMeel Universal
+          <span>Dec. 2022 - Present</span>
         </h4>
+        <p> Software Engineer & Designer | Part-Time Contract, Remote</p>
         <p>
-          <span style={{ fontStyle: "italic" }}>
-            Part-Time Contract, Remote - Game Developer & Designer - 6 mo,
-            Current
-          </span>
-          <br />
-          Designing and building a logic puzzle game using React,
-          MobX-state-tree, and TypeScript.
-          <br />
+          Designing and building a logic puzzle game for{" "}
+          <a href="https://www.puzzlesociety.com/">The Puzzle Society</a> using
+          React, mobx-state-tree, and TypeScript.
         </p>
         <p>
           <Icon>👇</Icon> <a href="#puzzle-society">Learn More</a>
         </p>
         <h4>
-          <Icon>🛡</Icon> TwilioQuest, Twilio
+          <Icon>🛡</Icon> Twilio <span>Oct. 2022 - Feb. 2023</span>
         </h4>
+        <p>Technical Lead | Full-Time, Remote</p>
         <p>
-          <span style={{ fontStyle: "italic" }}>
-            Full-Time, Remote - Team Lead, Staff Software Engineer - 3.75 yrs
+          Led cross-functional team creating educational role playing game,{" "}
+          <a href="https://www.fastcompany.com/90687508/twilioquest-play-game-learn-to-code">
+            TwilioQuest
+          </a>
+          , that taught people how to code.
+        </p>
+        <p style={{ fontStyle: "italic" }}>
+          Staff Software Engineer | Full-Time, Remote{" "}
+          <span
+            style={{ float: "right", fontWeight: "bold", fontStyle: "normal" }}
+          >
+            Jun. 2019 - Oct. 2022
           </span>
-          <br />
-          Lead team creating educational role playing game that teaches people
-          how to code. Built with React, Phaser, and Electron.
-          <br />
+        </p>
+        <p>
+          Primary technical contributor to TwilioQuest. Built with React,
+          Phaser, and Electron to ship to desktop. Also created numerous
+          supporting services with front and backend tech.
         </p>
         <p>
           <Icon>👇</Icon> <a href="#twilioquest">Learn More</a>
         </p>
         <h4>
-          <Icon>👟</Icon> Nike
+          <Icon>👟</Icon> Nike <span>Jan. 2018 - May 2019</span>
         </h4>
+        <p>Software Engineer | Full Time, Portland, OR</p>
         <p>
-          <span style={{ fontStyle: "italic" }}>
-            Full Time, Portland, OR - Software Engineer - 1.5 yrs
-          </span>
-          <br />
-          Built cross platform login library for all Nike digital properties in
-          JavaScript.
+          Built unified UX user lifecycle (login, registration, etc.) JavaScript
+          library for all Nike digital properties. It handled millions of users
+          a month in dozens of locales. We worked with teams across Nike's web
+          and mobile applications to implement this library.
         </p>
         <p>
           <Icon>👇</Icon> <a href="#nike">Learn More</a>
@@ -119,7 +137,7 @@ const Projects = () => {
           <Icon>🛡</Icon> TwilioQuest
         </h2>
         <p>
-          TwilioQuest is an educational video game designed to teach a new
+          TwilioQuest was an educational video game designed to teach a new
           generation of developers how to change the world with code.
         </p>
         <iframe
@@ -165,12 +183,6 @@ const Projects = () => {
           highlighting cool extensions created by our community, a gallery to
           show off those extensions, and an extension created by a dev partner
           at Cloudinary.
-        </p>
-        <p>
-          <Icon>👀</Icon>{" "}
-          <a href="https://www.twilio.com/quest">
-            Learn more about TwilioQuest
-          </a>
         </p>
       </Section>
       <Section>
@@ -436,6 +448,21 @@ const Projects = () => {
             p {
               margin-bottom: 0;
             }
+          }
+        }
+
+        :global(.work-overview) {
+          h4 {
+            margin-bottom: 0;
+
+            span {
+              float: right;
+            }
+          }
+
+          h4 + p {
+            font-style: italic;
+            margin-top: 0.5rem;
           }
         }
       `}</style>
