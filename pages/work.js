@@ -177,7 +177,7 @@ const Projects = () => {
         </p>
         <p>
           Here's{" "}
-          <a href="https://www.twilio.com/quest/extensions/docs">
+          <a href="https://www.twilio.com/blog/twilioquest-content-authoring">
             a post I wrote post
           </a>{" "}
           highlighting cool extensions created by our community, a gallery to
