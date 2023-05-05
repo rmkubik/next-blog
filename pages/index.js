@@ -22,8 +22,8 @@ const Home = ({ posts, projects }) => {
           {"I like working on highly interactive web apps. Usually with React."}
         </p>
         <p>
-          <Icon>👀</Icon>{" "}
-          <a href="/work">I'm looking for work! Learn more...</a>
+          <Icon>{"👀"}</Icon>{" "}
+          <Link to="/work">I&apos;m looking for work! Learn more...</Link>
         </p>
       </Section>
       <div className="projects">

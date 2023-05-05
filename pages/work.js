@@ -1,9 +1,12 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import Footer from "../src/components/Footer";
 import Section from "../src/components/Section";
 import Icon from "../src/components/Icon";
 import Center from "../src/components/Center";
 import NoSsrIslandMakerEmbed from "../src/components/projects/NoSsrIslandMakerEmbed";
 import Grid from "../src/components/Grid";
+import Link from "../src/components/Link";
 
 const Projects = () => {
   return (
@@ -35,7 +38,7 @@ const Projects = () => {
       </Section>
       <Section className="work-overview">
         <h2>
-          <Icon>🛠</Icon> Work Overview
+          <Icon>{"🛠"}</Icon> Work Overview
         </h2>
         <p>
           I'm comfortable with front end web dev and game development. I
@@ -44,7 +47,7 @@ const Projects = () => {
         </p>
         <h3>Recent work experience</h3>
         <h4>
-          <Icon>🧩</Icon> Andrews McMeel Universal
+          <Icon>{"🧩"}</Icon> Andrews McMeel Universal
           <span>Dec. 2022 - Present</span>
         </h4>
         <p> Software Engineer & Designer | Part-Time Contract, Remote</p>
@@ -54,10 +57,10 @@ const Projects = () => {
           React, mobx-state-tree, and TypeScript.
         </p>
         <p>
-          <Icon>👇</Icon> <a href="#puzzle-society">Learn More</a>
+          <Icon>{"👇"}</Icon> <a href="#puzzle-society">Learn More</a>
         </p>
         <h4>
-          <Icon>🛡</Icon> Twilio <span>Oct. 2022 - Feb. 2023</span>
+          <Icon>{"🛡"}</Icon> Twilio <span>Oct. 2022 - Feb. 2023</span>
         </h4>
         <p>Technical Lead | Full-Time, Remote</p>
         <p>
@@ -70,7 +73,11 @@ const Projects = () => {
         <p style={{ fontStyle: "italic" }}>
           Staff Software Engineer | Full-Time, Remote{" "}
           <span
-            style={{ float: "right", fontWeight: "bold", fontStyle: "normal" }}
+            style={{
+              float: "right",
+              fontStyle: "normal",
+              fontWeight: "bold",
+            }}
           >
             Jun. 2019 - Oct. 2022
           </span>
@@ -81,10 +88,10 @@ const Projects = () => {
           supporting services with front and backend tech.
         </p>
         <p>
-          <Icon>👇</Icon> <a href="#twilioquest">Learn More</a>
+          <Icon>{"👇"}</Icon> <a href="#twilioquest">Learn More</a>
         </p>
         <h4>
-          <Icon>👟</Icon> Nike <span>Jan. 2018 - May 2019</span>
+          <Icon>{"👟"}</Icon> Nike <span>Jan. 2018 - May 2019</span>
         </h4>
         <p>Software Engineer | Full Time, Portland, OR</p>
         <p>
@@ -94,14 +101,14 @@ const Projects = () => {
           and mobile applications to implement this library.
         </p>
         <p>
-          <Icon>👇</Icon> <a href="#nike">Learn More</a>
+          <Icon>{"👇"}</Icon> <a href="#nike">Learn More</a>
         </p>
         <h3>Questions?</h3>
         <p>
-          <Icon>👇</Icon> <a href="#contact">Reach out to me! Say hi!</a>
+          <Icon>{"👇"}</Icon> <a href="#contact">Reach out to me! Say hi!</a>
         </p>
         <p>
-          <Icon>👀</Icon>{" "}
+          <Icon>{"👀"}</Icon>{" "}
           <a href="https://linkedin.com/in/ryankubik">
             See more work history on LinkedIn
           </a>
@@ -109,7 +116,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="puzzle-society">
-          <Icon>🧩</Icon> The Puzzle Society
+          <Icon>{"🧩"}</Icon> The Puzzle Society
         </h2>
         <p>
           The Puzzle Society is a logic and word puzzle site with games like:
@@ -126,7 +133,7 @@ const Projects = () => {
           this time! But, hopefully it'll be live soon!
         </p>
         <p>
-          <Icon>👀</Icon>{" "}
+          <Icon>{"👀"}</Icon>{" "}
           <a href="https://www.puzzlesociety.com/">
             Learn more about The Puzzle Society
           </a>
@@ -134,7 +141,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="twilioquest">
-          <Icon>🛡</Icon> TwilioQuest
+          <Icon>{"🛡"}</Icon> TwilioQuest
         </h2>
         <p>
           TwilioQuest was an educational video game designed to teach a new
@@ -187,16 +194,18 @@ const Projects = () => {
       </Section>
       <Section>
         <h2>
-          <Icon>🔥</Icon> Wildfire Swap
+          <Icon>{"🔥"}</Icon> Wildfire Swap
         </h2>
         <p>
           Wildfire Swap is a self published puzzle game I made that received
           positive reception on Steam.
         </p>
         <Center>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            style={{ maxWidth: "100%" }}
+            alt="Wildfire swap gameplay, showing a grid of trees and fires swapping around to avoid burning the houses down"
             src="/images/projects/wildfire-swap/wildfire-swap-gameplay-1.gif"
+            style={{ maxWidth: "100%" }}
           />
         </Center>
         <p>
@@ -215,44 +224,43 @@ const Projects = () => {
         </p>
         <h3>More info</h3>
         <p>
-          <Icon>🔥</Icon>{" "}
+          <Icon>{"🔥"}</Icon>{" "}
           <a href="https://wildfire.fun/">Official homepage and presskit</a>
         </p>
         <p>
-          <Icon>📖</Icon>{" "}
-          <a href="/blog/wildfire-swap-inspiration">
+          <Icon>{"📖"}</Icon>{" "}
+          <Link to="/blog/wildfire-swap-inspiration">
             Wildfire Swap: A puzzle game inspired by fires in the Pacific
             Northwest
-          </a>
-          <br />
+          </Link>
           While showing Wildfire Swap to folks, I've gotten recurring questions
           about what inspired this game. This post dives into that inspiration
           story and looks at...
         </p>
         <p>
-          <Icon>📖</Icon>{" "}
-          <a href="/blog/wildfire-swap-design-pillars">
+          <Icon>{"📖"}</Icon>{" "}
+          <Link to="/blog/wildfire-swap-design-pillars">
             Using Design Pillars to Keep Wildfire Swap's Development on Track
-          </a>
-          <br />
+          </Link>
           Design pillars are the 3-5 core ordered ideas, concepts, or emotions
           that our game should embody...
         </p>
         <Center>
           <iframe
+            frameBorder="0"
+            height="190"
+            src="https://store.steampowered.com/widget/1216030/"
             style={{
               margin: "2rem 0",
             }}
-            src="https://store.steampowered.com/widget/1216030/"
-            frameBorder="0"
+            title="Steam Wildfire Swap embed"
             width="646"
-            height="190"
-          ></iframe>
+          />
         </Center>
       </Section>
       <Section>
         <h2>
-          <Icon>🏝</Icon> Island Maker
+          <Icon>{"🏝"}</Icon> Island Maker
         </h2>
         <p>
           Island Maker is a strategy game I created in 2022 for a game jam. I
@@ -260,9 +268,11 @@ const Projects = () => {
           coverage and over 25,000 plays.
         </p>
         <Center>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            style={{ width: "90%" }}
+            alt="Screenshot of a randomly generate island map made of hexagon tiles"
             src="/images/projects/island-maker/first-build-screenshot.png"
+            style={{ width: "90%" }}
           />
         </Center>
         <p>
@@ -278,21 +288,19 @@ const Projects = () => {
         </p>
         <h3>More info</h3>
         <p>
-          <Icon>📖</Icon>{" "}
+          <Icon>{"📖"}</Icon>{" "}
           <a href="https://rmkubik.itch.io/island-maker/devlog/416186/working-on-a-big-update">
             Working on a big update!
           </a>
-          <br />
           I'm very happy with how the current version of Island Maker has turned
           out. It's been a treat to see y'all get into sharing high scores and
           completing the journal...
         </p>
         <p>
-          <Icon>📖</Icon>{" "}
+          <Icon>{"📖"}</Icon>{" "}
           <a href="https://rmkubik.itch.io/island-maker/devlog/429762/big-300-update-new-levels-and-buildings">
             Big 3.0.0 Update! New levels and buildings!
           </a>
-          <br />
           Over the past couple months, I've been working on this update to make
           Island Maker even better. I hope you enjoy the changes...
         </p>
@@ -302,7 +310,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="nike">
-          <Icon>👟</Icon> Nike
+          <Icon>{"👟"}</Icon> Nike
         </h2>
         <p>
           My team built a user lifecycle (login, registration, etc.) JavaScript
@@ -331,12 +339,11 @@ const Projects = () => {
         </p>
         <h3>Mode info</h3>
         <p>
-          <Icon>📖</Icon>{" "}
-          <a href="/blog/eslint-internal-state">
+          <Icon>{"📖"}</Icon>{" "}
+          <Link to="/blog/eslint-internal-state">
             Create a Custom ESLint Rule: Automatically Share Your Team's
             Institutional Knowledge
-          </a>
-          <br />
+          </Link>
           Open-sourced rules allow teams to customize ESLint for their specific
           requirements. However, sometimes a rule doesn't exist or work in quite
           the right way for your use case. This article explores how to create
@@ -349,22 +356,40 @@ const Projects = () => {
           I make a lot of little games in my free time, usually with JavaScript.
         </p>
         <Grid columns="2">
+          {/* eslint-disable @next/next/no-img-element */}
           <img
-            style={{ maxWidth: "100%", margin: "0 auto" }}
+            alt="A white grid with a blue background"
             src="https://img.itch.zone/aW1nLzExMjgxNjM0LnBuZw==/315x250%23c/r8lzRz.png"
+            style={{
+              margin: "0 auto",
+              maxWidth: "100%",
+            }}
           />
           <img
-            style={{ maxWidth: "100%", margin: "0 auto" }}
+            alt="An ocean scene in pixel art with the title Grim Repair"
             src="https://img.itch.zone/aW1nLzI5NDcyODAucG5n/315x250%23c/DoD%2BkR.png"
+            style={{
+              margin: "0 auto",
+              maxWidth: "100%",
+            }}
           />
           <img
-            style={{ maxWidth: "100%", margin: "0 auto" }}
+            alt="A wild west landscape with the title Trainsmission!"
             src="https://img.itch.zone/aW1hZ2UvMjE4NjA2LzEwMzE5NDAucG5n/315x250%23c/4jfBtF.png"
+            style={{
+              margin: "0 auto",
+              maxWidth: "100%",
+            }}
           />
           <img
-            style={{ maxWidth: "100%", margin: "0 auto" }}
+            alt="A grid that looks a bit like classic Minesweeper, with new symbols"
             src="https://img.itch.zone/aW1nLzMwNzkxODAucG5n/315x250%23c/C8w21U.png"
+            style={{
+              margin: "0 auto",
+              maxWidth: "100%",
+            }}
           />
+          {/* eslint-enable @next/next/no-img-element */}
         </Grid>
         <p>
           You can check them out on{" "}
@@ -379,7 +404,7 @@ const Projects = () => {
           them below.
         </p>
         <p>
-          <Icon>📖</Icon> <a href="/blog">Read more posts...</a>
+          <Icon>{"📖"}</Icon> <Link to="/blog">Read more posts</Link>
         </p>
       </Section>
       <Section>
@@ -392,8 +417,8 @@ const Projects = () => {
           lighter parts of the ecosystem...
         </p>
         <p>
-          <Icon>👀</Icon>{" "}
-          <a href="/blog/js13k-2021-rocket-jockey">Read more...</a>
+          <Icon>{"👀"}</Icon>{" "}
+          <Link to="/blog/js13k-2021-rocket-jockey">Read more</Link>
         </p>
       </Section>
       <Section>
@@ -406,7 +431,7 @@ const Projects = () => {
           in a useKeyPress custom hook...
         </p>
         <p>
-          <Icon>👀</Icon> <a href="/blog/use-key-press">Read more...</a>
+          <Icon>{"👀"}</Icon> <Link to="/blog/use-key-press">Read more</Link>
         </p>
       </Section>
       <Section>
@@ -471,3 +496,5 @@ const Projects = () => {
 };
 
 export default Projects;
+
+/* eslint-enable react/no-unescaped-entities */

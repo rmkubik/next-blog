@@ -9,9 +9,9 @@ module.exports = {
         version: "^16.0.0",
       },
     ],
+    "react/jsx-curly-brace-presence": "off",
     "react/jsx-filename-extension": "off",
     "react/react-in-jsx-scope": "off",
     "unicorn/filename-case": "off",
-    "react/jsx-curly-brace-presence": "never",
   },
 };
