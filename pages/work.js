@@ -116,7 +116,8 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="puzzle-society">
-          <Icon>{"🧩"}</Icon> The Puzzle Society
+          <Icon>{"🧩"}</Icon> The Puzzle Society{" "}
+          <span>Dec. 2022 - Present</span>
         </h2>
         <p>
           The Puzzle Society is a logic and word puzzle site with games like:
@@ -125,8 +126,8 @@ const Projects = () => {
         <h3>My work</h3>
         <p>
           I'm currently working on a part time contract for The Puzzle Society
-          building and designing a new logic game. I'm working with React,
-          MobX-state-tree, and TypeScript.
+          building and designing a new logic game. I'm working with{" "}
+          <strong>React, mobx-state-tree, and TypeScript.</strong>
         </p>
         <p>
           This project is not yet released, so I cannot share more details at
@@ -141,7 +142,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="twilioquest">
-          <Icon>{"🛡"}</Icon> TwilioQuest
+          <Icon>{"🛡"}</Icon> TwilioQuest <span>Jun. 2019 - Feb. 2023</span>
         </h2>
         <p>
           TwilioQuest was an educational video game designed to teach a new
@@ -159,19 +160,40 @@ const Projects = () => {
         <h3>My work</h3>
         <p>
           I worked on TwilioQuest for almost 4 years. I was primarily building
-          the TwilioQuest engine using React, JavaScript, and Electron. I also
-          created supporting services and scripts using Node.js, Firebase, and
-          GitHub Actions.
+          the TwilioQuest engine using{" "}
+          <strong>React, JavaScript, and Electron.</strong> I also created
+          supporting services and scripts using{" "}
+          <strong>Node.js, Firebase, and GitHub Actions.</strong>
         </p>
         <p>
           Since it was a small team, I did all sorts of non development tasks
           too. From lesson planning educational content to helping new learners
           in Discord.
         </p>
+        <h4>Architected Content Extension System</h4>
         <p>
-          I was promoted to team lead by the time I left. I was responsible for
+          When I joined the team, content in TwilioQuest was siloed alongside
+          core game logic. This made it challenging for anyone not a core
+          developer to contribute educational content.
+        </p>
+        <p>
+          I architected and implemented an extension system to separate content
+          and <strong>open source</strong> it. This allowed for community
+          authored extensions and 3rd party collaborations with companies like
+          Cloudinary. We also got a lot of additional benefits from community
+          contributions to our newly open sourced content.
+        </p>
+        <p>
+          <a href="https://twilioquest.github.io/extension-docs/guide/architecture.html">
+            Read more about the extension system's architecture.
+          </a>
+        </p>
+        <h4>Technical Lead Promotion</h4>
+        <p>
+          I was promoted to tech lead by the time I left. I was responsible for
           coordinating content from myself, an artist, and content developer.
-          Additionally, I worked with a contractor team to manage our services.
+          Additionally, I managed a contractor developer team that supported our
+          secondary services.
         </p>
         <h3>More info</h3>
         <p>
@@ -194,7 +216,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2>
-          <Icon>{"🔥"}</Icon> Wildfire Swap
+          <Icon>{"🔥"}</Icon> Wildfire Swap <span>Apr. 2018 - Mar. 2021</span>
         </h2>
         <p>
           Wildfire Swap is a self published puzzle game I made that received
@@ -214,8 +236,8 @@ const Projects = () => {
         </p>
         <h3>My Work</h3>
         <p>
-          I built Wildfire Swap as a desktop app with JavaScript, React, Phaser,
-          and Electron.
+          I built Wildfire Swap as a desktop app with{" "}
+          <strong>JavaScript, React, Redux, Phaser, and Electron.</strong>
         </p>
         <p>
           I led the development, design, and prototyping of Wildfire Swap. I
@@ -260,7 +282,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2>
-          <Icon>{"🏝"}</Icon> Island Maker
+          <Icon>{"🏝"}</Icon> Island Maker <span>Feb. 2022 - Sep. 2022</span>
         </h2>
         <p>
           Island Maker is a strategy game I created in 2022 for a game jam. I
@@ -284,7 +306,8 @@ const Projects = () => {
         <h3>My work</h3>
         <p>
           I used an asset pack for the graphics, but built and designed
-          everything else in Island Maker with JavaScript and React.
+          everything else in Island Maker with{" "}
+          <strong>JavaScript and React.</strong>
         </p>
         <h3>More info</h3>
         <p>
@@ -310,7 +333,7 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="nike">
-          <Icon>{"👟"}</Icon> Nike
+          <Icon>{"👟"}</Icon> Nike <span>Jan. 2018 - May. 2019</span>
         </h2>
         <p>
           My team built a user lifecycle (login, registration, etc.) JavaScript
@@ -472,6 +495,13 @@ const Projects = () => {
 
             p {
               margin-bottom: 0;
+            }
+          }
+
+          h2 {
+            span:last-child {
+              float: right;
+              font-size: 1.2rem;
             }
           }
         }
