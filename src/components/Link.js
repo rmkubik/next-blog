@@ -24,11 +24,8 @@ const Link = ({ to = "", hideDots = false, hideArrow = false, children }) => {
 
   return (
     <NextLink href={to}>
-      {/* Next.js applies the href attribute for us. */}
-      <a>
-        {children}
-        {hideDots || "..."}
-      </a>
+      {children}
+      {hideDots || "..."}
     </NextLink>
   );
 };
