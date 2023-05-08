@@ -12,7 +12,10 @@ I didn't want to add in something heavy with a build step. So I thought it would
 
 ## Building a Spoiler
 
-<script src="https://unpkg.com/alpinejs" defer></script>
+<Head>
+  <script src="https://unpkg.com/alpinejs" defer></script>
+</Head>
+
 <style>{`
   .spoiler {
     background-color: #000000;

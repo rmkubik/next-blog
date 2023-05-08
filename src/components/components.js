@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 import Icon from "./Icon";
 import Link from "./Link";
 import Section from "./Section";
@@ -37,6 +39,7 @@ const createComponents = ({ imageDir, slug }) => {
     h4: H4,
     h5: H5,
     h6: H6,
+    Head,
     Icon,
     img: createImage({
       imageDir,
