@@ -17,6 +17,7 @@ const Projects = () => {
           async
           src="https://unpkg.com/matter-js@0.19.0/build/matter.min.js"
         />
+        <script async src="https://pixijs.download/release/pixi.min.js" />
       </Head>
       <Section className="test-game-container">
         <h1>I'm looking for work!</h1>
@@ -71,6 +72,10 @@ const Projects = () => {
 
             playButton.remove();
 
+            function pickRandomlyFromArray(array) {
+              return array[Math.floor(Math.random() * array.length)];
+            }
+
             /**
              * Credit for this regex from wmacfarl's platformize.js
              * https://github.com/wmacfarl/web-platformer/blob/main/platformize.js#LL175C1-L176C1
@@ -95,9 +100,22 @@ const Projects = () => {
                 background: "transparent",
                 height: container.offsetHeight,
                 width: container.offsetWidth,
-                wireframes: false, // Draw the shapes as solid colors
+                wireframeBackground: "transparent",
+                wireframes: true, // Draw the shapes as solid colors
               },
             });
+
+            // eslint-disable-next-line no-undef
+            const app = new PIXI.Application({
+              backgroundAlpha: 0,
+              height: container.offsetHeight,
+              width: container.offsetWidth,
+            });
+
+            document.querySelector("#test-game").append(app.view);
+            app.view.style.position = "absolute";
+            app.view.style.top = 0;
+            app.view.style.left = 0;
 
             const obstacleElements = container.querySelectorAll(".obstacle");
             const obstacles = [];
@@ -118,19 +136,50 @@ const Projects = () => {
                 obstacleBoundingRect.height
               );
 
-              obstacles.push(body);
+              // eslint-disable-next-line no-undef
+              const graphics = new PIXI.Graphics();
+
+              graphics.pivot.set(0.5, 0.5);
+
+              app.stage.addChild(graphics);
+
+              obstacles.push({
+                body,
+                graphics,
+                height: obstacleBoundingRect.height,
+                width: obstacleBoundingRect.width,
+              });
             }
 
-            Composite.add(engine.world, obstacles);
+            Composite.add(
+              engine.world,
+              obstacles.map((obstacle) => obstacle.body)
+            );
 
-            const ball = Bodies.circle(20, 20, 10);
+            // eslint-disable-next-line no-undef
+            const graphics = new PIXI.Graphics();
 
-            Composite.add(engine.world, [ball]);
+            graphics.pivot.set(0.5, 0.5);
+
+            app.stage.addChild(graphics);
+
+            const radius = 10;
+            const ball = {
+              body: Bodies.circle(20, 20, radius),
+              graphics,
+              radius,
+            };
+
+            ball.graphics.beginFill("#FF6961");
+            ball.graphics.drawCircle(0, 0, ball.radius);
+            ball.graphics.endFill();
+
+            Composite.add(engine.world, [ball.body]);
 
             let initialDragPos;
             let dragPos;
 
-            document.addEventListener("mousedown", (e) => {
+            container.addEventListener("mousedown", (e) => {
               e.preventDefault();
 
               initialDragPos = {
@@ -141,6 +190,8 @@ const Projects = () => {
                 x: e.clientX,
                 y: e.clientY,
               };
+
+              document.body.style.cursor = "grabbing";
             });
 
             document.addEventListener("mousemove", (e) => {
@@ -176,7 +227,13 @@ const Projects = () => {
 
               const diff = difference(initialDragPos, dragPos);
 
-              Body.applyForce(ball, ball.position, scale(diff, 0.0001));
+              Body.applyForce(
+                ball.body,
+                ball.body.position,
+                scale(diff, 0.0001) // TODO: put a max speed here
+              );
+
+              document.body.style.cursor = "inherit";
             });
 
             // add mouse control
@@ -196,7 +253,51 @@ const Projects = () => {
             // keep the mouse in sync with rendering
             // render.mouse = mouse;
 
-            Render.run(render);
+            let elapsed = 0;
+
+            obstacles.forEach((obstacle) => {
+              obstacle.graphics.beginFill(
+                pickRandomlyFromArray([
+                  "#3c42c4",
+                  "#6e51c8",
+                  "#a065cd",
+                  "#ce79d2",
+                  "#d68fb8",
+                  "#dda2a3",
+                  "#eac4ae",
+                  "#f4dfbe",
+                ])
+              );
+              obstacle.graphics.drawRect(
+                -obstacle.width / 2,
+                -obstacle.height / 2,
+                obstacle.width,
+                obstacle.height
+              );
+              obstacle.graphics.endFill();
+            });
+
+            app.ticker.add((delta) => {
+              elapsed += delta;
+
+              obstacles.forEach((obstacle) => {
+                const x = obstacle.body.position.x;
+                const y = obstacle.body.position.y;
+                const rotation = obstacle.body.angle;
+
+                obstacle.graphics.position.set(x, y);
+                // eslint-disable-next-line no-param-reassign
+                obstacle.graphics.rotation = rotation;
+              });
+
+              ball.graphics.position.set(
+                ball.body.position.x,
+                ball.body.position.y
+              );
+            });
+
+            // TODO: Uncomment to debug physics bodies
+            // Render.run(render);
 
             // create runner
             const runner = Runner.create();
