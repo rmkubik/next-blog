@@ -61,9 +61,7 @@ const Projects = () => {
               Bodies,
               Composite,
               Runner,
-              Vector,
-              // Mouse,
-              // MouseConstraint,
+              Query,
               // eslint-disable-next-line no-undef
             } = Matter;
 
@@ -72,9 +70,10 @@ const Projects = () => {
 
             playButton.remove();
 
-            function pickRandomlyFromArray(array) {
+            // eslint-disable-next-line unicorn/consistent-function-scoping
+            const pickRandomlyFromArray = (array) => {
               return array[Math.floor(Math.random() * array.length)];
-            }
+            };
 
             /**
              * Credit for this regex from wmacfarl's platformize.js
@@ -93,17 +92,17 @@ const Projects = () => {
 
             engine.gravity.y = 0;
 
-            const render = Render.create({
-              element: document.querySelector("#test-game"),
-              engine,
-              options: {
-                background: "transparent",
-                height: container.offsetHeight,
-                width: container.offsetWidth,
-                wireframeBackground: "transparent",
-                wireframes: true, // Draw the shapes as solid colors
-              },
-            });
+            // const render = Render.create({
+            //   element: document.querySelector("#test-game"),
+            //   engine,
+            //   options: {
+            //     background: "transparent",
+            //     height: container.offsetHeight,
+            //     width: container.offsetWidth,
+            //     wireframeBackground: "transparent",
+            //     wireframes: true, // Draw the shapes as solid colors
+            //   },
+            // });
 
             // eslint-disable-next-line no-undef
             const app = new PIXI.Application({
@@ -163,7 +162,7 @@ const Projects = () => {
 
             app.stage.addChild(graphics);
 
-            const radius = 10;
+            const radius = 12;
             const ball = {
               body: Bodies.circle(20, 20, radius),
               graphics,
@@ -176,19 +175,24 @@ const Projects = () => {
 
             Composite.add(engine.world, [ball.body]);
 
-            let initialDragPos;
             let dragPos;
 
             container.addEventListener("mousedown", (e) => {
               e.preventDefault();
 
-              initialDragPos = {
-                x: e.clientX,
-                y: e.clientY,
+              const clickPos = {
+                x: e.clientX - containerBoundingRect.x,
+                y: e.clientY - containerBoundingRect.y,
               };
+
+              // Did the player click on the ball?
+              if (!Query.point([ball.body], clickPos).length) {
+                return;
+              }
+
               dragPos = {
-                x: e.clientX,
-                y: e.clientY,
+                x: e.clientX - containerBoundingRect.x,
+                y: e.clientY - containerBoundingRect.y,
               };
 
               document.body.style.cursor = "grabbing";
@@ -197,19 +201,28 @@ const Projects = () => {
             document.addEventListener("mousemove", (e) => {
               e.preventDefault();
 
+              if (!dragPos) {
+                return;
+              }
+
               dragPos = {
-                x: e.clientX,
-                y: e.clientY,
+                x: e.clientX - containerBoundingRect.x,
+                y: e.clientY - containerBoundingRect.y,
               };
             });
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             const difference = (a, b) => {
               const x = a.x - b.x;
               const y = a.y - b.y;
 
-              return { x, y };
+              return {
+                x,
+                y,
+              };
             };
 
+            // eslint-disable-next-line unicorn/consistent-function-scoping
             const scale = (vector, scalar) => {
               return {
                 x: vector.x * scalar,
@@ -217,22 +230,37 @@ const Projects = () => {
               };
             };
 
+            // eslint-disable-next-line no-undef
+            const rangeFinderGraphics = new PIXI.Graphics();
+
+            app.stage.addChild(rangeFinderGraphics);
+
+            const rangefinder = {
+              graphics: rangeFinderGraphics,
+            };
+
             document.addEventListener("mouseup", (e) => {
               e.preventDefault();
 
+              if (!dragPos) {
+                return;
+              }
+
               dragPos = {
-                x: e.clientX,
-                y: e.clientY,
+                x: e.clientX - containerBoundingRect.x,
+                y: e.clientY - containerBoundingRect.y,
               };
 
-              const diff = difference(initialDragPos, dragPos);
+              const diff = difference(ball.body.position, dragPos);
 
               Body.applyForce(
                 ball.body,
                 ball.body.position,
+                // eslint-disable-next-line no-warning-comments
                 scale(diff, 0.0001) // TODO: put a max speed here
               );
 
+              dragPos = undefined;
               document.body.style.cursor = "inherit";
             });
 
@@ -252,8 +280,6 @@ const Projects = () => {
 
             // keep the mouse in sync with rendering
             // render.mouse = mouse;
-
-            let elapsed = 0;
 
             obstacles.forEach((obstacle) => {
               obstacle.graphics.beginFill(
@@ -277,6 +303,9 @@ const Projects = () => {
               obstacle.graphics.endFill();
             });
 
+            // eslint-disable-next-line no-unused-vars
+            let elapsed = 0;
+
             app.ticker.add((delta) => {
               elapsed += delta;
 
@@ -294,9 +323,20 @@ const Projects = () => {
                 ball.body.position.x,
                 ball.body.position.y
               );
+
+              rangefinder.graphics.clear();
+
+              if (dragPos) {
+                rangefinder.graphics.lineStyle(3, "#cccccc", 1);
+                rangefinder.graphics.moveTo(
+                  ball.body.position.x,
+                  ball.body.position.y
+                );
+                rangefinder.graphics.lineTo(dragPos.x, dragPos.y);
+              }
             });
 
-            // TODO: Uncomment to debug physics bodies
+            // Uncomment to debug physics bodies
             // Render.run(render);
 
             // create runner
