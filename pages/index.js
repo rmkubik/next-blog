@@ -23,7 +23,7 @@ const Home = ({ posts, projects }) => {
         </p>
         <p>
           <Icon>{"👀"}</Icon>{" "}
-          <Link to="/work">I&apos;m looking for work! Learn more...</Link>
+          <Link to="/work">I&apos;m looking for work! Learn more</Link>
         </p>
       </Section>
       <div className="projects">

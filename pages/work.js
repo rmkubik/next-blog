@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
+import Head from "next/head";
 
 import Footer from "../src/components/Footer";
 import Section from "../src/components/Section";
@@ -11,7 +12,13 @@ import Link from "../src/components/Link";
 const Projects = () => {
   return (
     <div className="main">
-      <Section>
+      <Head>
+        <script
+          async
+          src="https://unpkg.com/matter-js@0.19.0/build/matter.min.js"
+        />
+      </Head>
+      <Section className="test-game-container">
         <h1>I'm looking for work!</h1>
         <p>
           <strong>Hi! I'm Ryan. </strong>
@@ -35,6 +42,171 @@ const Projects = () => {
           At Nike, I worked on a highly tested, performant web app handling
           millions of visitors a month from all over the globe.
         </p>
+        <div
+          id="test-game"
+          style={{
+            left: 0,
+            position: "absolute",
+            top: 0,
+          }}
+        />
+        <button
+          id="play-button"
+          onClick={() => {
+            const {
+              Engine,
+              Render,
+              Body,
+              Bodies,
+              Composite,
+              Runner,
+              Vector,
+              // Mouse,
+              // MouseConstraint,
+              // eslint-disable-next-line no-undef
+            } = Matter;
+
+            const container = document.querySelector(".test-game-container");
+            const playButton = document.querySelector("#play-button");
+
+            playButton.remove();
+
+            /**
+             * Credit for this regex from wmacfarl's platformize.js
+             * https://github.com/wmacfarl/web-platformer/blob/main/platformize.js#LL175C1-L176C1
+             * https://wmacfarl.itch.io/eggjam17
+             */
+            container.innerHTML = container.innerHTML.replace(
+              // eslint-disable-next-line security/detect-unsafe-regex
+              /(?<!(<\/?[^>]*|&[^;]*))([^\s<]+)/gu,
+              '$1<span class="obstacle">$2</span>'
+            );
+
+            container.style.position = "relative";
+
+            const engine = Engine.create();
+
+            engine.gravity.y = 0;
+
+            const render = Render.create({
+              element: document.querySelector("#test-game"),
+              engine,
+              options: {
+                background: "transparent",
+                height: container.offsetHeight,
+                width: container.offsetWidth,
+                wireframes: false, // Draw the shapes as solid colors
+              },
+            });
+
+            const obstacleElements = container.querySelectorAll(".obstacle");
+            const obstacles = [];
+
+            const containerBoundingRect = container.getBoundingClientRect();
+
+            for (const obstacleElement of obstacleElements) {
+              const obstacleBoundingRect =
+                obstacleElement.getBoundingClientRect();
+              const body = Bodies.rectangle(
+                obstacleBoundingRect.x -
+                  containerBoundingRect.x +
+                  obstacleBoundingRect.width / 2,
+                obstacleBoundingRect.y -
+                  containerBoundingRect.y +
+                  obstacleBoundingRect.height / 2,
+                obstacleBoundingRect.width,
+                obstacleBoundingRect.height
+              );
+
+              obstacles.push(body);
+            }
+
+            Composite.add(engine.world, obstacles);
+
+            const ball = Bodies.circle(20, 20, 10);
+
+            Composite.add(engine.world, [ball]);
+
+            let initialDragPos;
+            let dragPos;
+
+            document.addEventListener("mousedown", (e) => {
+              e.preventDefault();
+
+              initialDragPos = {
+                x: e.clientX,
+                y: e.clientY,
+              };
+              dragPos = {
+                x: e.clientX,
+                y: e.clientY,
+              };
+            });
+
+            document.addEventListener("mousemove", (e) => {
+              e.preventDefault();
+
+              dragPos = {
+                x: e.clientX,
+                y: e.clientY,
+              };
+            });
+
+            const difference = (a, b) => {
+              const x = a.x - b.x;
+              const y = a.y - b.y;
+
+              return { x, y };
+            };
+
+            const scale = (vector, scalar) => {
+              return {
+                x: vector.x * scalar,
+                y: vector.y * scalar,
+              };
+            };
+
+            document.addEventListener("mouseup", (e) => {
+              e.preventDefault();
+
+              dragPos = {
+                x: e.clientX,
+                y: e.clientY,
+              };
+
+              const diff = difference(initialDragPos, dragPos);
+
+              Body.applyForce(ball, ball.position, scale(diff, 0.0001));
+            });
+
+            // add mouse control
+            // const mouse = Mouse.create(render.canvas),
+            //   mouseConstraint = MouseConstraint.create(engine, {
+            //     constraint: {
+            //       render: {
+            //         visible: false,
+            //       },
+            //       stiffness: 0.2,
+            //     },
+            //     mouse,
+            //   });
+
+            // Composite.add(engine.world, mouseConstraint);
+
+            // keep the mouse in sync with rendering
+            // render.mouse = mouse;
+
+            Render.run(render);
+
+            // create runner
+            const runner = Runner.create();
+
+            Runner.run(runner, engine);
+          }}
+          type="button"
+        >
+          Play
+        </button>
       </Section>
       <Section className="work-overview">
         <h2>
