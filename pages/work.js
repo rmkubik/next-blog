@@ -195,10 +195,24 @@ const Projects = () => {
 
               app.stage.addChild(graphics);
 
+              obstacleElement.style.display = "inline-block";
+              obstacleElement.style.transformOrigin = "center";
+
               obstacles.push({
                 body,
+                element: obstacleElement,
                 graphics,
                 height: obstacleBoundingRect.height,
+                startPos: {
+                  x:
+                    obstacleBoundingRect.x -
+                    containerBoundingRect.x +
+                    obstacleBoundingRect.width / 2,
+                  y:
+                    obstacleBoundingRect.y -
+                    containerBoundingRect.y +
+                    obstacleBoundingRect.height / 2,
+                },
                 width: obstacleBoundingRect.width,
               });
             }
@@ -351,6 +365,8 @@ const Projects = () => {
                   "#f4dfbe",
                 ])
               );
+              // eslint-disable-next-line no-param-reassign
+              obstacle.graphics.alpha = 0.6;
               obstacle.graphics.drawRect(
                 -obstacle.width / 2,
                 -obstacle.height / 2,
@@ -374,6 +390,10 @@ const Projects = () => {
                 obstacle.graphics.position.set(x, y);
                 // eslint-disable-next-line no-param-reassign
                 obstacle.graphics.rotation = rotation;
+                // eslint-disable-next-line no-param-reassign
+                obstacle.element.style.transform = `translate(${
+                  x - obstacle.startPos.x
+                }px,${y - obstacle.startPos.y}px) rotate(${rotation}rad)`;
               });
 
               ball.graphics.position.set(
