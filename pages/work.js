@@ -272,6 +272,18 @@ const Projects = () => {
             document.addEventListener("mousemove", (e) => {
               e.preventDefault();
 
+              const clickPos = {
+                x: e.clientX - containerBoundingRect.x,
+                y: e.clientY - containerBoundingRect.y,
+              };
+
+              // eslint-disable-next-line unicorn/prefer-ternary
+              if (Query.point([ball.body], clickPos).length) {
+                document.body.style.cursor = "grab";
+              } else {
+                document.body.style.cursor = "inherit";
+              }
+
               if (!dragPos) {
                 return;
               }
