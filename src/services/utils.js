@@ -61,4 +61,14 @@ const forceDateToTimeZone = (date, timeZone) => {
   return new Date(`${isoDate} ${timeZone}`);
 };
 
-export { slugify, randIntBetween, randomString, forceDateToTimeZone };
+const pickRandomlyFromArray = (array) => {
+  return array[Math.floor(Math.random() * array.length)];
+};
+
+export {
+  slugify,
+  randIntBetween,
+  randomString,
+  forceDateToTimeZone,
+  pickRandomlyFromArray,
+};
