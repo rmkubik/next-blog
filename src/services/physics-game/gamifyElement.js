@@ -135,6 +135,20 @@ const gamifyElement = async (containerElement) => {
   const runner = Runner.create();
 
   Runner.run(runner, engine);
+
+  const destroyGame = () => {
+    // stop PIXI app
+    app.destroy();
+    // stop Matter runner
+    runner.stop();
+    // destroy canvases
+    // remove game divs
+    // remove spans
+
+    console.log({ app, runner });
+  };
+
+  return destroyGame;
 };
 
 export default gamifyElement;

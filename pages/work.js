@@ -8,11 +8,14 @@ import NoSsrIslandMakerEmbed from "../src/components/projects/NoSsrIslandMakerEm
 import Grid from "../src/components/Grid";
 import Link from "../src/components/Link";
 import PlayButton from "../src/components/physics-game/PlayButton";
+import spanifyReactChildren from "../src/services/physics-game/spanifyReactChildren";
+
+const SpanifiedSection = spanifyReactChildren(Section);
 
 const Projects = () => {
   return (
     <div className="main">
-      <Section>
+      <SpanifiedSection>
         <h1>I'm looking for work!</h1>
         <p>
           <strong>Hi! I'm Ryan. </strong>
@@ -37,7 +40,7 @@ const Projects = () => {
           millions of visitors a month from all over the globe.
         </p>
         <PlayButton />
-      </Section>
+      </SpanifiedSection>
       <Section className="work-overview">
         <h2>
           <Icon>{"🛠"}</Icon> Work Overview
