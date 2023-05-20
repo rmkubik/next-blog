@@ -7,6 +7,7 @@
   },
   "scripts": {
     "start": "next dev",
+    "lint": "next lint",
     "build": "next build",
     "serve": "next start"
   },
@@ -22,9 +23,11 @@
     "feed": "^4.2.2",
     "functional-game-utils": "^2.5.0",
     "gray-matter": "^4.0.3",
+    "matter-js": "^0.19.0",
     "next": "^13.2.4",
     "next-mdx-remote": "^4.2.0",
     "normalize.css": "^8.0.1",
+    "pixi.js": "^7.2.4",
     "prism-react-renderer": "^1.3.5",
     "prism-themes": "^1.9.0",
     "ramda": "^0.26.1",
