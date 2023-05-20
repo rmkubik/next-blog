@@ -15,8 +15,11 @@ const SpanifiedSection = spanifyReactChildren(Section, "obstacle");
 const Projects = () => {
   return (
     <div className="main">
-      <SpanifiedSection>
-        <h1>I'm looking for work!</h1>
+      <SpanifiedSection className="relative-section">
+        <div className="header-with-button">
+          <h1>I'm looking for work!</h1>
+          <PlayButton />
+        </div>
         <p>
           <strong>Hi! I'm Ryan. </strong>
           I've been a software engineer for seven years.
@@ -27,7 +30,7 @@ const Projects = () => {
         </p>
         <p>
           I relish iterating on{" "}
-          <strong>rich interactive web applications</strong> with quick user
+          <strong>rich interactive web applications </strong> with quick user
           feedback cycles.
         </p>
         <p>
@@ -39,7 +42,6 @@ const Projects = () => {
           At Nike, I worked on a highly tested, performant web app handling
           millions of visitors a month from all over the globe.
         </p>
-        <PlayButton />
       </SpanifiedSection>
       <Section className="work-overview">
         <h2>
@@ -523,6 +525,39 @@ const Projects = () => {
           h4 + p {
             font-style: italic;
             margin-top: 0.5rem;
+          }
+        }
+
+        :global(.relative-section) {
+          position: relative;
+        }
+
+        .header-with-button {
+          display: flex;
+          flex-direction: row;
+
+          h1 {
+            flex: 1;
+          }
+
+          :global(button) {
+            margin-top: -1.5rem;
+            margin-right: -3.5rem;
+
+            width: fit-content;
+            height: fit-content;
+
+            // screen size xs
+            @media (max-width: 500px) {
+              margin-top: -0.5rem;
+              margin-right: -1.5rem;
+            }
+
+            // screen size 2xs
+            @media (max-width: 375px) {
+              margin-top: -0.5rem;
+              margin-right: -0.5rem;
+            }
           }
         }
       `}</style>

@@ -49,6 +49,10 @@ const gamifyElement = async (containerElement) => {
   const ball = await createBall({
     app,
     engine,
+    spawn: {
+      x: containerBoundingRect.width - 120,
+      y: 60,
+    },
   });
 
   const dragPosRef = { current: undefined };
@@ -140,7 +144,7 @@ const gamifyElement = async (containerElement) => {
   let isGameDestroyed = false;
   const destroyGame = () => {
     if (isGameDestroyed) {
-      return;
+      return Promise.resolve();
     }
 
     // stop PIXI app
@@ -153,30 +157,43 @@ const gamifyElement = async (containerElement) => {
     // remove translation on spans
     const obstacleElements = container.querySelectorAll(`.${spanClassName}`);
 
-    obstacleElements.forEach((obstacle) => {
-      if (!obstacle.dataset.dirty) {
-        // eslint-disable-next-line no-param-reassign
-        obstacle.style.transform = "";
+    const transitionPromises = [...obstacleElements].map((obstacle) => {
+      return new Promise((resolve) => {
+        if (!obstacle.dataset.dirty) {
+          /* eslint-disable no-param-reassign */
+          obstacle.style.transitionProperty = "";
+          obstacle.style.transitionDuration = "";
+          obstacle.style.transitionTimingFunction = "";
+          obstacle.style.transform = "";
+          /* eslint-enable no-param-reassign */
+          resolve();
 
-        return;
-      }
+          return;
+        }
 
-      /* eslint-disable no-param-reassign */
-      obstacle.style.transitionProperty = "transform";
-      obstacle.style.transitionDuration = "1000ms";
-      obstacle.style.transitionTimingFunction = "ease-in-out";
-      obstacle.style.transform = "translate(0,0) rotate(0)";
+        /* eslint-disable no-param-reassign */
+        obstacle.style.transitionProperty = "transform";
+        obstacle.style.transitionDuration = "1000ms";
+        obstacle.style.transitionTimingFunction = "ease-in-out";
+        obstacle.style.transform = "translate(0,0) rotate(0)";
+        delete obstacle.dataset.dirty;
 
-      obstacle.addEventListener("transitionend", () => {
-        obstacle.style.transitionProperty = "";
-        obstacle.style.transitionDuration = "";
-        obstacle.style.transitionTimingFunction = "";
-        obstacle.style.transform = "";
+        obstacle.addEventListener("transitionend", () => {
+          obstacle.style.transitionProperty = "";
+          obstacle.style.transitionDuration = "";
+          obstacle.style.transitionTimingFunction = "";
+          obstacle.style.transform = "";
+          resolve();
+        });
+        /* eslint-enable no-param-reassign */
+      }).catch((error) => {
+        console.error(error);
       });
-      /* eslint-enable no-param-reassign */
     });
 
     isGameDestroyed = true;
+
+    return Promise.all(transitionPromises);
   };
 
   return destroyGame;

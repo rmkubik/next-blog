@@ -1,11 +1,16 @@
-import Icon from "../Icon";
+import IconButton from "../IconButton";
 
-const CloseButton = ({ destroyGame }) => {
+const CloseButton = ({ destroyGame, disabled }) => {
   return (
     <>
-      <button onClick={destroyGame} type="button">
-        <Icon>{"❌"}</Icon>
-      </button>
+      <IconButton
+        disabled={disabled}
+        label="Close button"
+        onClick={destroyGame}
+        type="button"
+      >
+        {"❌"}
+      </IconButton>
       <style jsx>
         {`
           button {

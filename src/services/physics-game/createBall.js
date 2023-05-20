@@ -1,4 +1,4 @@
-const createBall = async ({ app, engine }) => {
+const createBall = async ({ app, engine, spawn }) => {
   const { Body, Bodies, Composite } = await import("matter-js");
   const PIXI = await import("pixi.js");
 
@@ -10,7 +10,7 @@ const createBall = async ({ app, engine }) => {
 
   const radius = 12;
   const ball = {
-    body: Bodies.circle(20, 20, radius),
+    body: Bodies.circle(spawn.x, spawn.y, radius),
     graphics,
     radius,
   };
