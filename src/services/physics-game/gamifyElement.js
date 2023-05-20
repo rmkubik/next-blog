@@ -46,13 +46,26 @@ const gamifyElement = async (containerElement) => {
     spanClassName,
   });
 
+  const spawn = {
+    x: containerBoundingRect.width - 120,
+    y: 60,
+  };
+
+  const dragPrompt = document.createElement("span");
+
+  dragPrompt.textContent = "Drag me!";
+  dragPrompt.style.position = "absolute";
+  dragPrompt.style.top = `${spawn.y + 8}px`;
+  dragPrompt.style.left = `${spawn.x - 18}px`;
+  dragPrompt.style.textAlign = "left";
+  dragPrompt.style.backgroundColor = "white";
+
+  container.append(dragPrompt);
+
   const ball = await createBall({
     app,
     engine,
-    spawn: {
-      x: containerBoundingRect.width - 120,
-      y: 60,
-    },
+    spawn,
   });
 
   const dragPosRef = { current: undefined };
@@ -92,6 +105,7 @@ const gamifyElement = async (containerElement) => {
       Body,
       containerBoundingRect,
       dragPosRef,
+      dragPrompt,
     })
   );
 
@@ -151,9 +165,10 @@ const gamifyElement = async (containerElement) => {
     app.destroy(true);
     // stop Matter runner
     Runner.stop(runner);
-    // remove game div
+    // remove game div & prompt span
     gameElement.remove();
-    // remove spans?
+    dragPrompt?.remove();
+
     // remove translation on spans
     const obstacleElements = container.querySelectorAll(`.${spanClassName}`);
 

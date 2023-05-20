@@ -2,13 +2,15 @@ import difference from "./difference";
 import scale from "./scale";
 
 const onMouseUp =
-  ({ Body, containerBoundingRect, ball, dragPosRef }) =>
+  ({ Body, containerBoundingRect, ball, dragPosRef, dragPrompt }) =>
   (e) => {
     e.preventDefault();
 
     if (!dragPosRef.current) {
       return;
     }
+
+    dragPrompt?.remove();
 
     // eslint-disable-next-line no-param-reassign
     dragPosRef.current = {
