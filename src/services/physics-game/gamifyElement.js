@@ -6,7 +6,6 @@ import createBounds from "./createBounds";
 // eslint-disable-next-line no-unused-vars
 import createMatterRenderer from "./createMatterRenderer";
 import createObstacles from "./createObstacles";
-import spanifyElementContents from "./spanifyElementContents";
 import onMouseDown from "./onMouseDown";
 import onMouseMove from "./onMouseMove";
 import onMouseUp from "./onMouseUp";
@@ -21,8 +20,6 @@ const gamifyElement = async (containerElement) => {
 
   const spanClassName = "obstacle";
 
-  spanifyElementContents(container, spanClassName);
-
   container.style.position = "relative";
   container.style.zIndex = 1;
 
@@ -36,9 +33,6 @@ const gamifyElement = async (containerElement) => {
     width: container.offsetWidth,
   });
 
-  // gameElement is only used when we uncomment the
-  // the matter renderer debugger.
-  // eslint-disable-next-line no-unused-vars
   const gameElement = attachGameView(containerElement, app);
 
   await createBounds(container, engine);
@@ -111,10 +105,17 @@ const gamifyElement = async (containerElement) => {
       obstacle.graphics.position.set(x, y);
       // eslint-disable-next-line no-param-reassign
       obstacle.graphics.rotation = rotation;
+
+      const translateX = x - obstacle.startPos.x;
+      const translateY = y - obstacle.startPos.y;
+
       // eslint-disable-next-line no-param-reassign
-      obstacle.element.style.transform = `translate(${
-        x - obstacle.startPos.x
-      }px,${y - obstacle.startPos.y}px) rotate(${rotation}rad)`;
+      obstacle.element.style.transform = `translate(${translateX}px,${translateY}px) rotate(${rotation}rad)`;
+
+      if (translateX !== 0 || translateY !== 0 || rotation !== 0) {
+        // eslint-disable-next-line no-param-reassign
+        obstacle.element.dataset.dirty = true;
+      }
     });
 
     ball.graphics.position.set(ball.body.position.x, ball.body.position.y);
@@ -136,16 +137,46 @@ const gamifyElement = async (containerElement) => {
 
   Runner.run(runner, engine);
 
+  let isGameDestroyed = false;
   const destroyGame = () => {
-    // stop PIXI app
-    app.destroy();
-    // stop Matter runner
-    runner.stop();
-    // destroy canvases
-    // remove game divs
-    // remove spans
+    if (isGameDestroyed) {
+      return;
+    }
 
-    console.log({ app, runner });
+    // stop PIXI app
+    app.destroy(true);
+    // stop Matter runner
+    Runner.stop(runner);
+    // remove game div
+    gameElement.remove();
+    // remove spans?
+    // remove translation on spans
+    const obstacleElements = container.querySelectorAll(`.${spanClassName}`);
+
+    obstacleElements.forEach((obstacle) => {
+      if (!obstacle.dataset.dirty) {
+        // eslint-disable-next-line no-param-reassign
+        obstacle.style.transform = "";
+
+        return;
+      }
+
+      /* eslint-disable no-param-reassign */
+      obstacle.style.transitionProperty = "transform";
+      obstacle.style.transitionDuration = "1000ms";
+      obstacle.style.transitionTimingFunction = "ease-in-out";
+      obstacle.style.transform = "translate(0,0) rotate(0)";
+
+      obstacle.addEventListener("transitionend", () => {
+        obstacle.style.transitionProperty = "";
+        obstacle.style.transitionDuration = "";
+        obstacle.style.transitionTimingFunction = "";
+        obstacle.style.transform = "";
+      });
+      /* eslint-enable no-param-reassign */
+    });
+
+    isGameDestroyed = true;
   };
 
   return destroyGame;

@@ -10,7 +10,7 @@ import Link from "../src/components/Link";
 import PlayButton from "../src/components/physics-game/PlayButton";
 import spanifyReactChildren from "../src/services/physics-game/spanifyReactChildren";
 
-const SpanifiedSection = spanifyReactChildren(Section);
+const SpanifiedSection = spanifyReactChildren(Section, "obstacle");
 
 const Projects = () => {
   return (

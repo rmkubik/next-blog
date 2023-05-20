@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import gamifyElement from "../../services/physics-game/gamifyElement";
 import Icon from "../Icon";
@@ -12,19 +12,28 @@ const PlayButton = ({ target }) => {
   return show ? (
     <button
       onClick={(event) => {
-        const parentElement = target ?? event.target.closest("section");
+        const startGame = async () => {
+          const parentElement = target ?? event.target.closest("section");
 
-        const newDestroyGame = gamifyElement(parentElement);
+          const newDestroyGame = await gamifyElement(parentElement);
 
-        setDestroyGame(newDestroyGame);
-        setShow(false);
+          setDestroyGame(() => newDestroyGame);
+          setShow(false);
+        };
+
+        startGame();
       }}
       type="button"
     >
       <Icon>{"▶️"}</Icon>
     </button>
   ) : (
-    <CloseButton destroyGame={destroyGame} />
+    <CloseButton
+      destroyGame={() => {
+        setShow(true);
+        destroyGame();
+      }}
+    />
   );
 };
 
