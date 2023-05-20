@@ -2,6 +2,7 @@ import { Fragment, cloneElement } from "react";
 
 const SPANNABLE_ELEMENT_TYPES = new Set([
   "p",
+  "div",
   "h1",
   "h2",
   "h3",
@@ -46,11 +47,24 @@ const spanifyComponent = (component, className) => {
       );
     }
 
-    return cloneElement(
-      component,
-      undefined,
-      children.map((child) => spanifyComponent(child, className))
-    );
+    if (Array.isArray(children)) {
+      const newChildren = children
+        .map((child) => spanifyComponent(child, className))
+        .map((child, index) => {
+          // Proxy check to see if the child is a react element that
+          // can receive a key.
+          // Valid values should be string, object, and array
+          if (typeof child === "object" && !Array.isArray(child)) {
+            return cloneElement(child, { key: index });
+          }
+
+          return child;
+        });
+
+      return cloneElement(component, undefined, newChildren);
+    }
+
+    return cloneElement(component, undefined, spanifyComponent(children));
   }
 
   return component;

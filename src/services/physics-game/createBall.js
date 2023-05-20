@@ -19,7 +19,7 @@ const createBall = async ({ app, engine, spawn }) => {
   ball.body.collisionFilter.category = 0x0_01;
   ball.body.collisionFilter.mask = 0x1_11;
 
-  ball.graphics.beginFill("#FF6961");
+  ball.graphics.beginFill("#FF5951");
   ball.graphics.drawCircle(0, 0, ball.radius);
   ball.graphics.endFill();
 
