@@ -15,9 +15,17 @@ const Note = ({ icon = "🤔", children }) => {
       }
     };
 
-    document.addEventListener("click", handler);
+    const openEvent = new Event("note-open", { bubbles: true });
 
-    return () => document.removeEventListener("click", handler);
+    popOverRef.current.dispatchEvent(openEvent);
+
+    document.addEventListener("click", handler);
+    document.addEventListener("note-open", handler);
+
+    return () => {
+      document.removeEventListener("click", handler);
+      document.removeEventListener("note-open", handler);
+    };
   }, [showing]);
 
   const handleOpen = (e) => {
