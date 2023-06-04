@@ -16,7 +16,7 @@ const Note = ({ icon = "🤔", children }) => {
     middleware: [
       offset(10),
       // flip(),
-      shift(),
+      shift({ padding: 8 }),
       arrow({
         element: arrowEl,
       }),
