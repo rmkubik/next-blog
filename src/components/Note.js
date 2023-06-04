@@ -1,8 +1,29 @@
+import {
+  autoUpdate,
+  offset,
+  shift,
+  useFloating,
+  arrow,
+} from "@floating-ui/react-dom";
 import { useEffect, useRef, useState } from "react";
 
 const Note = ({ icon = "🤔", children }) => {
   const [showing, setShowing] = useState(false);
-  const popOverRef = useRef();
+  const popOverRef = useRef(null);
+  // eslint-disable-next-line unicorn/no-null
+  const [arrowEl, setArrowEl] = useState(null);
+  const { refs, floatingStyles, middlewareData } = useFloating({
+    middleware: [
+      offset(10),
+      // flip(),
+      shift(),
+      arrow({
+        element: arrowEl,
+      }),
+    ],
+    placement: "bottom-start",
+    whileElementsMounted: autoUpdate,
+  });
 
   useEffect(() => {
     if (!showing) {
@@ -48,13 +69,22 @@ const Note = ({ icon = "🤔", children }) => {
           className="opener"
           onClick={handleOpen}
           onKeyDown={handleOpen}
+          ref={refs.setReference}
           role="button"
           tabIndex="0"
         >
           {icon}
         </span>
         {showing ? (
-          <span className="content" ref={popOverRef}>
+          <span
+            className="content"
+            ref={(element) => {
+              popOverRef.current = element;
+              refs.setFloating(element);
+              // console.log(element);
+            }}
+            style={floatingStyles}
+          >
             <span
               className="closer"
               onClick={handleClose}
@@ -62,6 +92,7 @@ const Note = ({ icon = "🤔", children }) => {
               role="button"
               tabIndex="0"
             >{`❌`}</span>
+            <span className="arrow" ref={setArrowEl} />
             {children}
           </span>
         ) : undefined}
@@ -89,8 +120,11 @@ const Note = ({ icon = "🤔", children }) => {
             display: block;
             position: absolute;
 
-            top: 29px;
-            left: -10px;
+            /* top: 29px;
+            left: -10px; */
+
+            top: 0;
+            left: 0;
 
             padding: 12px;
             min-width: 250px;
@@ -105,13 +139,25 @@ const Note = ({ icon = "🤔", children }) => {
             border: 2px solid black;
             box-shadow: black 4px 4px;
 
-            &::before {
-              content: " ";
+            & .arrow {
               border-bottom: 10px solid black;
               border-left: 8px solid transparent;
               border-right: 8px solid transparent;
               position: absolute;
-              top: -12px;
+              left: ${
+                // eslint-disable-next-line unicorn/no-null
+                middlewareData.arrow?.x !== null &&
+                middlewareData.arrow?.x !== undefined
+                  ? `${middlewareData.arrow.x}px`
+                  : ""
+              };
+              top: ${
+                // eslint-disable-next-line unicorn/no-null
+                middlewareData.arrow?.y !== null &&
+                middlewareData.arrow?.y !== undefined
+                  ? `${middlewareData.arrow.y}px`
+                  : "-12px"
+              };
             }
           }
         }
