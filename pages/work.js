@@ -54,7 +54,8 @@ const Projects = () => {
         </p>
         <h3>Recent work experience</h3>
         <h4>
-          <Icon>{"🧩"}</Icon> Andrews McMeel Universal
+          <Icon>{"🧩"}</Icon>
+          <span>Andrews McMeel Universal</span>
           <span>Dec. 2022 - Present</span>
         </h4>
         <p> Software Engineer & Designer | Part-Time Contract, Remote</p>
@@ -67,7 +68,9 @@ const Projects = () => {
           <Icon>{"👇"}</Icon> <a href="#puzzle-society">Learn More</a>
         </p>
         <h4>
-          <Icon>{"🛡"}</Icon> Twilio <span>Oct. 2022 - Feb. 2023</span>
+          <Icon>{"🛡"}</Icon>
+          <span>Twilio</span>
+          <span>Oct. 2022 - Feb. 2023</span>
         </h4>
         <p>Technical Lead | Full-Time, Remote</p>
         <p>
@@ -98,7 +101,9 @@ const Projects = () => {
           <Icon>{"👇"}</Icon> <a href="#twilioquest">Learn More</a>
         </p>
         <h4>
-          <Icon>{"👟"}</Icon> Nike <span>Jan. 2018 - May 2019</span>
+          <Icon>{"👟"}</Icon>
+          <span>Nike</span>
+          <span>Jan. 2018 - May 2019</span>
         </h4>
         <p>Software Engineer | Full Time, Portland, OR</p>
         <p>
@@ -123,7 +128,8 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="puzzle-society">
-          <Icon>{"🧩"}</Icon> The Puzzle Society{" "}
+          <Icon>{"🧩"}</Icon>
+          <span>The Puzzle Society</span>
           <span>Dec. 2022 - Present</span>
         </h2>
         <p>
@@ -149,7 +155,9 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="twilioquest">
-          <Icon>{"🛡"}</Icon> TwilioQuest <span>Jun. 2019 - Feb. 2023</span>
+          <Icon>{"🛡"}</Icon>
+          <span>TwilioQuest</span>
+          <span>Jun. 2019 - Feb. 2023</span>
         </h2>
         <p>
           TwilioQuest was an educational video game designed to teach a new
@@ -223,7 +231,9 @@ const Projects = () => {
       </Section>
       <Section>
         <h2>
-          <Icon>{"🔥"}</Icon> Wildfire Swap <span>Apr. 2018 - Mar. 2021</span>
+          <Icon>{"🔥"}</Icon>
+          <span>Wildfire Swap</span>
+          <span>Apr. 2018 - Mar. 2021</span>
         </h2>
         <p>
           Wildfire Swap is a self published puzzle game I made that received
@@ -289,7 +299,9 @@ const Projects = () => {
       </Section>
       <Section>
         <h2>
-          <Icon>{"🏝"}</Icon> Island Maker <span>Feb. 2022 - Sep. 2022</span>
+          <Icon>{"🏝"}</Icon>
+          <span>Island Maker</span>
+          <span>Feb. 2022 - Sep. 2022</span>
         </h2>
         <p>
           Island Maker is a strategy game I created in 2022 for a game jam. I
@@ -340,7 +352,9 @@ const Projects = () => {
       </Section>
       <Section>
         <h2 id="nike">
-          <Icon>{"👟"}</Icon> Nike <span>Jan. 2018 - May. 2019</span>
+          <Icon>{"👟"}</Icon>
+          <span>Nike</span>
+          <span>Jan. 2018 - May. 2019</span>
         </h2>
         <p>
           My team built a user lifecycle (login, registration, etc.) JavaScript
@@ -506,8 +520,23 @@ const Projects = () => {
           }
 
           h2 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
+            :global(span):first-child {
+              align-self: center;
+            }
+
+            span:nth-child(2) {
+              align-self: center;
+
+              flex-grow: 1;
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+            }
+
             span:last-child {
-              float: right;
               font-size: 1.2rem;
             }
           }
@@ -515,10 +544,26 @@ const Projects = () => {
 
         :global(.work-overview) {
           h4 {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+
             margin-bottom: 0;
 
-            span {
-              float: right;
+            :global(span):first-child {
+              align-self: center;
+            }
+
+            span:nth-child(2) {
+              align-self: center;
+
+              flex-grow: 1;
+              margin-left: 0.5rem;
+              margin-right: 0.5rem;
+            }
+
+            span:last-child {
+              font-size: 1.2rem;
             }
           }
 
