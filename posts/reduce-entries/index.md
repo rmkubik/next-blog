@@ -1,10 +1,10 @@
 ---
 title: "Reduce Entries: Array Utility Function"
-date: 2021-11-02
-tags: javascript, reduce, entries, utility, function
+date: 2023-06-05
+tags: javascript, arrays, utils
 ---
 
-If you've ever needed to reduce an object to it's entries via JavaScript's `Object.entries` function, you'll sometimes find yourself needing to put an object back together again. I've needed this often enough that I encapsulated this into a little utility function called `reduceEntries`.
+If you've ever needed to break an object into its entries via JavaScript's `Object.entries` function, you'll sometimes need to put it back together again. I've needed this often enough that I encapsulated this functionality into a little utility function called `reduceEntries`.
 
 ## Source
 
@@ -22,10 +22,10 @@ function reduceEntries(entries) {
 
 ## Example Usage
 
-Here's a contrived example usage. There are more efficient ways to accomplish the example I've used below. There are also only 3 keys on my example object too, so who needs efficiency!
+Here's a contrived example usage. There are more efficient ways to accomplish the example I've used below. <Note icon="🤷‍♀️">There are also only 3 keys on my example object... so who needs efficiency!</Note>
 
 ```js
-// We have an object where we want to increment
+// We have an object and we want to increment
 // the value of every property on the object.
 const object = {
   key1: 3,
@@ -33,22 +33,20 @@ const object = {
   key3: 5,
 };
 
-// Convert all properties in the object to entries
+// Convert all properties on the object to entries
 // so we can iterate over them.
 const objectEntries = Object.entries(object);
 
-// Increment each key's value by 1.
-const incrementedEntries = objectEntries.map(
-  ([key, value]) => [
-    key,
-    value + 1,
-  ]
-);
+// Increment each entry's value by 1.
+const incrementedEntries = objectEntries.map(([key, value]) => [
+  key,
+  value + 1,
+]);
 
 // Rebuild the object
 const incrementedObject = reduceEntries(incrementedEntries);
 
-// What incremented object looks like now
+// What incrementedObject looks like now
 // {
 // 	key1: 4,
 // 	key2: 5,
