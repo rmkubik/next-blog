@@ -1,11 +1,13 @@
 import fs from "fs";
 import path from "path";
 
-import renderToString from "next-mdx-remote/render-to-string";
+import { serialize } from "next-mdx-remote/serialize";
 import matter from "gray-matter";
-import htmlToText from "html-to-text";
 import dateFnsCompareDesc from "date-fns/compareDesc";
 import readingTime from "reading-time";
+import { remark } from "remark";
+import remarkMdx from "remark-mdx";
+import strip from "remark-mdx-to-plain-text";
 
 import { forceDateToTimeZone } from "./utils";
 
@@ -75,15 +77,20 @@ const getFileContents = async (postsDir, slug) => {
   return "";
 };
 
-const summarize = (html) => {
-  const text = htmlToText.fromString(html, {
-    hideLinkHrefIfSameAsText: true,
-    ignoreHref: true,
-    ignoreImage: true,
-    noLinkBrackets: true,
-    uppercaseHeadings: false,
-  });
+const summarize = async (mdxString) => {
+  let text;
+
+  await remark()
+    .use(remarkMdx)
+    .use(strip)
+    .process(mdxString, (err, file) => {
+      if (err) throw err;
+
+      text = String(file);
+    });
   const trimmed = text.slice(0, 300);
+
+  // console.log({ text, trimmed });
 
   return `${trimmed}...`;
 };
@@ -149,6 +156,7 @@ const fixImageUrls = (content) => {
      */
     match = imageEmbedRegex.exec(content);
 
+    // eslint-disable-next-line unicorn/no-null
     if (match === null) {
       break;
     }
@@ -168,26 +176,28 @@ const fixImageUrls = (content) => {
   return output;
 };
 
-const getMdxSourceBySlug = async (postsDir, slug, components) => {
+const getMdxSourceBySlug = async (postsDir, slug) => {
   const fileContents = await getFileContents(postsDir, slug);
   const { content, data } = matter(fileContents);
   const imageFixedContent = fixImageUrls(content);
-  const source = await renderToString(imageFixedContent, { components });
-  const { renderedOutput } = source;
-  const readingTimeStats = readingTime(renderedOutput);
+  const source = await serialize(imageFixedContent);
+  const { compiledSource } = source;
+  const readingTimeStats = readingTime(compiledSource);
 
   return {
     frontmatter: fixFrontmatter(data),
     readingTime: readingTimeStats.text,
     slug,
     source,
-    summary: summarize(renderedOutput),
+    summary: await summarize(imageFixedContent),
   };
 };
 
 const readDir = async (dir) => {
+  const fileNames = await fs.promises.readdir(dir);
+
   return (
-    (await fs.promises.readdir(dir))
+    fileNames
       // Filter out all hidden dot files
       .filter((fileName) => fileName.charAt(0) !== ".")
       .map((fileName) => path.basename(fileName, path.extname(fileName)))
@@ -220,7 +230,7 @@ const getPageMetadataBySlug = async (root, slug) => {
     return undefined;
   }
 
-  const metadataContents = await fs.promises.readFile(metadataPath, "utf8");
+  const metadataContents = await fs.promises.readFile(metadataPath);
   const metadata = JSON.parse(metadataContents);
 
   return metadata;
@@ -258,7 +268,10 @@ const getPrevNextSlugs = async (postsDir, targetSlug) => {
 
   const slugIndex = sortedFiles.findIndex((file) => file.slug === targetSlug);
 
+  // eslint-disable-next-line unicorn/no-null
   const prev = slugIndex === 0 ? null : files[slugIndex - 1];
+
+  // eslint-disable-next-line unicorn/no-null
   const next = slugIndex === files.length - 1 ? null : files[slugIndex + 1];
 
   return {
@@ -273,8 +286,21 @@ const getPrevNextSlugs = async (postsDir, targetSlug) => {
   };
 };
 
+const getMdxSourceBySlugs = (directory, slugs) => {
+  const postPromises = slugs.map(async (slug) => {
+    const parsedDetails = await getMdxSourceBySlug(directory, slug, {});
+
+    return {
+      ...parsedDetails,
+    };
+  });
+
+  return Promise.all(postPromises);
+};
+
 export {
   getMdxSourceBySlug,
+  getMdxSourceBySlugs,
   getPageMetadataBySlug,
   getAllPageMetadata,
   getAllPostSlugs,

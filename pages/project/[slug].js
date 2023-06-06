@@ -1,5 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
-import hydrate from "next-mdx-remote/hydrate";
+import { MDXRemote } from "next-mdx-remote";
 
 import {
   getAllPostSlugs,
@@ -18,7 +18,6 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
     imageDir: "projects",
     slug,
   });
-  const content = hydrate(source, { components });
 
   return (
     <SlugContextProvider value={slug}>
@@ -27,7 +26,9 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
         <Section>
           <h1>{frontmatter.title}</h1>
         </Section>
-        <MDXProvider components={components}>{content}</MDXProvider>
+        <MDXProvider components={components}>
+          <MDXRemote {...source} />
+        </MDXProvider>
         <Section className="footer">
           {prev ? (
             <Link hideDots to={prev.slug}>{`⭠ ${prev.frontmatter.title}`}</Link>
@@ -69,22 +70,19 @@ const Post = ({ slug, source, frontmatter, prev, next }) => {
   );
 };
 
-export const getStaticProps = async ({ params }) => {
-  const components = createComponents({
-    imageDir: "projects",
-    slug: params.slug,
-  });
+const getStaticProps = async ({ params }) => {
   const { source, frontmatter, readingTime } = await getMdxSourceBySlug(
     "projects",
-    params.slug,
-    components
+    params.slug
   );
   const { prev, next } = await getPrevNextSlugs("projects", params.slug);
 
   return {
     props: {
       frontmatter,
+      // eslint-disable-next-line unicorn/no-null
       next: next ? next : null,
+      // eslint-disable-next-line unicorn/no-null
       prev: prev ? prev : null,
       readingTime,
       slug: params.slug,
@@ -93,7 +91,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
+const getStaticPaths = async () => {
   const slugs = await getAllPostSlugs("projects");
 
   return {
@@ -108,4 +106,5 @@ export const getStaticPaths = async () => {
   };
 };
 
+export { getStaticProps, getStaticPaths };
 export default Post;

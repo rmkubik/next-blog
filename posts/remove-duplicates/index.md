@@ -1,5 +1,5 @@
 ---
-title: "Remove Duplicates Array Utility Function"
+title: "Remove Duplicates: Array Utility Function"
 date: 2021-11-02
 tags: javascript, remove, duplicates, utility, function
 ---

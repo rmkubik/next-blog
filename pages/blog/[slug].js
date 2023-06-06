@@ -1,5 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
-import hydrate from "next-mdx-remote/hydrate";
+import { MDXRemote } from "next-mdx-remote";
 
 import {
   getAllPostSlugs,
@@ -28,7 +28,6 @@ const Post = ({
     imageDir: "posts",
     slug,
   });
-  const content = hydrate(source, { components });
   const formattedDate = new Intl.DateTimeFormat("en-US", {
     day: "numeric",
     month: "long",
@@ -68,7 +67,9 @@ const Post = ({
             </Center>
           </Section>
         )}
-        <MDXProvider components={components}>{content}</MDXProvider>
+        <MDXProvider components={components}>
+          <MDXRemote {...source} />
+        </MDXProvider>
         <Section className="footer">
           {prev ? (
             <Link
@@ -116,23 +117,21 @@ const Post = ({
   );
 };
 
-export const getStaticProps = async ({ params }) => {
-  const components = createComponents({
-    imageDir: "posts",
-    slug: params.slug,
-  });
+const getStaticProps = async ({ params }) => {
   const {
     source,
     frontmatter,
     readingTime,
     summary,
-  } = await getMdxSourceBySlug("posts", params.slug, components);
+  } = await getMdxSourceBySlug("posts", params.slug);
   const { prev, next } = await getPrevNextSlugs("posts", params.slug);
 
   return {
     props: {
       frontmatter,
+      // eslint-disable-next-line unicorn/no-null
       next: next ? next : null,
+      // eslint-disable-next-line unicorn/no-null
       prev: prev ? prev : null,
       readingTime,
       slug: params.slug,
@@ -142,7 +141,7 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
+const getStaticPaths = async () => {
   const slugs = await getAllPostSlugs("posts");
 
   return {
@@ -157,4 +156,5 @@ export const getStaticPaths = async () => {
   };
 };
 
+export { getStaticProps, getStaticPaths };
 export default Post;

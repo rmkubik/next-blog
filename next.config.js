@@ -1,6 +1,8 @@
 const path = require("path");
 
+// eslint-disable-next-line node/no-unpublished-require
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+// eslint-disable-next-line node/no-unpublished-require
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/u,
@@ -34,17 +36,24 @@ module.exports = withMDX({
      * public directory so they can be server statically.
      */
 
-    const supportedImageExtensions = [".png", ".jpg", ".gif", ".svg"];
     const postsDirName = "posts";
     const projectsDirName = "projects";
-    const outputDirectory = path.join(__dirname, "public", "images");
+    const publicDirectory = path.join(__dirname, "public");
+
+    const supportedImageExtensions = [".png", ".jpg", ".gif", ".svg"];
+    const imagesOutputDirectory = path.join(publicDirectory, "images");
+
+    const supportedVideoExtensions = [".mp4"];
+    const videosOutputDirectory = path.join(publicDirectory, "videos");
 
     config.plugins.push(
       // Clean out previously loaded images in case there are changes
       new CleanWebpackPlugin({
         cleanOnceBeforeBuildPatterns: [
-          path.join(outputDirectory, postsDirName),
-          path.join(outputDirectory, projectsDirName),
+          path.join(imagesOutputDirectory, postsDirName),
+          path.join(imagesOutputDirectory, projectsDirName),
+          path.join(videosOutputDirectory, postsDirName),
+          path.join(videosOutputDirectory, projectsDirName),
         ],
       }),
       // Copy images from posts dir to public dir
@@ -53,13 +62,23 @@ module.exports = withMDX({
           createCopyWebpackPattern(
             postsDirName,
             supportedImageExtensions,
-            outputDirectory
+            imagesOutputDirectory
           ),
           createCopyWebpackPattern(
             projectsDirName,
             supportedImageExtensions,
-            outputDirectory
+            imagesOutputDirectory
           ),
+          createCopyWebpackPattern(
+            postsDirName,
+            supportedVideoExtensions,
+            videosOutputDirectory
+          ),
+          // createCopyWebpackPattern(
+          //   projectsDirName,
+          //   supportedVideoExtensions,
+          //   videosOutputDirectory
+          // ),
         ],
       })
     );

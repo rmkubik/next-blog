@@ -16,7 +16,7 @@ import Grid from "../../../src/components/systems/Grid";
 import { randomString } from "../../../src/services/utils";
 import useSaveData from "../../../src/services/systems/useSaveData";
 
-import metadata from "./metadata";
+import metadata from "./metadata.json";
 
 const MAX_STARS = 3;
 const SEED_LENGTH = 12;
@@ -44,7 +44,7 @@ const spreadFlames = (tiles) => {
     const neighborLocations = getNeighbors(getCrossDirections, tiles, location);
     const neighbors = neighborLocations.map(getLocation(tiles));
 
-    return neighbors.some((neighbor) => neighbor === "🔥") ? "🔥" : tile;
+    return neighbors.includes("🔥") ? "🔥" : tile;
   }, tiles);
 };
 
@@ -82,6 +82,7 @@ const generateInitialTiles = (seed) => {
     };
   }, 3);
 
+  // eslint-disable-next-line unicorn/no-array-reduce
   const initialTiles = startingFireLocations.reduce(
     (currentTiles, location) => updateMatrix(location, "🔥", currentTiles),
     initialEmptyTiles
@@ -98,7 +99,7 @@ const isSimulationFinished = (tiles) => {
     const neighborLocations = getNeighbors(getCrossDirections, tiles, location);
     const neighbors = neighborLocations.map(getLocation(tiles));
 
-    if (tile === "🌱" && neighbors.some((neighbor) => neighbor === "🔥")) {
+    if (tile === "🌱" && neighbors.includes("🔥")) {
       isFinished = false;
     }
   }, tiles);
@@ -140,8 +141,6 @@ const FloodTheFlames = ({ initialSeed }) => {
       }
     }
   }, [tiles, saveData, setSaveData]);
-
-  console.log(saveData);
 
   return (
     <div className="main">

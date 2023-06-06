@@ -15,21 +15,19 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
     : "";
 
   return (
-    <>
-      <Section key={slug}>
-        <h2>{frontmatter.title}</h2>
-        <p>{`${category}${readingTime} - ${formattedDate}`}</p>
-        <p>{summary}</p>
-        <Link to={`/blog/${slug}`}>{"Read more"}</Link>
-      </Section>
-    </>
+    <Section key={slug}>
+      <h2>{frontmatter.title}</h2>
+      <p>{`${category}${readingTime} - ${formattedDate}`}</p>
+      <p>{summary}</p>
+      <Link to={`/blog/${slug}`}>{"Read more"}</Link>
+    </Section>
   );
 };
 
 const Blog = ({ posts }) => {
   return (
     <div className="blog">
-      <Head title={"Games & Code"} />
+      <Head title="Games & Code" />
       <Section>
         <h1>{"Games & Code"}</h1>
         <p>
@@ -72,6 +70,12 @@ const Blog = ({ posts }) => {
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-gap: 2rem;
+
+          // screen size md
+          @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+            grid-gap: 1rem;
+          }
 
           :global(section) {
             padding: 2rem;

@@ -62,7 +62,7 @@ const Head = ({
       <script
         async
         data-goatcounter="https://rmkubik.goatcounter.com/count"
-        data-goatcounter-settings='{"allow_local": true}'
+        data-goatcounter-settings='{"allow_local": false}'
         src="//gc.zgo.at/count.js"
       />
     </NextHead>
