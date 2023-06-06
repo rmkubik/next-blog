@@ -28,8 +28,29 @@ const CodeBlock = ({ children, className }) => {
   // we usually (always?) want to have syntax
   // highlighting on code blocks.
   if (!className) {
-    return <code>{children}</code>;
+    return (
+      <>
+        <code>{children}</code>
+        <style jsx>
+          {`
+            code {
+              color: rgb(214, 222, 235);
+              background-color: #011627;
+              padding: 0.2rem 0.3rem;
+              border-radius: 4px;
+            }
+          `}
+        </style>
+      </>
+    );
   }
+
+  /**
+   *     color: #d6deeb;
+    background-color: #011627;
+    padding: 0.2rem 0.3rem;
+    border-radius: 4px;
+   */
 
   return (
     <Highlight
