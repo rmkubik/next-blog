@@ -1,6 +1,6 @@
-const Icon = ({ children }) => (
+const Icon = ({ children, className = "" }) => (
   <>
-    <span aria-hidden role="img">
+    <span aria-hidden className={className} role="img">
       {children}
     </span>
     <style jsx>{`
