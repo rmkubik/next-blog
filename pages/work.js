@@ -44,7 +44,7 @@ const Projects = () => {
         </p>
       </SpanifiedSection>
       <Section className="work-overview">
-        <h2>
+        <h2 className="inline">
           <Icon>{"🛠"}</Icon> Work Overview
         </h2>
         <p>
@@ -479,7 +479,7 @@ const Projects = () => {
         </p>
       </Section>
       <Section>
-        <h2 id="contact">
+        <h2 className="inline" id="contact">
           <Icon>{"💬"}</Icon>
           {" Get in touch with me"}
         </h2>
@@ -519,7 +519,7 @@ const Projects = () => {
             }
           }
 
-          h2 {
+          h2:not(.inline) {
             display: flex;
             flex-direction: row;
             flex-wrap: nowrap;
