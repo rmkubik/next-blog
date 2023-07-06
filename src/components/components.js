@@ -14,6 +14,7 @@ import NoSsrIslandMakerEmbed from "./projects/NoSsrIslandMakerEmbed";
 import createVideo from "./Video";
 import Grid from "./Grid";
 import Note from "./Note";
+import Badge from "./Badge";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -28,6 +29,7 @@ const Pre = (props) => <div {...props} />;
 const createComponents = ({ imageDir, slug }) => {
   const components = {
     a: Anchor,
+    Badge,
     blockquote: BlockQuote,
     Center,
     CloudList,
