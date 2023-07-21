@@ -3,7 +3,6 @@ import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
 import { getMdxSourceBySlugs } from "../src/services/posts";
 import createImage from "../src/components/Image";
-import Icon from "../src/components/Icon";
 
 const Home = ({ posts, projects }) => {
   return (
