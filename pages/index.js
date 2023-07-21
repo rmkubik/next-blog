@@ -17,13 +17,14 @@ const Home = ({ posts, projects }) => {
         tabIndex="-1"
       />
       <Section>
-        <h1>{"Hi, I'm a Front End Software Engineer"}</h1>
+        <h1>{"Hi, I make games and websites"}</h1>
+        <p>{"Usually with JavaScript and React."}</p>
         <p>
-          {"I like working on highly interactive web apps. Usually with React."}
-        </p>
-        <p>
-          <Icon>{"👀"}</Icon>{" "}
-          <Link to="/work">I&apos;m looking for work! Learn more</Link>
+          {"Scroll down to see some of my games or check out my "}
+          <Link hideDots to="/work">
+            work history
+          </Link>{" "}
+          {" to see some websites."}
         </p>
       </Section>
       <div className="projects">
