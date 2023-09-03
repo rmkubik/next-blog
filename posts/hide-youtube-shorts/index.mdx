@@ -1,0 +1,64 @@
+---
+title: Hide YouTube Shorts Userscript
+date: 2023-09-03
+tags: javascript, userscript, tampermonkey
+---
+
+I don't like the "Shorts" feature on YouTube. I recently wrote a [usercript](https://en.wikipedia.org/wiki/Userscript) to hide the feature. I have a couple other posts about userscripts, which I use via [Tampermonkey](https://www.tampermonkey.net/index.php).
+
+- [Hide Elements Over Games on Itch.io with Tampermonkey](/blog/itch-tamper-monkey)
+- [Clean up your Twitter Experience with TamperMonkey](/blog/remove-twitter-distractions)
+
+## The UserScript
+
+In the past, I've used `MutationObserver` instances to watch for elements I want to remove. For this script, I was inspired a bit by the [Cypress](https://www.cypress.io/) automation testing library. I poll for a target selector until I find it the first time, remove it and then stop polling.
+
+```js
+// ==UserScript==
+// @name         Hide Youtube Shorts
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  Hide YouTube Shorts
+// @author       Ryan Kubik
+// @match        https://www.youtube.com/**/*
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=youtube.com
+// @grant        none
+// ==/UserScript==
+
+(function () {
+  "use strict";
+  function _findBySelector(selector, found) {
+    setTimeout(() => {
+      const element = document.querySelector(selector);
+
+      if (!element) {
+        _findBySelector(selector, found);
+      } else {
+        found(element);
+      }
+    }, 100);
+  }
+
+  async function findBySelector(selector) {
+    return new Promise((resolve, reject) => {
+      _findBySelector(selector, resolve);
+
+      setTimeout(() => reject(null), 5000);
+    });
+  }
+
+  async function run() {
+    const shortsSelector = "[is-shorts]";
+    const element = await findBySelector(shortsSelector);
+
+    if (!element) {
+      console.log(`Could not find element by selector: ${shortsSelector}`);
+      return;
+    }
+
+    element.style.display = "none";
+  }
+
+  run();
+})();
+```
