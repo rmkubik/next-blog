@@ -3,6 +3,7 @@ import Section from "../src/components/Section";
 import Footer from "../src/components/Footer";
 import { getMdxSourceBySlugs } from "../src/services/posts";
 import createImage from "../src/components/Image";
+import Icon from "../src/components/Icon";
 
 const Home = ({ posts, projects }) => {
   return (
@@ -36,7 +37,12 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={project.frontmatter.title}>
               <div>
-                <h3>{project.frontmatter.title}</h3>
+                <h3>
+                  {project.frontmatter.icon ? (
+                    <Icon>{project.frontmatter.icon} </Icon>
+                  ) : undefined}
+                  {project.frontmatter.title}
+                </h3>
                 <p>{project.frontmatter.description}</p>
                 <Link to={`project/${project.slug}`}>{"More details"}</Link>
                 <div className="image-container">
