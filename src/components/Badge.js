@@ -10,7 +10,7 @@ const Badge = ({ children, icon, color }) => {
         div {
           border: 2px solid black;
           background-color: ${color};
-          padding: 0.75rem 0.5rem;
+          padding: 0.3rem 0.4rem;
           display: inline-block;
 
           // This component will have an MDX value as children
