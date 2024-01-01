@@ -37,12 +37,12 @@ const Home = ({ posts, projects }) => {
           return (
             <Section key={project.frontmatter.title}>
               <div>
-                <h3>
+                <h2 style={{ marginTop: "0" }}>
                   {project.frontmatter.icon ? (
                     <Icon>{project.frontmatter.icon} </Icon>
                   ) : undefined}
                   {project.frontmatter.title}
-                </h3>
+                </h2>
                 <p>{project.frontmatter.description}</p>
                 <Link to={`project/${project.slug}`}>{"More details"}</Link>
                 <div className="image-container">
