@@ -15,6 +15,7 @@ import createVideo from "./Video";
 import Grid from "./Grid";
 import Note from "./Note";
 import Badge from "./Badge";
+import FilterList from "./FilterList";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -34,6 +35,7 @@ const createComponents = ({ imageDir, slug }) => {
     Center,
     CloudList,
     code: CodeBlock,
+    FilterList,
     Grid,
     h1: H1,
     h2: H2,

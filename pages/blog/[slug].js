@@ -14,6 +14,7 @@ import Head from "../../src/components/Head";
 import createComponents from "../../src/components/components";
 import Icon from "../../src/components/Icon";
 import Center from "../../src/components/Center";
+import { FilterProvider } from "../../src/services/useFilter";
 
 const Post = ({
   slug,
@@ -37,93 +38,91 @@ const Post = ({
   return (
     <SlugContextProvider value={slug}>
       <FrontmatterContextProvider value={frontmatter}>
-        <Head
-          description={frontmatter.description || summary}
-          title={frontmatter.title}
-        />
-        <Section>
-          <h1>{frontmatter.title}</h1>
-          <p>{formattedDate}</p>
-          <p>{readingTime}</p>
-        </Section>
-        {frontmatter.wip && (
-          <Section backgroundColor="gold">
-            <Center>
-              <Icon>{`🚧`}</Icon>
-              <Icon>{`🚧`}</Icon>
-              <Icon>{`🚧`}</Icon>
-              <p
-                style={{
-                  flex: 1,
-                  fontWeight: "bold",
-                  textAlign: "center",
-                }}
-              >
-                {`This post is still a work in progress!`}
-              </p>
-              <Icon>{`🚧`}</Icon>
-              <Icon>{`🚧`}</Icon>
-              <Icon>{`🚧`}</Icon>
-            </Center>
+        <FilterProvider>
+          <Head
+            description={frontmatter.description || summary}
+            title={frontmatter.title}
+          />
+          <Section>
+            <h1>{frontmatter.title}</h1>
+            <p>{formattedDate}</p>
+            <p>{readingTime}</p>
           </Section>
-        )}
-        <MDXProvider components={components}>
-          <MDXRemote {...source} />
-        </MDXProvider>
-        <Section className="footer">
-          {prev ? (
-            <Link
-              hideDots
-              to={`/blog/${prev.slug}`}
-            >{`⭠ ${prev.frontmatter.title}`}</Link>
-          ) : (
-            <div />
+          {frontmatter.wip && (
+            <Section backgroundColor="gold">
+              <Center>
+                <Icon>{`🚧`}</Icon>
+                <Icon>{`🚧`}</Icon>
+                <Icon>{`🚧`}</Icon>
+                <p
+                  style={{
+                    flex: 1,
+                    fontWeight: "bold",
+                    textAlign: "center",
+                  }}
+                >
+                  {`This post is still a work in progress!`}
+                </p>
+                <Icon>{`🚧`}</Icon>
+                <Icon>{`🚧`}</Icon>
+                <Icon>{`🚧`}</Icon>
+              </Center>
+            </Section>
           )}
-          {next ? (
-            <Link
-              hideDots
-              to={`/blog/${next.slug}`}
-            >{`${next.frontmatter.title} ⭢`}</Link>
-          ) : (
-            <div />
-          )}
-        </Section>
-        <style jsx>{`
-          :global(section) {
-            margin-bottom: 2rem;
-          }
-
-          :global(.footer) {
-            margin-bottom: 0;
-
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-
-            :global(*:last-child) {
-              text-align: right;
+          <MDXProvider components={components}>
+            <MDXRemote {...source} />
+          </MDXProvider>
+          <Section className="footer">
+            {prev ? (
+              <Link
+                hideDots
+                to={`/blog/${prev.slug}`}
+              >{`⭠ ${prev.frontmatter.title}`}</Link>
+            ) : (
+              <div />
+            )}
+            {next ? (
+              <Link
+                hideDots
+                to={`/blog/${next.slug}`}
+              >{`${next.frontmatter.title} ⭢`}</Link>
+            ) : (
+              <div />
+            )}
+          </Section>
+          <style jsx>{`
+            :global(section) {
+              margin-bottom: 2rem;
             }
-          }
 
-          h1 {
-            margin-bottom: 0.75rem;
-          }
+            :global(.footer) {
+              margin-bottom: 0;
 
-          p {
-            margin: 0;
-          }
-        `}</style>
+              display: grid;
+              grid-template-columns: 1fr 1fr;
+
+              :global(*:last-child) {
+                text-align: right;
+              }
+            }
+
+            h1 {
+              margin-bottom: 0.75rem;
+            }
+
+            p {
+              margin: 0;
+            }
+          `}</style>
+        </FilterProvider>
       </FrontmatterContextProvider>
     </SlugContextProvider>
   );
 };
 
 const getStaticProps = async ({ params }) => {
-  const {
-    source,
-    frontmatter,
-    readingTime,
-    summary,
-  } = await getMdxSourceBySlug("posts", params.slug);
+  const { source, frontmatter, readingTime, summary } =
+    await getMdxSourceBySlug("posts", params.slug);
   const { prev, next } = await getPrevNextSlugs("posts", params.slug);
 
   return {
