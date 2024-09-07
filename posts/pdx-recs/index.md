@@ -1,13 +1,10 @@
 ---
 title: My Portland Recommendations
-date: 2024-03-30
+date: 2024-09-07
 tags: pdx
-wip: true
 ---
 
-I've lived in Portland for eight years now and written and lost numerous lists of recommendations over that time. Here's a current list of stuff I like in town put somewhere I won't lose it.
-
-I split this list up by area of town (and nearby areas).
+I've lived in Portland for a while now. I've written and lost numerous lists of recommendations over that time. Here's a list of stuff I like in town put somewhere I can stop losing it. I split the list up by area of town (and nearby areas).
 
 Here's what the emoji mean, click one to filter just that category:
 <CloudList>
@@ -23,9 +20,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </CloudList>
 
-## Columbia River Gorge
-
 <FilterList>
+<FilterList.Header>
+## Columbia River Gorge
+</FilterList.Header>
 
 - 🥾📸⭐️ Lattourel Falls - good easy hike to upper fall, lower fall can be seen from trailhead
 - 📸 Multnomah Falls - this is the iconic fall, you need to get a ticket beforehand online, we didn't think the hike to get on top of the fall was worth it
@@ -37,9 +35,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Washington Park
-
 <FilterList>
+<FilterList.Header>
+## Washington Park
+</FilterList.Header>
 
 - 📸 Rose Garden
 - 📸 Japanese Garden
@@ -49,18 +48,20 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Forest Park
-
 <FilterList>
+<FilterList.Header>
+## Forest Park
+</FilterList.Header>
 
 - 🥾 Lower Macleay Park trailhead
 - 📸 Witch's Castle is on macleay trail
 
 </FilterList>
 
-## St. John's
-
 <FilterList>
+<FilterList.Header>
+## St. John's
+</FilterList.Header>
 
 - 📸🌳 Cathedral Park
 - 🍽️ Paiku - Pie shop
@@ -68,9 +69,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Mt. Tabor Area
-
 <FilterList>
+<FilterList.Header>
+## Mt. Tabor Area
+</FilterList.Header>
 
 - 🥾🌳 Mt. Tabor
 - 🍽️⭐️ Matt's BBQ Tacos @ Hinterland
@@ -78,9 +80,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Downtown
-
 <FilterList>
+<FilterList.Header>
+## Downtown
+</FilterList.Header>
 
 - 🌳 Waterfront Park
 - 🛍️ Powell's Books
@@ -95,9 +98,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## The Pearl
-
 <FilterList>
+<FilterList.Header>
+## The Pearl
+</FilterList.Header>
 
 - 🍽️⭐️ Mediterranean Exploration Company
 - 🍽️ Nuvrei
@@ -109,9 +113,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Inner SE PDX
-
 <FilterList>
+<FilterList.Header>
+## Inner SE PDX
+</FilterList.Header>
 
 - 🌳 Waterfront park east
 - 🍽️⭐️ Kachka
@@ -136,36 +141,40 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Hollywood
-
 <FilterList>
+<FilterList.Header>
+## Hollywood
+</FilterList.Header>
 
 - 🎬 Hollywood Theater
 - 🍽️⭐️ Gado Gado
 
 </FilterList>
 
-## Sauvie Island
-
 <FilterList>
+<FilterList.Header>
+## Sauvie Island
+</FilterList.Header>
 
 - 🌳 Beach
 - 🌳 Fruit picking
 
 </FilterList>
 
-## NW PDX
-
 <FilterList>
+<FilterList.Header>
+## NW PDX
+</FilterList.Header>
 
 - 🍽️⭐️ Top Burmese
 - 🍽️ Ranch Pizza
 
 </FilterList>
 
-## SE Hawthorne
-
 <FilterList>
+<FilterList.Header>
+## SE Hawthorne
+</FilterList.Header>
 
 - 🍽️ Apizza Scholl's
 - 🍽️⭐️ Master Kong's
@@ -174,9 +183,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## SE Division
-
 <FilterList>
+<FilterList.Header>
+## SE Division
+</FilterList.Header>
 
 - 🍽️ Salt & Straw
 - 🍽️⭐️ Pinolo Gelato
@@ -184,9 +194,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## SE Belmont
-
 <FilterList>
+<FilterList.Header>
+## SE Belmont
+</FilterList.Header>
 
 - 🌳 Laurelhurt Park
 - 🍽️⭐️ Bluto's
@@ -194,9 +205,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## SW PDX
-
 <FilterList>
+<FilterList.Header>
+## SW PDX
+</FilterList.Header>
 
 - 🍽️⭐️ Duck House
 - 🍽️⭐️ Dough Zone
@@ -207,9 +219,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## SE 28th
-
 <FilterList>
+<FilterList.Header>
+## SE 28th
+</FilterList.Header>
 
 - 🍽️ 28th ave food carts
 - 🍽️ Guero
@@ -218,18 +231,20 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## 82nd
-
 <FilterList>
+<FilterList.Header>
+## 82nd
+</FilterList.Header>
 
 - 🍽️⭐️ King's Bakery
 - 🍽️ HK Cafe
 
 </FilterList>
 
-## NE PDX
-
 <FilterList>
+<FilterList.Header>
+## NE PDX
+</FilterList.Header>
 
 - 🍻 Prost!
 - 🍽️ Food carts @ Prost!
@@ -237,9 +252,10 @@ Here's what the emoji mean, click one to filter just that category:
 
 </FilterList>
 
-## Other
-
 <FilterList>
+<FilterList.Header>
+## Other
+</FilterList.Header>
 
 - 🍽️ Pip's Donuts
 
