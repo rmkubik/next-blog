@@ -4,6 +4,7 @@ import Footer from "../src/components/Footer";
 import { getMdxSourceBySlugs } from "../src/services/posts";
 import createImage from "../src/components/Image";
 import Icon from "../src/components/Icon";
+import createVideo from "../src/components/Video";
 
 const Home = ({ posts, projects }) => {
   return (
@@ -33,6 +34,10 @@ const Home = ({ posts, projects }) => {
             imageDir: "projects",
             slug: project.slug,
           });
+          const Video = createVideo({
+            imageDir: "projects",
+            slug: project.slug,
+          });
 
           return (
             <Section key={project.frontmatter.title}>
@@ -52,6 +57,11 @@ const Home = ({ posts, projects }) => {
                       key={src}
                       src={src}
                     />
+                  ))}
+                  {project.frontmatter.videos?.map((src) => (
+                    <Video key={src}>
+                      <source src={src} type="video/mp4" />
+                    </Video>
                   ))}
                 </div>
               </div>
@@ -183,7 +193,12 @@ const Home = ({ posts, projects }) => {
 };
 
 export const getStaticProps = async () => {
-  const featuredProjectSlugs = ["island-maker", "wildfire-swap", "twilioquest"];
+  const featuredProjectSlugs = [
+    "caved",
+    "island-maker",
+    "wildfire-swap",
+    "twilioquest",
+  ];
   const projects = await getMdxSourceBySlugs("projects", featuredProjectSlugs);
 
   const featuredPostSlugs = [
