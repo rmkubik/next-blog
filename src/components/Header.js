@@ -16,9 +16,9 @@ const Header = () => {
         <Link hideArrow hideDots to="/blog">
           {"Blog"}
         </Link>
-        <Link hideArrow hideDots to="https://twitter.com/ryrykubes">
+        {/* <Link hideArrow hideDots to="https://twitter.com/ryrykubes">
           {"Twitter"}
-        </Link>
+        </Link> */}
         <Link hideArrow hideDots to="https://rmkubik.itch.io/">
           {"Games"}
         </Link>

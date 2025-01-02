@@ -16,6 +16,7 @@ import Grid from "./Grid";
 import Note from "./Note";
 import Badge from "./Badge";
 import FilterList from "./FilterList";
+import Columns from "./Columns";
 
 const Anchor = ({ children, href }) => {
   return (
@@ -35,6 +36,7 @@ const createComponents = ({ imageDir, slug }) => {
     Center,
     CloudList,
     code: CodeBlock,
+    Columns,
     FilterList,
     Grid,
     h1: H1,
