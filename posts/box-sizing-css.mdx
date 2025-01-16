@@ -7,7 +7,9 @@ category: til
 
 The CSS [basic box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) describes the layout of elemnts on the DOM via content, padding, borders, and margins. The basic model is shown below.
 
-```
+<Center>
+
+```txt
 +---------------------+
 |       Margin        |
 | +-----------------+ |
@@ -21,6 +23,8 @@ The CSS [basic box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_B
 | +-----------------+ |
 +---------------------+
 ```
+
+</Center>
 
 In the basic model, the width of an element refers only to its content box. However, with the css property `box-sizing` you can change this. By setting `box-sizing: border-box` you can directly set the width of the border box and the content box will change its size to accommodate. The default CSS box model can be used with `box-sizing: content-box`.
 
