@@ -1,28 +1,30 @@
 ---
 title: Cognitive overload in Drop Duchy and trade offs in design decisions
-date: 2025-05-13
+date: 2025-05-24
 tags: games
 ---
 
 ## Drop Duchy
 
-I've been watching [Voyix](https://www.youtube.com/watch?v=yetXqPNbobI) play [Drop Duchy](https://store.steampowered.com/app/2525310/Drop_Duchy/) a bunch since its recent release. It's a really engrossing game. I've noticed some of the mechanics coupled with lack of undo lead to frustrating mistakes. I'm curious to explore that frustration and what might be changed to ease it. I'm not trying to "fix" Drop Duchy, just trying to understand the impact of design decisions.
+I've been watching [Voyix](https://www.youtube.com/watch?v=yetXqPNbobI) play [Drop Duchy](https://store.steampowered.com/app/2525310/Drop_Duchy/) a bunch since its recent release. It's a really engrossing game.
 
 If you haven't seen it, Drop Duchy is a rouglike where the levels are sort of turn-based Tetris crossed with a tile laying game like Carcassonne. You stack tetromino shaped buildings and terrain on a narrow grid. You're trying to balance completing lines for resources and optimizing your building placements to gain more troops than your enemy.
+
+I've noticed some of the mechanics coupled with lack of undo lead to frustrating mistakes. I'm curious to explore that frustration and what might be changed to ease it. I'm not trying to "fix" Drop Duchy, just trying to understand the impact of design decisions.
 
 ![Drop Duchy screenshot](./drop-duchy-screenshot.png)
 
 > Drop Duchy game board, late in a round
 
-## Adding complexity to keep turn based interesting
+## Adding complexity to keep turn based gameplay interesting
 
 Trying to manage the chaos of dropping pieces in Tetris as they continue to fall faster and faster is fun. When you place a piece in the wrong spot, you either have more fun trying to recover or fail quickly and try to do better next time. It is fun to identify an ideal location for a piece, but the puzzle would lose its charm quickly without time pressure.
 
 Drop Duchy removes this time pressure. Then, in order to make the puzzle more interesting again it layers a ton of new mechanisms on top. You're no longer just considering the risk of waiting for the perfect I piece or if you can pull off a T spin to finish off row. Now, you also have to ensure your Watchtower is in range of as many plains tiles as possible while avoiding aligning it with the enemy Training Camp.
 
-In Tetris, all that matters is the position of the piece your placing and how that plays into the next piece and what you have banked. It is very easy to hold all this information in your head (until the game speeds out of your control). You never need to remember that 16 pieces ago you placed an enemy camp that will cause you to lose the round if you align one of your pieces with it later.
+In Tetris, all that matters is the position of the piece you're placing and how that plays into the next piece and what you have banked. It is very easy to hold all this information in your head (until the game speeds out of your control). You never need to remember that 16 pieces ago you placed an enemy camp that will cause you to lose the round if you align one of your pieces with it later.
 
-Drop Duchy has a lot of pieces like this enemy camp that you just have to try and keep in your mind the whole game. Sometimes a piece placement is trivial, you're just riding out the clock. Sometimes you have to consider how a placement affects 4 or 5 other pieces on the board. It is not always easy to remember which placement is which.
+Drop Duchy has a lot of pieces like this enemy camp that you just have to try and keep in your mind the whole game. Sometimes a piece placement is trivial, you're just riding out the clock. Sometimes you have to consider how a placement affects 4 or 5 other pieces on the board. It is not always easy to remember which placement is a high stakes one.
 
 Some example mechanics from Drop Duchy:
 
@@ -33,19 +35,19 @@ Some example mechanics from Drop Duchy:
 
 I really enjoy the puzzle of optimizing all these conditions and placements. It is especially spicy to decide when it is worth conceding something to your opponent to set up something better for yourself. "Should I give troops to my opponent's Watch Tower to pull of a sick Wood Clearer + Farm combo? I do really need food to upgrade one of my buildings right now and I can _probably_ pull off a good Horse Stable later to make up the difference..."
 
-I find these systems fascinating... when I remember to account for them all.
+These systems are fascinating... when you remember to account for them all.
 
 ## When is making mistakes fun?
 
-A big part of what I like about games is learning how a new system of rules interact with each other. If I make this apparently good move now, does it accidentally tank my run 15 moves later? How do I even decide what _is_ a good short term move at all? My favorite games reward continued layers of discovery. Moves I thought that were strictly good actually have trade offs I wasn't aware of as a beginner to the game.
+A big part of what I like about games is learning how new systems of rules interact. If I make this apparently good move now, does it accidentally tank my run 15 moves later? How do I even decide what _is_ a good short term move at all? My favorite games reward continued layers of discovery. Moves I thought that were strictly good actually have trade offs I wasn't aware of as a beginner to the game.
 
 Learning all these intricacies necessitates making a whole lot of mistakes. In fact, once I stop making mistakes and start feeling like I have "solved" a game (erroneously or not <Note>Sometimes I think it is easy to _think_ you have solved a game when in reality you're too new to understand other better options. That's a whole different interesting topic though.</Note>) I lose interest quickly. I get bored once I run out of mistakes to make!
 
 Drop Duchy's complex interlocking mechanics coupled with the push your luck element <Note>I first ran into the phrase "push your luck" as board game mechanics jargon. It's the core tension of the random pieces in Tetris. Will I get the piece I need in time? Should I hope for an I piece or just sacrifice this opportunity?</Note> guarantees there's no shortage of mistakes to make. Not all of the mistakes you can make in Drop Duchy feel rewarding to me though.
 
-I think this comes down to intentionality. If I make the choice to go for a risk I shouldn't have and then it doesn't pay off - that is a good mistake. If I bury an enemy Training Camp in the corner of the map and then at the end of the game forget about it and accidentally align a building with it later, that can feel bad.
+I think this comes down to intentionality. If I make the choice to go for a risky play and then it doesn't pay off - that is a good mistake. If I bury an enemy Training Camp in the corner of the map and then at the end of the game forget about it and accidentally align a building, that feels bad.
 
-Trying to hold a lot of information in my short term memory isn't a challenge I enjoy. When I get punished for failing to do that, I just feel like I made an unintentional mistake. I _intended_ not to align anything with that Training Camp, but I made that intention so long ago I forgot about it entirely. Now I am rudely reminded of failing that intention when my final misplay causes me to go from a victory to a defeat.
+Trying to hold a lot of information in my short term memory isn't a challenge I enjoy. When I get punished for failing to do that, it feels like I made an unintentional mistake. I _intended_ not to align anything with that Training Camp, but I made that intention so long ago I forgot about it entirely. Now I am rudely reminded of failing to do what I intended when my final misplay causes me to go from a victory to a defeat.
 
 ### Krak Des Chevaliers example
 
@@ -61,7 +63,7 @@ It's so easy to set up a big contiguous region of plains like above and then acc
 
 The Krak Des Chevaliers also doesn't display the calculation of total troops until the end of the round either. You might not even notice you messed up til 10 minutes later!
 
-I think making a mistake like this where you realize "oh shoot, there was no reason to do that". But I was too busy thinking about micro-optimizing some tiny gains and accidentally lost the whole war. As soon as you notice, you'd happily forgo the other stuff you were working on, but you cannot. There's no undo. And even if there were you sometimes don't notice til much later.
+This kind of "oh shoot, there was no reason to do that" mistake, where you're busy thinking about micro-optimizing some tiny gains with your current piece and accidentally lose the whole war feels bad. As soon as you notice, you'd happily forgo the other miniscule optimizations you were working on, but you cannot. There's no undo. And even if there were sometimes you don't notice until you'd have to undo half the game.
 
 ## Mitigating accidental mistakes
 
@@ -81,9 +83,11 @@ This can also give the player permission to just try stuff and see what happens 
 
 I'm not sure this alone would really solve the mistakes I see in Drop Duchy. You don't always realize you made a subtle, silly mistake until the round ends.
 
+Additionally, every time you place a piece in Drop Duchy you see a new upcoming piece appear. If you added undo, you'd either have some information you shouldn't about an upcoming piece or get to reroll a bad piece for free.
+
 ### Quicker gameplay sessions
 
-Drop Duchy being a roguelike can exacerbate the painful feeling of a mistake. Instead of just losing a 10 minute round due to a silly mistake, you have potentially wasted an hour. And then due to the randomnnes, you might never get to try this same scenario out again to learn from it.
+Drop Duchy's roguelike structure exacerbates the painful feeling of a mistake. Instead of just losing a 10 minute round due to a silly mistake, you have potentially wasted an hour long run. And then due to the randomness, you might never get to try this same scenario out again.
 
 Putting the gameplay for these levels into a different wrapper could alleviate the weight of the mistake. This is obviously a pretty drastic change if you want to change the meta structure.
 
@@ -103,7 +107,7 @@ It is easier to be strict about placement order in Island Maker since the placem
 
 Drop Duchy doesn't have this luxury due to the core Tetris stacking mechanic. You can only "save" a piece placed on the board or in your bank for so long before you have to bury it. This is essential to keep the cool push your luck feeling working.
 
-Because it is harder to order your placement pieces, I'm not sure the Island Maker solution of "only have effects trigger on the piece that is placed" would work as well. It's far more generous in Drop Duchy to allow you to order the pieces in either way.
+Because it is harder to order the placement of your pieces, I'm not sure the Island Maker solution of "only have effects trigger on the piece that is placed" would work as well. It's far more generous in Drop Duchy to allow you to order the pieces in either way.
 
 You also have much less control in how the pieces are ordered in Drop Duchy. Everything is stuck into a random pool and comes out however your luck shakes out. This can set you up for amazing combos or make some placements you'd like just to be totally impossible.
 
@@ -113,7 +117,7 @@ In Island Maker, you start with a much smaller initially random queue and then n
 
 Some pieces in Drop Duchy convey what they're doing and how they interact with each others. Some do not. I wonder if there are ways to signify these effects better.
 
-In particular, Drop Duchy doesn't show "current" totals for values that change as the round progresses. I do think this would purely be improve the experience for players. Instead of _only_ computing the strength of a dynamically computed building at the end of the game, recompute it after each placement. I would imagine this isn't in the game because of a technical limitation vs. an intentional design choice. Who knows though, perhaps the dev prefers the player to try and hold that in their head.
+In particular, Drop Duchy doesn't show "current" totals for values that change as the round progresses. Instead of _only_ computing the strength of a dynamically computed building at the end of the game, recompute it after each placement. I would imagine this isn't in the game because of a technical limitation vs. an intentional design choice. Who knows though, perhaps the dev prefers the player to try and hold that in their head.
 
 This topic always reminds me of Justin Ma and Matthew Davis talking about how [Into the Breach's interface was a nightmare to make and the key to its greatness](https://www.rockpapershotgun.com/into-the-breach-interface-design). <Note>I first heard Justin Ma talk about this on the Eggplant Show Podcast, back when it was still the Spelunky Showlike. [12: Into the Breach with Justin Ma](https://eggplant.show/12-into-the-breach-with-justin-ma).</Note>
 
