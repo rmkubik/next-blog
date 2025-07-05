@@ -1,0 +1,63 @@
+---
+title: '"Offset" constants are confusing'
+date: 2025-07-05
+tags: software
+---
+
+"[Magic numbers](<https://en.wikipedia.org/wiki/Magic_number_(programming)>)" are commonly maligned in code because they're confusing. They don't communicate the intent of the code.
+
+```ts
+avatarContainer.position.x += 32;
+```
+
+Why is there a random **32** here? If I add more content to this container, how much should I adjust by? Should I change it at all?
+
+Sometimes, especially in UI-related code, I see these magic numbers stuck into a constant with "offset" or "adjust" in the name. We know not to let the **32** float on its own without a variable declaration. But how helpful is this name?
+
+```ts
+const SIMPLIFIED_VIEW_OFFSET = 32;
+avatarContainer.position.x += SIMPLIFIED_VIEW_OFFSET;
+```
+
+Saying "this is an offset" doesn't give me clues about how to change this number in the future. Okay, sure, we're offsetting something in this view, but _why_ is this offset **32**? I still don't know how to maintain this value in the future.
+
+Often, these values are just an arbitrary number of pixels that a developer thought looked good enough. What other elements of the design caused this number of pixels to look right?
+
+In reality, these should probably not be a single baked value but actually be a composition of more meaningful variables:
+
+```ts
+const SIMPLIFIED_VIEW_OFFSET = (AVATAR_WIDTH + 2 * AVATAR_BORDER_WIDTH) / 2;
+```
+
+or even:
+
+```ts
+const BORDERED_AVATAR_WIDTH = AVATAR_WIDTH + 2 * AVATAR_BORDER_WIDTH;
+const SIMPLIFIED_VIEW_OFFSET = BORDERED_AVATAR_WIDTH / 2;
+```
+
+Looking for the logic behind where a good-looking number came from really helps future developers modify the code.
+
+I'll take:
+
+```ts
+const hourInMs = 60 * 60 * 1000;
+const dayInMs = 24 * hourInMs;
+const delayedCheckTimeout = dayInMs * 2;
+```
+
+over:
+
+```ts
+const delayedCheckTimeout = 172_800_000;
+```
+
+any day.
+
+Although something like a `Duration` from [luxon](https://moment.github.io/luxon/api-docs/index.html#duration) is even better here... <Note>Working with dates and times is a mess... It's a great place to use a library!</Note>
+
+```ts
+Duration.fromObject({ days: 2 }).toMillis();
+```
+
+It can mean a little extra effort beyond picking your initial magic number to understand _why_ it works. Sometimes it really is just a magic number - but usually there's a little more going on. If you can put that in your code it'll save someone a lot of pain in the future.
