@@ -1,3 +1,5 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
 import { getAllPosts } from "../../src/services/posts";
 import generateRssFeed from "../../src/services/generateRssFeed";
 import Link from "../../src/components/Link";
@@ -69,6 +71,50 @@ const Posts = ({ posts }) => {
   );
 };
 
+const Tag = ({ children, tag, onSelect, selectedTag }) => {
+  const spanRef = useRef();
+  const handleClick = useCallback(() => {
+    onSelect(tag);
+  }, [tag, onSelect]);
+
+  useEffect(() => {
+    if (tag === selectedTag) {
+      spanRef.current.classList.add("selected");
+    } else {
+      spanRef.current.classList.remove("selected");
+    }
+  }, [tag, selectedTag]);
+
+  return (
+    <>
+      <span
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        ref={spanRef}
+        role="button"
+        tabIndex={0}
+      >
+        {children}
+      </span>
+      <style jsx>{`
+        span {
+          cursor: pointer;
+          background-color: aliceblue;
+
+          &:hover,
+          &.selected {
+            background-color: blue;
+            color: white;
+
+            display: inline-block;
+            transform: rotate(-6deg);
+          }
+        }
+      `}</style>
+    </>
+  );
+};
+
 const FEATURED_SLUGS = new Set([
   "cognitive-overload-drop-duchy",
   "apline-js-spoiler",
@@ -77,8 +123,17 @@ const FEATURED_SLUGS = new Set([
   "eslint-internal-state",
 ]);
 const Blog = ({ posts }) => {
-  // console.log({ posts, tags: posts.map((post) => post.frontmatter.tags) });
-  const featuredPosts = posts.filter((post) => FEATURED_SLUGS.has(post.slug));
+  const [filter, setFilter] = useState("featured");
+
+  const featuredPosts = useMemo(() => {
+    switch (filter) {
+      case "featured":
+        return posts.filter((post) => FEATURED_SLUGS.has(post.slug));
+      default:
+        return posts.filter((post) => post.frontmatter.tags?.includes(filter));
+    }
+  }, [posts, filter]);
+
   const remainingPosts = posts.filter((post) => !featuredPosts.includes(post));
 
   return (
@@ -86,7 +141,24 @@ const Blog = ({ posts }) => {
       <Head title="Words words words" />
       <Section className="intro">
         <h1>{"Words words words"}</h1>
-        <p>{"Software and games and books and other words"}</p>
+        <p className="tags">
+          <Tag onSelect={setFilter} selectedTag={filter} tag="software">
+            Software
+          </Tag>{" "}
+          and{" "}
+          <Tag onSelect={setFilter} selectedTag={filter} tag="games">
+            games
+          </Tag>{" "}
+          and{" "}
+          <Tag onSelect={setFilter} selectedTag={filter} tag="books">
+            books
+          </Tag>{" "}
+          and{" "}
+          <Tag onSelect={setFilter} selectedTag={filter} tag="featured">
+            featured
+          </Tag>{" "}
+          words
+        </p>
       </Section>
       <Posts posts={featuredPosts} />
       <Section className="intro">
@@ -107,6 +179,7 @@ const Blog = ({ posts }) => {
             margin: 0;
           }
         }
+
         :global(.posts) {
           margin-bottom: 2rem;
         }
