@@ -1,7 +1,7 @@
 ---
 title: Accessibility for Games - A Jumping Off Point
 date: 2019-07-04
-tags: accessibility, resources, games, access, a11y, ally, jumping, off, point, start
+tags: games
 category: til
 ---
 
@@ -12,7 +12,7 @@ https://twitter.com/ryrykubes/status/1145719672114802688
 
 > Does anyone have some good resources for learning more about accessibility in games? I've seen some pieces about contrast and color choices, but would love more in depth information! Particularly curious about mobile accessibility too!
 
-## Game Maker's Toolkit - Designing for Disablity
+## Game Maker's Toolkit - Designing for Disability
 
 https://www.youtube.com/playlist?list=PLc38fcMFcV_vvWOhMDriBlVocTZ8mKQzR
 

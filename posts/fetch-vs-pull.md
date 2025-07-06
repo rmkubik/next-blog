@@ -1,7 +1,7 @@
 ---
 title: Git Pull vs Fetch
 date: 2018-02-08T03:24:53.000Z
-tags: git, bash, pull, fetch
+tags: git, software
 category: til
 ---
 

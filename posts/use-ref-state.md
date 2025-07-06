@@ -1,7 +1,7 @@
 ---
 title: 🎣 useRefState Hook - Access state outside of a component
 date: 2019-09-03
-tags: useRef, useState, hook, react, state, ref, current
+tags: javascript, react, software
 category: til
 ---
 
@@ -56,12 +56,9 @@ Now, every time that our `state` variable changes we will update our `stateRef` 
 const ComponentWithEvent = () => {
   const [state, setState] = useState(0);
   const stateRef = useRef(state);
-  useEffect(
-    () => {
-      stateRef.current = state;
-    },
-    [state],
-  );
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -83,12 +80,9 @@ Putting this all together, we end up with a custom `useRefState` hook! This will
 const useRefState = (initialValue) => {
   const [state, setState] = useState(initialValue);
   const stateRef = useRef(state);
-  useEffect(
-    () => {
-      stateRef.current = state;
-    },
-    [state],
-  );
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
   return [stateRef, setState];
 };
 ```

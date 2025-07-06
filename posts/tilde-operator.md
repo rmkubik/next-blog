@@ -1,7 +1,7 @@
 ---
 title: JavaScript Bitwise Operators
 date: 2018-02-05T20:48:43.000Z
-tags: javascript, tilde, bitwise, operators
+tags: javascript, software
 category: til
 ---
 

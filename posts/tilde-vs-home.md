@@ -1,7 +1,7 @@
 ---
 title: ~ vs. $HOME in bash
 date: 2018-01-19T20:23:35.000Z
-tags: bash, script
+tags: bash
 category: til
 ---
 

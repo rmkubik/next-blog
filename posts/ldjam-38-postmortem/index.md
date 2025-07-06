@@ -1,7 +1,7 @@
 ---
 title: "Ludum Dare 38 Postmortem: A Social Network"
 date: 2017-04-29
-tags: ldjam, ludum, dare, 38, javascript, phaser
+tags: ldjam38, javascript, games
 ---
 
 ## Tools & Tech

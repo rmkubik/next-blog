@@ -1,7 +1,7 @@
 ---
-title: 'Testing for a Race Condition in Async/Await Code'
+title: "Testing for a Race Condition in Async/Await Code"
 date: 2019-10-31
-tags: async, await, race, condition, test, function, sleep, timeout, time, out, asynchronous, bug, debug
+tags: javascript, software, testing, debugging
 category: til
 ---
 
@@ -16,7 +16,7 @@ Asynchronous functions resolving at different times can cause bugs that don't ap
 Because of their inconsistency, bugs caused by race conditions can be very tricky to reproduce. One way to reproduce a race condition like this is to intentionally introduce delay into an asynchronous function that would normally execute first. The following bit of code will create a 5 second timeout and wait for it to resolve before continuing.
 
 ```js
-await (function() {
+await (function () {
   return new Promise((resolve) => setTimeout(resolve, 5000));
 })();
 ```

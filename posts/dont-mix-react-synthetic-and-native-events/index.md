@@ -1,7 +1,7 @@
 ---
 title: Don't Mix React Synthetic Events with Native DOM Events
 date: 2020-06-06
-tags: javascript, react, synthetic, events, native, DOM, events
+tags: javascript, react, software
 category: til
 ---
 

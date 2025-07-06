@@ -1,11 +1,11 @@
 ---
 title: Json File Manipulation with Node
 date: 2018-03-11T21:43:03.000Z
-tags: json, node, require, stringify, javascript
+tags: javascript, software
 category: til
 ---
 
-In my office we have some large JSON files that occasionally need duplicated updates in mutliple places. Node.js makes working with these files incredibly easy with two features.
+In my office we have some large JSON files that occasionally need duplicated updates in multiple places. Node.js makes working with these files incredibly easy with two features.
 
 The first is that JSON files can be required as you import a module (`require('file.json')`) and then manipulated as if it were any other JavaScript object.
 
@@ -16,13 +16,13 @@ Finally, you can write your manipulated file string back into a .json file with 
 ## examples
 
 ```javascript
-const fs = require('fs');
-const jsonFile = require('./file.json');
+const fs = require("fs");
+const jsonFile = require("./file.json");
 
 jsonFile.newAttribute = false;
 delete jsonFile.oldAttribute;
 
-fs.writeFile('newFile.json', JSON.stringify(jsonFile, null, 2));
+fs.writeFile("newFile.json", JSON.stringify(jsonFile, null, 2));
 ```
 
 ## sources

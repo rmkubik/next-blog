@@ -1,7 +1,7 @@
 ---
 title: What I Read in 2023
 date: 2024-03-10
-tags: reading, 2023-review
+tags: books, 2023-review
 ---
 
 I like to reflect on the books I read in previous years. 2024 has been off to a pretty busy start for me and it has taken me a long time to get around to this post. Because of that, I'm going to keep my notes on each book short.

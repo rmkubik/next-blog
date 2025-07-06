@@ -3,7 +3,7 @@ title: "Wildfire Swap: A puzzle game inspired by fires in the Pacific Northwest"
 desc: "My first time experience with wildfires after moving to the PNW."
 featuredImage: "wildire-worldmap-idle.2019-10-03 21_33_13.gif"
 date: 2019-11-27
-tags: indie, puzzle, game, wildfire, swap, fire, forest, pacific, north, west, pnw, northwest
+tags: games, pdx
 ---
 
 ![./wildfire-title-with-logo-trimmed.png](./wildfire-title-with-logo-trimmed.png)

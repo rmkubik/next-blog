@@ -2,7 +2,7 @@
 title: "Slipways Ranked Run: Week #6"
 desc: "What I learned from my Slipways ranked run from week #6."
 date: 2021-07-09
-tags: slipways, puzzle, grand, strategy, tactics, weekly
+tags: games
 ---
 
 ## What is Slipways

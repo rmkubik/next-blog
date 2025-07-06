@@ -1,7 +1,7 @@
 ---
 title: When was this file added to version control?
 date: 2019-05-11
-tags: git, version, source, control, file, added, date, time
+tags: git, software
 category: til
 ---
 

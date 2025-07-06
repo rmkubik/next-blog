@@ -1,7 +1,7 @@
 ---
-title: 'Bose QC35 II: Fix Static Issue, Reinstall Firmware, and a Short Review'
+title: "Bose QC35 II: Fix Static Issue, Reinstall Firmware, and a Short Review"
 date: 2020-09-17
-tags: bose, headphone, qc35, qc35ii, qc352, review, static, issue, firmware, reinstall, update
+tags: review
 category: til
 ---
 

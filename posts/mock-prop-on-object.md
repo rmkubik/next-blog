@@ -1,7 +1,7 @@
 ---
 title: Mocking a property using getters and setters
 date: 2018-01-19T00:10:11.000Z
-tags: javascript, property, mock, test
+tags: javascript, software, testing
 category: til
 ---
 
@@ -10,11 +10,11 @@ This is the [getter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Ref
 ```javascript
 const test = {
   set val(val) {
-    console.log('setting');
+    console.log("setting");
     this._val = val;
   },
   get val() {
-    console.log('getting');
+    console.log("getting");
     return this._val;
   },
   _val: 0,
@@ -26,13 +26,13 @@ Leveraging this pattern its possible to detect when a variable has been set or g
 ## examples
 
 ```javascript
-it('mocks the value property on originalObject', () => {
+it("mocks the value property on originalObject", () => {
   const originalObject = {
-    value: '',
+    value: "",
   };
 
   // add new property to hold the value of the property
-  originalObject._val = '';
+  originalObject._val = "";
 
   // create a mocked function in jest
   const mockedSetter = jest.fn();
@@ -43,13 +43,13 @@ it('mocks the value property on originalObject', () => {
   });
 
   // override the value property definition with our mocked setter
-  Object.defineProperty(originalObject, 'value', {
+  Object.defineProperty(originalObject, "value", {
     set: mockedSetter,
     configurable: true,
   });
 
   // assign to the newly mocked proprty
-  originalObject.value = 'test';
+  originalObject.value = "test";
 
   // expect our value property was set exactly once
   expect(mockedSetter.mock.calls.length).toBe(1);

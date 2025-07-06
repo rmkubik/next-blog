@@ -1,7 +1,7 @@
 ---
 title: Generate Array of Increasing Indices
 date: 2018-10-02T01:52:21.000Z
-tags: javascript, array, generate, increasing
+tags: javascript, software
 category: til
 ---
 

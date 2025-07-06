@@ -1,7 +1,7 @@
 ---
 title: What I played in 2021
 date: 2022-01-23
-tags: top, games, 2021, played, list, goty
+tags: goty, games
 ---
 
 Each year I reflect on the games I played in the previous year. Here’s [last year’s reflection](/blog/what-i-played-2020).

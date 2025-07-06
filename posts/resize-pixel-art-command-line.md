@@ -1,7 +1,7 @@
 ---
 title: How to Resize Pixel Art on the Command Line
 date: 2019-02-18
-tags: pixel, art, resize, imagemagick, convert
+tags: imagemagick, software, games
 category: til
 ---
 

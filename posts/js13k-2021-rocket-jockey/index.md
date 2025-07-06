@@ -2,7 +2,7 @@
 title: "JS13k 2021: Rocket Jockey Postmortem"
 desc: "Some lessons I learned building Rocket Jockey in 13kb for JS13k 2021."
 date: 2021-09-21
-tags: javascript, js13k, 2021, rocket, jockey, captain, pick-a-card, pick, card, asteroid
+tags: javascript, js13k, games
 ---
 
 [The JS13k jam](https://js13kgames.com/) is one of my favorite game jams. The challenge is to make a game in JavaScript, in under 13kb over the course of a month. I really enjoy the explicit challenge of making something small in JavaScript. I love the language, and this jam challenges me to use lighter parts of the ecosystem. Additionally, month long jams are my favorite scope these days. They give me plenty of time to ruminate and be unproductive.

@@ -1,7 +1,7 @@
 ---
 title: Basic JavaScript Finite State Machine
 date: 2018-04-13T06:52:57.000Z
-tags: fsm, state, machine, javascript, game
+tags: javascript, games, software
 category: til
 ---
 
@@ -26,13 +26,13 @@ function fsm(states, initialState) {
   this.currentState = initialState;
 
   return {
-    action: function(action) {
+    action: function (action) {
       if (states[this.currentState][action]) {
         states[this.currentState][action]();
       }
     },
 
-    transition: function(state) {
+    transition: function (state) {
       this.currentState = state;
     },
 
@@ -67,33 +67,33 @@ The `paused` and `playing` states alternate back and forth when `play` and `paus
 this.state = fsm(
   {
     playerUnmoved: {
-      playerMoved: function() {
-        this.state.transition('playing');
+      playerMoved: function () {
+        this.state.transition("playing");
       }.bind(this),
     },
     paused: {
-      play: function() {
-        this.state.transition('playing');
+      play: function () {
+        this.state.transition("playing");
       }.bind(this),
     },
     playing: {
-      pause: function() {
-        this.state.transition('paused');
+      pause: function () {
+        this.state.transition("paused");
       }.bind(this),
     },
   },
-  'playerUnmoved',
+  "playerUnmoved"
 );
 
-this.state.action('playerMoved'); // fsm current state from `playerUnmoved` to `paused`
+this.state.action("playerMoved"); // fsm current state from `playerUnmoved` to `paused`
 
-this.state.action('pause'); // fsm current state from `playing` to `paused`
+this.state.action("pause"); // fsm current state from `playing` to `paused`
 
-this.state.action('play'); // fsm current state from `paused` to `playing`
+this.state.action("play"); // fsm current state from `paused` to `playing`
 
-this.state.action('play'); // fsm current state stays `playing`
+this.state.action("play"); // fsm current state stays `playing`
 
-if (this.state.currrentState === 'playing') {
+if (this.state.currrentState === "playing") {
   // increment the timer's counter
 }
 ```

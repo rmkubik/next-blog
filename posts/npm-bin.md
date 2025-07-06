@@ -1,7 +1,7 @@
 ---
 title: Use NPM's .bin directory instead of globally installing dependencies
 date: 2018-02-05T20:17:13.000Z
-tags: javascript, npm, global, dependency
+tags: javascript, software
 category: til
 ---
 

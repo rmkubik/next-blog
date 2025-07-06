@@ -1,7 +1,7 @@
 ---
 title: "All the Indie Puzzle Games at PAX West 2019"
 date: 2019-08-29
-tags: indie, puzzle, games, pax, west, 2019
+tags: pax west 2019, games
 ---
 
 I'm headed to PAX West for the first time this year. I put together this list of all the indie puzzley games I'm aware of at the showcase events during PAX weekend. If there are any I've missed, please let me know so I can update the list.

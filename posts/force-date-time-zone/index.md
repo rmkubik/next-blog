@@ -1,7 +1,7 @@
 ---
 title: Force date to a given time zone
 date: 2021-08-14
-tags: javascript, date, time, zone, PST, GMT, format
+tags: javascript, software
 ---
 
 ## Why do I need this?

@@ -1,7 +1,7 @@
 ---
 title: 10 Games That Influenced My Tastes
 date: 2021-12-25
-tags: personal, review, games, influenced, taste
+tags: review, games
 ---
 
 I listen to a gaming podcast called [Gametalk](https://soundcloud.com/user-749587577) put on by some of my friends. Their 100th episode was titled “[The Games That Define Us](https://soundcloud.com/user-749587577/the-games-that-define-us)”. In this episode, they each listed the 10 games that had the largest impact on their tastes. This meant including not just favorite games, but the ones that introduced you to a genre. Or the one that got you started making games. I wanted to give this exercise a try. So here’re the 10 games that have most influenced my tastes as a gamer and game developer.

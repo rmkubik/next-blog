@@ -1,7 +1,7 @@
 ---
 title: Host a simple local web server using http-server
 date: 2019-04-04
-tags: javascript, local, web, server, http, server, localhost, node, npm
+tags: javascript, software
 category: til
 ---
 
@@ -19,13 +19,13 @@ From their [documentation page](https://www.npmjs.com/package/http-server):
 
 Verify you've got both installed correctly by running the following commands in my terminal.
 
-  ```js
-  node -v
-  ```
+```js
+node - v;
+```
 
-  ```js
-  npm -v
-  ```
+```js
+npm - v;
+```
 
 ### Install `http-server`
 

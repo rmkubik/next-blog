@@ -1,7 +1,7 @@
 ---
 title: Pick Randomly From Array
 date: 2018-08-04T16:47:52.000Z
-tags: javascript, array, random, utility
+tags: javascript, software
 category: til
 ---
 
@@ -17,11 +17,12 @@ function pickRandomlyFromArray(array) {
 }
 
 // You can also bind it to the Array prototype for easy reference
-Array.prototype.pickRandom = function() {
+Array.prototype.pickRandom = function () {
   return pickRandomlyFromArray(this);
-}
-// Then use it on an anonymous array
-[1, 2, 3].pickRandom();
+}[
+  // Then use it on an anonymous array
+  (1, 2, 3)
+].pickRandom();
 
 const arr = [4, 5, 6];
 // Call it from the Array prototype

@@ -1,7 +1,7 @@
 ---
 title: "Reduce Entries: Array Utility Function"
 date: 2023-06-05
-tags: javascript, arrays, utils
+tags: javascript, software
 ---
 
 If you've ever needed to break an object into its entries via JavaScript's `Object.entries` function, you'll sometimes need to put it back together again. I've needed this often enough that I encapsulated this functionality into a little utility function called `reduceEntries`.

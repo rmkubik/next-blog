@@ -1,7 +1,7 @@
 ---
 title: Add a Spoiler Tag with Alpine.js
 date: 2023-05-04
-tags: javascript
+tags: javascript, software
 ---
 
 I was working on [patch notes](https://r-k.io/island-maker) for my game, [Island Maker](https://rmkubik.itch.io/island-maker), and I wanted to put some information behind a spoiler tag.

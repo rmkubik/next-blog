@@ -1,7 +1,7 @@
 ---
 title: What I played in 2020
 date: 2021-01-07
-tags: top, games, 2020, played, list, goty
+tags: goty, games
 ---
 
 It's that time of year to reminisce about some of the games I've played in the past 12 months.

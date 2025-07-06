@@ -1,7 +1,7 @@
 ---
 title: Hide Elements Over Games on Itch.io with Tampermonkey
 date: 2023-05-18
-tags: games, javascript, tampermonkey
+tags: games, javascript, userscript
 ---
 
 [Itch.io](https://itch.io) presents a lot of information on its game pages in the upper right corner. Often, these elements can cover up a game and interfere with playing.

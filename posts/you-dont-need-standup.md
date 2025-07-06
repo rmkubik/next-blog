@@ -1,6 +1,7 @@
 ---
 title: You don’t need standup
 date: 2018-08-15T21:48:53.000Z
+tags: software
 category: tldr
 ---
 

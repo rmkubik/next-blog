@@ -1,7 +1,7 @@
 ---
 title: Scale and Center Pixel Art on the Command Line
 date: 2020-03-27
-tags: pixel, art, pixelart, scale, center, command, line, cli
+tags: games, software
 category: til
 ---
 

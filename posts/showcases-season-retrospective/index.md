@@ -1,7 +1,7 @@
 ---
-title: 'Showcase Season Retrospective: Wildfire Swap at SIX & XOXO 2019'
+title: "Showcase Season Retrospective: Wildfire Swap at SIX & XOXO 2019"
 date: 2019-09-30
-tags: indie, puzzle, games, wildfire, swap, pax, west, xoxo, six, seattle, indies, expo, festival, 2019
+tags: xoxo2019, six2019, pax west 2019, games
 ---
 
 Its been a wild couple months of showcasing and preparing to showcase my game, Wildfire Swap. I wanted to take some time to reflect on this experience of showcasing my first commercial project. Hopefully there's some insight other folks can gain from this.

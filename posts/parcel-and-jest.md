@@ -1,7 +1,7 @@
 ---
 title: Using Jest with Parcel Bundler
 date: 2018-12-31T07:47:39.303Z
-tags: parcel, jest, test, bundle
+tags: parcel, jest, software, javascript, testing
 category: til
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: JavaScript's Array Sort Function
 date: 2018-04-19T04:40:19.000Z
-tags: javascript, array, sort, number
+tags: javascript, software
 category: til
 ---
 

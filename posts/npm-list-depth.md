@@ -1,7 +1,7 @@
 ---
 title: Npm List Installed Packages
 date: 2018-07-18T05:47:43.000Z
-tags: javascript, node, npm
+tags: javascript, software
 category: til
 ---
 

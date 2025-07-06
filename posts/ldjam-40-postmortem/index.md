@@ -1,7 +1,7 @@
 ---
 title: "Ludum Dare 40 Postmortem: Infinite Desktop Icons"
 date: 2017-12-04
-tags: ldjam, ludum, dare, 40, javascript, react
+tags: ldjam40, javascript, games
 ---
 
 ## Friday

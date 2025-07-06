@@ -1,7 +1,7 @@
 ---
 title: "Create a Custom ESLint Rule: Automatically Share Your Team's Institutional Knowledge"
 date: 2019-03-08
-tags: javascript, eslint, custom, state, node, program, team, institutional, knowledge
+tags: javascript, eslint, software
 ---
 
 ESLint is a tool built to provide linting of JavaScript code. Linting is a form of static analysis that detects patterns in code that could cause errors. By running ESLint as you write code you're able to catch these errors without even running your code. This speeds up development time and helps you write less error prone code.

@@ -1,7 +1,7 @@
 ---
 title: Wildfire Swap March 2020 Newsletter
 date: 2020-04-02
-tags: wildfire, swap, march, newsletter
+tags: wildfire swap, march, newsletter, games
 category: newsletter
 ---
 

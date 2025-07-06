@@ -1,7 +1,7 @@
 ---
 title: Slice with a Negative Index
 date: 2018-01-16T07:18:18.000Z
-tags: javascript, array
+tags: javascript, software
 category: til
 ---
 

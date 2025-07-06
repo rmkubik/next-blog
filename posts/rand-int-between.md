@@ -1,7 +1,7 @@
 ---
 title: Choose a Random Number Between Two Values
 date: 2018-08-15T06:17:26.000Z
-tags: javascript, random, between, range
+tags: javascript, software
 category: til
 ---
 

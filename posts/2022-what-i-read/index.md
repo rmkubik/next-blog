@@ -1,7 +1,7 @@
 ---
 title: What I Read in 2022
 date: 2023-01-22
-tags: reading, 2022-review
+tags: books, 2022-review
 ---
 
 I like to reflect on the past year over the holidays. These reflection posts end up changing format every year. This year, I'm going to try several smaller focused posts instead of attempting to make sense of one giant rambling post.

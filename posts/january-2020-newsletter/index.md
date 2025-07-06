@@ -1,7 +1,7 @@
 ---
 title: Wildfire Swap January 2020 Newsletter
 date: 2020-02-05
-tags: wildfire, swap, january, newsletter
+tags: wildfire swap, january, newsletter, games
 category: newsletter
 ---
 

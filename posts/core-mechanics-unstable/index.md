@@ -1,7 +1,7 @@
 ---
 title: "Core Mechanics & Game Design in Unstable"
 date: 2017-07-16
-tags: javascript, unstable, core, mechanics, game, design
+tags: javascript, unstable, games, design
 ---
 
 I’m going to take a look at the design of a project I’ve been working on off and on for a while now. It was originally created as part of a [month long game jam in January](https://itch.io/jam/jamuary). Unstable began its life as a digital art piece. I wanted to use an art style that I felt confident in producing assets for by myself.

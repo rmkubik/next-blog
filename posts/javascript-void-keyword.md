@@ -1,7 +1,7 @@
 ---
 title: JavaScript Void Keyword
 date: 2018-02-14T17:07:50.000Z
-tags: javascript, void, keyword
+tags: javascript, software
 category: til
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: The Atan2 Function
 date: 2018-06-16T21:13:43.000Z
-tags: javascript, atan2, tan, tangent, trigonometry
+tags: javascript, software
 category: til
 ---
 

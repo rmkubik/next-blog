@@ -1,7 +1,7 @@
 ---
 title: "Using Design Pillars to Keep Wildfire Swap's Development on Track"
 date: 2020-05-27
-tags: indie, puzzle, games, wildfire, swap, pax, west, xoxo, six, seattle, indies, expo, festival, 2019
+tags: games
 ---
 
 ## What are design pillars?

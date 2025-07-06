@@ -1,7 +1,7 @@
 ---
 title: Parse JSON with JQ
 date: 2018-09-26T06:16:00.000Z
-tags: json, bash, jq
+tags: json, bash, jq, software
 category: til
 ---
 

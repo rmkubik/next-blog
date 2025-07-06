@@ -1,7 +1,7 @@
 ---
 title: Modifying the Return Value of a Constructor
 date: 2018-11-30T21:28:30.000Z
-tags: javascript, constructor, return, singleton, pool, new
+tags: javascript, software
 category: til
 ---
 
@@ -16,7 +16,7 @@ When the constructor is actually called, it is bound with the context of the new
 ```javascript
 class Standard {
   constructor() {
-    this.property = 'initial_value';
+    this.property = "initial_value";
   }
 }
 ```

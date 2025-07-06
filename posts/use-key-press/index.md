@@ -2,7 +2,7 @@
 title: "useKeyPress: Respond to user key presses in React"
 desc: "How to respond to user key presses in React with useEffect and document.addEventListener."
 date: 2021-09-04
-tags: key, press, keydown, down, respond, react, javascript, document, addEventListener
+tags: javascript, software
 ---
 
 Dealing with keyboard events in React can be tricky to figure out at first. I had a project recently where I wanted to trigger some code in response to a user's key presses. I ended up responding to their events with a combination of `useEffect` and `document.addEventListener` in a `useKeyPress` custom hook.

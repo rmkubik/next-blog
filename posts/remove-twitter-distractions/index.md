@@ -1,7 +1,7 @@
 ---
 title: Clean up your Twitter Experience with TamperMonkey
 date: 2020-04-29
-tags: twitter, tampermonkey, tamper, monkey, distractions, attention, javascript, clean, remove, hide
+tags: javascript, userscript, software
 ---
 
 The longer Twitter exists, the more new features appear that I just don't have any interest in using. They're either designed to keep me from ever leaving the website, or I'm just too set in my ways to try something new. Either way, I don't want to see them!
@@ -28,7 +28,7 @@ Now that we can locate an element, we can apply some CSS to prevent our offendin
 
 ```jsx
 const targetedElement = document.querySelector('[aria-label*="trend" i]');
-targetedElement.style.display = 'none';
+targetedElement.style.display = "none";
 ```
 
 ## I have to do this every time I load the page?
@@ -72,13 +72,13 @@ Finally, we'll insert our JavaScript code into [the IIFE module format](https://
 // @grant        none
 // ==/UserScript==
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   const targetedElement = document.querySelector('[aria-label*="trend" i]');
-  targetedElement.style.display = 'none';
+  targetedElement.style.display = "none";
 
-  console.log('Hello from TamperMonkey');
+  console.log("Hello from TamperMonkey");
 })();
 ```
 
@@ -97,24 +97,24 @@ We're going to attach a MutationObserver to the document body and track all HTML
 For each mutation that the observer detects, we'll check if the DOM contains our targeted "trending" element. If this element is present, we'll set the same CSS on the element to hide it that we were doing before.
 
 ```jsx
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // Select the node that will be observed for mutations
-  const targetNode = document.querySelector('body');
+  const targetNode = document.querySelector("body");
 
   // Options for the observer (which mutations to observe)
   const config = { attributes: true, childList: true, subtree: true };
 
   // Callback function to execute when mutations are observed
-  const callback = function(mutationsList, observer) {
+  const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (let mutation of mutationsList) {
       const targetedElement = document.querySelector('[aria-label*="trend" i]');
 
       if (targetedElement) {
-        targetedElement.style.display = 'none';
-        console.log('Remove targeted element!');
+        targetedElement.style.display = "none";
+        console.log("Remove targeted element!");
       }
     }
   };
@@ -140,19 +140,22 @@ const targets = ['[aria-label*="trend" i]', '[aria-label*="who to follow" i]'];
 Instead of a searching for and hiding a single item we'll iterate through the targets array for every observed change.
 
 ```jsx
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // Select the node that will be observed for mutations
-  const targetNode = document.querySelector('body');
+  const targetNode = document.querySelector("body");
 
   // Options for the observer (which mutations to observe)
   const config = { attributes: true, childList: true, subtree: true };
 
-  const targets = ['[aria-label*="trend" i]', '[aria-label*="who to follow" i]'];
+  const targets = [
+    '[aria-label*="trend" i]',
+    '[aria-label*="who to follow" i]',
+  ];
 
   // Callback function to execute when mutations are observed
-  const callback = function(mutationsList, observer) {
+  const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (let mutation of mutationsList) {
       targets.forEach((target) => {
@@ -160,7 +163,7 @@ Instead of a searching for and hiding a single item we'll iterate through the ta
 
         if (targetedElements.length > 0) {
           targetedElements.forEach((node) => {
-            mutation.target.style.display = 'none';
+            mutation.target.style.display = "none";
             console.log(`Remove Twitter Cruft hid selector: "${target}"`);
           });
         }
@@ -193,11 +196,11 @@ Below, we can reference [the final version of our "Remove Twitter Cruft" TamperM
 // @grant        none
 // ==/UserScript==
 
-(function() {
-  'use strict';
+(function () {
+  "use strict";
 
   // Select the node that will be observed for mutations
-  const targetNode = document.querySelector('body');
+  const targetNode = document.querySelector("body");
 
   // Options for the observer (which mutations to observe)
   const config = { attributes: true, childList: true, subtree: true };
@@ -211,7 +214,7 @@ Below, we can reference [the final version of our "Remove Twitter Cruft" TamperM
   ];
 
   // Callback function to execute when mutations are observed
-  const callback = function(mutationsList, observer) {
+  const callback = function (mutationsList, observer) {
     // Use traditional 'for loops' for IE 11
     for (let mutation of mutationsList) {
       targets.forEach((target) => {
@@ -219,7 +222,7 @@ Below, we can reference [the final version of our "Remove Twitter Cruft" TamperM
 
         if (targetedElements.length > 0) {
           targetedElements.forEach((node) => {
-            node.style.display = 'none';
+            node.style.display = "none";
             console.log(`Remove Twitter Cruft hid selector: "${target}"`);
           });
         }

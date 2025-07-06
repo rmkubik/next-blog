@@ -1,7 +1,7 @@
 ---
 title: "Remove Duplicates: Array Utility Function"
 date: 2021-11-02
-tags: javascript, remove, duplicates, utility, function
+tags: javascript, software
 ---
 
 I had need to remove duplicate items in an array and thought it would be nice to encapsulate that logic in a `removeDuplicates` function.
@@ -39,10 +39,7 @@ function removeDuplicatesWithEquality(array, isEqual) {
 
   array.forEach((item) => {
     if (
-      noDuplicates.some((unDuplicatedItem) => isEqual(
-        item,
-        unDuplicatedItem
-      ))
+      noDuplicates.some((unDuplicatedItem) => isEqual(item, unDuplicatedItem))
     ) {
       // If some item in the noDuplicates array is equal
       // to the current item, skip this item.
@@ -64,12 +61,7 @@ const noDuplicates1 = removeDuplicates(duplicates1);
 
 // [2, 1, 3, 5]
 
-const duplicates2 = [
-  { val: 1 },
-  { val: 1 },
-  { val: 3 },
-  { val: 2 }
-];
+const duplicates2 = [{ val: 1 }, { val: 1 }, { val: 3 }, { val: 2 }];
 const noDuplicates2 = removeDuplicatesWithEquality(
   duplicates2,
   (a, b) => a.val === b.val

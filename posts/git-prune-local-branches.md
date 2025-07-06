@@ -1,7 +1,7 @@
 ---
 title: Remove Local Branches Merged into Remote
 date: 2018-11-05T23:30:11.000Z
-tags: git, prune, remote, merge
+tags: git, software
 category: til
 ---
 

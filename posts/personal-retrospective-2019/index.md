@@ -1,7 +1,7 @@
 ---
 title: A review of 2019 and a plan for 2020
 date: 2020-01-30
-tags: personal, retrospective, goals, plan, 2019, 2020
+tags: retrospective, goals
 ---
 
 I did [my first personal retrospective](https://ryankubik.com/blog/personal-retrospective-2018/) last year looking back on 2018. I found it useful to spend some time thinking about what I got out of 2018 and how I could make the most of 2019.
