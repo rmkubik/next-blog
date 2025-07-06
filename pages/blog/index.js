@@ -24,18 +24,9 @@ const PostItem = ({ slug, summary, frontmatter, readingTime }) => {
   );
 };
 
-const Blog = ({ posts }) => {
+const Posts = ({ posts }) => {
   return (
-    <div className="blog">
-      <Head title="Games & Code" />
-      <Section>
-        <h1>{"Games & Code"}</h1>
-        <p>
-          {
-            "I write about things I learn here. Usually these things are related to programming and making games."
-          }
-        </p>
-      </Section>
+    <>
       <div className="posts">
         {posts.map(({ slug, summary, frontmatter, readingTime }) => (
           <PostItem
@@ -48,24 +39,6 @@ const Blog = ({ posts }) => {
         ))}
       </div>
       <style jsx>{`
-        .blog {
-          h1 {
-            margin-bottom: 2rem;
-          }
-
-          & > :global(*:first-child) {
-            margin-bottom: 2rem;
-
-            h1 {
-              margin-bottom: 1rem;
-            }
-
-            p {
-              margin: 0;
-            }
-          }
-        }
-
         .posts {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -90,6 +63,52 @@ const Blog = ({ posts }) => {
               margin-top: auto;
             }
           }
+        }
+      `}</style>
+    </>
+  );
+};
+
+const FEATURED_SLUGS = new Set([
+  "cognitive-overload-drop-duchy",
+  "apline-js-spoiler",
+  "js13k-2021-rocket-jockey",
+  "wildfire-swap-inspiration",
+  "eslint-internal-state",
+]);
+const Blog = ({ posts }) => {
+  // console.log({ posts, tags: posts.map((post) => post.frontmatter.tags) });
+  const featuredPosts = posts.filter((post) => FEATURED_SLUGS.has(post.slug));
+  const remainingPosts = posts.filter((post) => !featuredPosts.includes(post));
+
+  return (
+    <div className="blog">
+      <Head title="Words words words" />
+      <Section className="intro">
+        <h1>{"Words words words"}</h1>
+        <p>{"Software and games and books and other words"}</p>
+      </Section>
+      <Posts posts={featuredPosts} />
+      <Section className="intro">
+        <h2>{"Other words"}</h2>
+        <p>{"Everything else, in chronological order"}</p>
+      </Section>
+      <Posts posts={remainingPosts} />
+      <style jsx>{`
+        :global(.intro) {
+          margin-bottom: 2rem;
+
+          h1,
+          h2 {
+            margin-bottom: 1rem;
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+        :global(.posts) {
+          margin-bottom: 2rem;
         }
       `}</style>
     </div>
