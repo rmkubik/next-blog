@@ -1,0 +1,63 @@
+---
+title: Code by Charles Petzold
+date: 2025-07-06
+tags: books, software
+---
+
+I'm starting this review by immediately telling a digression about my personal life. I promise there's an actual review of [Code by Charles Petzold](https://www.codehiddenlanguage.com/) in here. Bear with me!
+
+### Electrical engineering
+
+I started undergrad as an electrical engineering student. I wasn't really sure what I wanted to do with my life, but I was intrigued by circuit diagrams. They're fun little algebra puzzles to solve. And you abstractly learn how electrons move around and interact with various components.
+
+![circuit diagram](./circuit-diagram.png)
+
+### Computer engineering
+
+The electrical engineering curriculum shared a boolean logic course with the computer engineering curriculum. I found I enjoyed this puzzley feeling more than the calculus my electrical engineering courses were heading toward.
+
+![2-to-1 multiplexer boolean circuit](./2-to-1-multiplexer.png)
+
+One of the coolest classes I remember from my computer engineering curriculum was programming a super simple Von Neumann architecture machine on an FPGA. Going from logic gates to an accumulator to a really dumb computer that could do math on some seven segment displays is awesome.
+
+![von neumann architecture diagram](./von-neumann.png)
+
+I liked the more "practical" feeling problem solving over the "abstract" solving of equations. I was building a _machine_ now instead of just doing calculus. <Note>It's kinda funny to think about that perception now, in some ways electrical engineering feels like it would be much closer to "reality" than working with computers. That nice digital abstraction over top of reality where we get to mostly pretend everything is a yes or a no.</Note> I decided I'd go for a double major, with Electrical AND Computer engineering instead.
+
+### Computer science
+
+Then, I ended up in my first programming class and found what I really loved. <Note>Okay, I probably didn't like _LOVE_ the idea of computing a factorial instantly? This is one of the earliest memories I have of a problem we solved in my intro to programming class though. I'm sure we must've had some lectures about loops and variables and conditionals and all that first.</Note>
+
+```ts
+function factorial(num) {
+  if (num <= 1) return 1;
+
+  return num * factorial(num - 1);
+}
+```
+
+From here, I switched over to a Computer Engineering and Computer Science degree. No more math for me <Note>Ironically, now that I've been into game development and functional programming I find myself wishing I'd cared a bit more about math these days. I'd love to find time to get into linear algebra, matrices, and geometry again. Maybe some graph and set theory. One day, I'm sure of it!</Note> - I want to solve problems in human terms!
+
+### Layers on layers on layers
+
+I work in web these days, which at least a dozen layers of abstraction above those classes where I built an accumulator or an operating system. I'm so glad to get a chance to engage with a bunch of these intermediate layers again.
+
+First you send electrons down a wire. Then you pattern those into signals to transmit data. You combine the signals by soldering wires so they can do computation.
+
+You standardize those patterns into chipsets. You combine these to get microprocessors. You start abstractly programming these processors instead of hard wiring them with assembly.
+
+Turns out that's pretty complicated so you use something like C to bring the program closer to your problem space. You want to think less about the intricacies of your machine while solving problems so you layer an operating system on that. Now you can use an even higher level language to get closer to your problem domain.
+
+Now we don't even want to know what kind of computer we're running logic on so we build a browser sandbox on top of that.
+
+It's not necessarily something I use day to day. But, it gives me so much appreciation and awe that we're able to accomplish anything at all with computers without it all exploding from complexity.
+
+When you're thinking this problem seems way overcomplicated - that's true - it is mind blowing that we can stand on so many layers of human innovation and get anything done at all without it all falling apart.
+
+### Code is very good
+
+I don't use a lot of that foundational knowledge from my Electrical and Computer Engineering background. I really miss it. It's led me to dabble a bit with Raspberry Pis and Arduinos. It made me REALLY love Shenzehn I/O.
+
+Code is the first time in a long time I feel like I've really gotten to bask in all that knowledge again. It refreshed me and served as a wonderful primer.
+
+This book dug into all these layers and more. If you've ever been curious about what is going on down the stack from you, this is a great place to find out a little bit more. If any of this post sounded interesting, Code is a great place to learn more.
