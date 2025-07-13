@@ -22,11 +22,13 @@ const Projects = () => {
         </div>
         <p>
           <strong>Hi! I'm Ryan. </strong>
-          I've been a software engineer for seven years.
+          I've been a software engineer for eight years.
         </p>
         <p>
-          I'm looking for senior+ roles where I am primarily doing{" "}
-          <strong>front end web development.</strong>
+          I'm looking for senior roles where I am primarily working on a
+          complicated
+          <strong>front end application </strong> with a healthy dose of{" "}
+          <strong>full stack feature work.</strong>
         </p>
         <p>
           I relish iterating on{" "}
@@ -34,13 +36,20 @@ const Projects = () => {
           feedback cycles.
         </p>
         <p>
-          At Twilio, I led a cross-functional team shipping monthly educational
-          technical content. I built features to support 30,000+ new developers’
+          At <strong>Gather</strong>, I am building virtual offices with A/V
+          connections, real time positional avatars, and integrated chat. More
+          than <strong>100,000 users work in our offices every week.</strong>
+        </p>
+        <p>
+          At <strong>Twilio</strong>, I led a cross-functional team shipping
+          monthly educational technical content. I built features to support{" "}
+          <strong>30,000+ new developers’</strong>
           learning in response to feedback and analytics.
         </p>
         <p>
-          At Nike, I worked on a highly tested, performant web app handling
-          millions of visitors a month from all over the globe.
+          At <strong>Nike</strong>, I worked on a highly tested, performant web
+          app handling
+          <strong>millions of visitors a month from all over the globe.</strong>
         </p>
       </SpanifiedSection>
       <Section className="work-overview">
