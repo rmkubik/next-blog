@@ -493,10 +493,6 @@ const Projects = () => {
           {" Get in touch with me"}
         </h2>
         <p>
-          <Icon>{"🐣"}</Icon>{" "}
-          <a href="https://twitter.com/ryrykubes">{"DM me on Twitter"}</a>
-        </p>
-        <p>
           <Icon>{"📧"}</Icon>{" "}
           <a href="mailto:rmkubik@me.com">{"rmkubik@me.com"}</a>
         </p>
