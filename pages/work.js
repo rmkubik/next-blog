@@ -43,7 +43,7 @@ const Projects = () => {
         <p>
           At <strong>Twilio</strong>, I led a cross-functional team shipping
           monthly educational technical content. I built features to support{" "}
-          <strong>30,000+ new developers’</strong>
+          <strong>30,000+ new developers' </strong>
           learning in response to feedback and analytics.
         </p>
         <p>
