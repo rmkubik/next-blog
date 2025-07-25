@@ -57,15 +57,29 @@ const Projects = () => {
           <Icon>{"🛠"}</Icon> Work Overview
         </h2>
         <p>
-          I'm comfortable with front end web dev and game development. I
-          frequently use React, JavaScript, TypeScript, Electron, Firebase, and
+          I'm comfortable with front end web dev, full stack product dev, and
+          game development. I frequently use React, TypeScript, Electron, and
           Node.js.
         </p>
         <h3>Recent work experience</h3>
         <h4>
+          <Icon>{"🍇"}</Icon>
+          <span>Gather</span>
+          <span>Feb. 2024 - Present</span>
+        </h4>
+        <p> Sr. Software Engineer | Full-Time, Remote</p>
+        <p>
+          Building virtual office space to allow office centric cultures to
+          thrive in a remote context. Using React, TypeScript, Phaser, Electron,
+          Node.js
+        </p>
+        {/* <p>
+          <Icon>{"👇"}</Icon> <a href="#puzzle-society">Learn More</a>
+        </p> */}
+        <h4>
           <Icon>{"🧩"}</Icon>
           <span>Andrews McMeel Universal</span>
-          <span>Dec. 2022 - Present</span>
+          <span>Dec. 2022 - Feb. 2024</span>
         </h4>
         <p> Software Engineer & Designer | Part-Time Contract, Remote</p>
         <p>
@@ -90,7 +104,7 @@ const Projects = () => {
           , that taught people how to code.
         </p>
         <p style={{ fontStyle: "italic" }}>
-          Staff Software Engineer | Full-Time, Remote{" "}
+          Sr. Software Engineer | Full-Time, Remote{" "}
           <span
             style={{
               float: "right",
