@@ -35,10 +35,13 @@ const Projects = () => {
           <strong>rich interactive web applications </strong> with quick user
           feedback cycles.
         </p>
+        {/* eslint-disable-next-line react/forbid-elements */}
+        <br />
         <p>
           At <strong>Gather</strong>, I am building virtual offices with A/V
           connections, real time positional avatars, and integrated chat. More
-          than <strong>100,000 users work in our offices every week.</strong>
+          than <strong>100,000 users </strong> work in our offices{" "}
+          <strong>every week.</strong>
         </p>
         <p>
           At <strong>Twilio</strong>, I led a cross-functional team shipping
@@ -49,7 +52,8 @@ const Projects = () => {
         <p>
           At <strong>Nike</strong>, I worked on a highly tested, performant web
           app handling
-          <strong>millions of visitors a month from all over the globe.</strong>
+          <strong>millions of visitors </strong> a month from{" "}
+          <strong>all over the globe.</strong>
         </p>
       </SpanifiedSection>
       <Section className="work-overview">
@@ -153,7 +157,7 @@ const Projects = () => {
         <h2 id="puzzle-society">
           <Icon>{"🧩"}</Icon>
           <span>The Puzzle Society</span>
-          <span>Dec. 2022 - Present</span>
+          <span>Dec. 2022 - Feb. 2024</span>
         </h2>
         <p>
           The Puzzle Society is a logic and word puzzle site with games like:
@@ -161,19 +165,29 @@ const Projects = () => {
         </p>
         <h3>My work</h3>
         <p>
-          I'm currently working on a part time contract for The Puzzle Society
-          building and designing a new logic game. I'm working with{" "}
-          <strong>React, mobx-state-tree, and TypeScript.</strong>
+          I created a daily logic puzzle game for The Puzzle Society as a part
+          time contract. I worked with my client to iterate through several
+          prototypes to deliver a game tailored for their audience.
         </p>
         <p>
-          This project is not yet released, so I cannot share more details at
-          this time! But, hopefully it'll be live soon!
+          I built a puzzle with many parameters capable of generating different
+          daily difficulty puzzles for the week. It contains tooling to allow
+          puzzle authors to curate the results.
+        </p>
+        <p>
+          I used <strong>React, Mobx, and TypeScript</strong>. I integrated with
+          The Puzzle Society third party SDK to save game data, report metrics,
+          and support their award system.
+        </p>
+        <p>
+          The Puzzle Society has since been consolidated with{" "}
+          <a href="https://www.gocomics.com/puzzles/caved">gocomics.com</a>{" "}
+          puzzles. There's no way to play Caved without a subscription right
+          now.
         </p>
         <p>
           <Icon>{"👀"}</Icon>{" "}
-          <a href="https://www.puzzlesociety.com/">
-            Learn more about The Puzzle Society
-          </a>
+          <Link to="/project/caved">Learn more about Caved</Link>
         </p>
       </Section>
       <Section>
