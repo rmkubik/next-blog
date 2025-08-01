@@ -22,7 +22,7 @@ const Projects = () => {
         </div>
         <p>
           <strong>Hi! I'm Ryan. </strong>
-          I've been a software engineer for eight years.
+          I've been a software engineer for over eight years.
         </p>
         <p>
           I'm looking for senior roles where I am primarily working on a
