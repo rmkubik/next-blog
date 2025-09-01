@@ -69,7 +69,7 @@ const Projects = () => {
         <h4>
           <Icon>{"🍇"}</Icon>
           <span>Gather</span>
-          <span>Feb. 2024 - Present</span>
+          <span>Feb. 2024 - Aug. 2025</span>
         </h4>
         <p> Sr. Software Engineer | Full-Time, Remote</p>
         <p>
@@ -77,9 +77,9 @@ const Projects = () => {
           thrive in a remote context. Using React, TypeScript, Phaser, Electron,
           Node.js
         </p>
-        {/* <p>
-          <Icon>{"👇"}</Icon> <a href="#puzzle-society">Learn More</a>
-        </p> */}
+        <p>
+          <Icon>{"👇"}</Icon> <a href="#gather">Learn More</a>
+        </p>
         <h4>
           <Icon>{"🧩"}</Icon>
           <span>Andrews McMeel Universal</span>
@@ -152,6 +152,59 @@ const Projects = () => {
             See more work history on LinkedIn
           </a>
         </p>
+      </Section>
+      <Section>
+        <h2 id="gather">
+          <Icon>{"🍇"}</Icon>
+          <span>Gather</span>
+          <span>Feb. 2024 - Aug. 2025</span>
+        </h2>
+        <p>
+          At Gather I worked on virtual office software with A/V connections,
+          real time positional avatars, chat to improve the remote work
+          experience for office-centric cultures.
+        </p>
+        <h3>My work</h3>
+        <p>
+          I worked on many different full stack features during my time at
+          Gather using React, Node.js, MobX, Phaser.js, and Electron for 100,000
+          users a week.
+        </p>
+        <p>A highlighted project from my time at Gather.</p>
+        <h4>Asset pipeline and rendering</h4>
+        <p>
+          I led a project to rebuild our asset ingestion pipeline for a new
+          major version of our application. I worked with our artists to
+          understand their workflow and built an Aseprite plugin to export their
+          assets.
+        </p>
+        <p>
+          I built GitHub Actions pipelines to ingest those assets and further
+          process them. Then my pipeline uploaded them to S3 and created models
+          in our Cockroach DB instance via Prisma models I helped specify.
+        </p>
+        <p>
+          Finally, I helped our rendering team display these new assets in
+          engine. This involved formatting the new images in our data models and
+          working on rendering logic to display them in app.
+        </p>
+        <h4>More info</h4>
+        <ul>
+          <li>
+            Built real time GitHub integration showing on map events as Pull
+            Requests came in via webhook
+          </li>
+          <li>Maintained various components in our Storybook design system</li>
+          <li>
+            Wrote and maintained many end to end tests written in Playwright
+          </li>
+          <li>Wrote integration and unit tests for features using Jest</li>
+          <li>
+            Collaborated heavily with designers and product to deliver features
+          </li>
+          <li>Shipped features to the desktop application using Electron</li>
+          <li>Worked on other rendering logic using Phaser.js</li>
+        </ul>
       </Section>
       <Section>
         <h2 id="puzzle-society">
