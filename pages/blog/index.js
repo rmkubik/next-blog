@@ -1,6 +1,6 @@
 import { usePathname, useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { getAllPosts } from "../../src/services/posts";
 import generateRssFeed from "../../src/services/generateRssFeed";
@@ -150,8 +150,6 @@ const Blog = ({ posts }) => {
     // this does allow people to return queries that are invalid, but that's okay
     return query;
   }, [searchParams]);
-
-  console.log({ searchParams });
 
   const featuredPosts = useMemo(() => {
     switch (filter) {
