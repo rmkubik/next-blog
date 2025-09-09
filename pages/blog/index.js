@@ -1,3 +1,5 @@
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { getAllPosts } from "../../src/services/posts";
@@ -123,7 +125,33 @@ const FEATURED_SLUGS = new Set([
   "eslint-internal-state",
 ]);
 const Blog = ({ posts }) => {
-  const [filter, setFilter] = useState("featured");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const setFilter = useCallback(
+    (value) => {
+      const params = new URLSearchParams(searchParams.toString());
+
+      params.set("filter", value);
+
+      const queryString = params.toString();
+
+      router.push(`${pathname}?${queryString}`, undefined, { shallow: true });
+    },
+    [router, pathname, searchParams]
+  );
+
+  const filter = useMemo(() => {
+    const query = searchParams.get("filter");
+
+    if (!query) return "featured";
+
+    // this does allow people to return queries that are invalid, but that's okay
+    return query;
+  }, [searchParams]);
+
+  console.log({ searchParams });
 
   const featuredPosts = useMemo(() => {
     switch (filter) {
