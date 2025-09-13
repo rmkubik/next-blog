@@ -1,14 +1,17 @@
-const IconButton = ({ children, disabled, onClick, label }) => {
+const Button = ({ children, disabled, onClick, label, className }) => {
   if (!label) {
-    console.warn("IconButton needs a label to be accessible.");
+    console.warn("Button needs a label to be accessible.");
   }
 
   return (
     <>
-      <button disabled={disabled} onClick={onClick} type="button">
-        <span aria-label={label} role="img">
-          {children}
-        </span>
+      <button
+        className={className}
+        disabled={disabled}
+        onClick={onClick}
+        type="button"
+      >
+        {children}
       </button>
       <style jsx>{`
         button {
@@ -43,4 +46,4 @@ const IconButton = ({ children, disabled, onClick, label }) => {
   );
 };
 
-export default IconButton;
+export default Button;
