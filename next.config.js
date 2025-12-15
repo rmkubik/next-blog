@@ -40,7 +40,7 @@ module.exports = withMDX({
         source: "/words/raw",
       },
       {
-        destination: "/words/raw",
+        destination: "https://google.com",
         source: "/words",
       },
     ];
