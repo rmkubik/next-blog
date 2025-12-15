@@ -36,11 +36,11 @@ module.exports = withMDX({
   rewrites: () => {
     return [
       {
-        destination: "https://google.com",
+        destination: "https://eclectic-sunburst-792731.netlify.app/",
         source: "/words/raw",
       },
       {
-        destination: "https://google.com",
+        destination: "https://eclectic-sunburst-792731.netlify.app/",
         source: "/words",
       },
     ];
