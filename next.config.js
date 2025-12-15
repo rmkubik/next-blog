@@ -37,6 +37,7 @@ module.exports = withMDX({
   redirects: () => [
     {
       destination: "/words/raw",
+      permanent: false,
       source: "/words",
     },
   ],
