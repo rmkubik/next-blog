@@ -4,6 +4,7 @@ const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 // eslint-disable-next-line node/no-unpublished-require
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { source } = require("common-tags");
 const withMDX = require("@next/mdx")({
   extension: /\.mdx?$/u,
   options: {
@@ -33,6 +34,12 @@ const createCopyWebpackPattern = (
 
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
+  redirects: () => [
+    {
+      destination: "/words/raw",
+      source: "/words",
+    },
+  ],
   rewrites: () => {
     return [
       // {
@@ -47,10 +54,10 @@ module.exports = withMDX({
       //   destination: "https://eclectic-sunburst-792731.netlify.app/",
       //   source: "/words",
       // },
-      {
-        destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
-        source: "/words/:path*",
-      },
+      // {
+      //   destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+      //   source: "/words/:path*",
+      // },
     ];
   },
   webpack: (config) => {
