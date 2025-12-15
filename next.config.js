@@ -47,13 +47,13 @@ module.exports = withMDX({
       //   destination: "https://eclectic-sunburst-792731.netlify.app/",
       //   source: "/words/raw",
       // },
+      // {
+      //   destination:
+      //     "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
+      //   source: "/words/raw/:path*/",
+      // },
       {
-        destination:
-          "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
-        source: "/words/raw/:path*/",
-      },
-      {
-        destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+        destination: "https://raw-words.vercel.app/:path*",
         source: "/words/raw/:path*",
       },
       // {
