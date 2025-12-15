@@ -35,13 +35,21 @@ module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
   rewrites: () => {
     return [
+      // {
+      //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+      //   source: "/words/raw",
+      // },
       {
-        destination: "https://eclectic-sunburst-792731.netlify.app/",
-        source: "/words/raw",
+        destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+        source: "/words/raw/:path*",
       },
+      // {
+      //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+      //   source: "/words",
+      // },
       {
-        destination: "https://eclectic-sunburst-792731.netlify.app/",
-        source: "/words",
+        destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+        source: "/words/:path*",
       },
     ];
   },
