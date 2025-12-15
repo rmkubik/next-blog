@@ -28,8 +28,23 @@ const createCopyWebpackPattern = (
   };
 };
 
+// Setting up redirects and rewrites with Next.js on Vercel
+// https://vercel.com/kb/guide/migrate-to-vercel-from-netlify#setup-redirects-on-vercel
+
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
+  rewrites: () => {
+    return [
+      {
+        destination: "https://google.com",
+        source: "/words/raw",
+      },
+      {
+        destination: "/words/raw",
+        source: "/words",
+      },
+    ];
+  },
   webpack: (config) => {
     /**
      * Copy images from the posts directory into the next.js
