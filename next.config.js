@@ -48,6 +48,11 @@ module.exports = withMDX({
       //   source: "/words/raw",
       // },
       {
+        destination:
+          "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
+        source: "/words/raw/:path*/",
+      },
+      {
         destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
         source: "/words/raw/:path*",
       },
