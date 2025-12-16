@@ -35,11 +35,11 @@ const createCopyWebpackPattern = (
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
   redirects: () => [
-    {
-      destination: "/words/raw/",
-      permanent: false,
-      source: "/words/raw",
-    },
+    // {
+    //   destination: "/words/raw/",
+    //   permanent: false,
+    //   source: "/words/raw",
+    // },
   ],
   rewrites: () => {
     return {
