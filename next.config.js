@@ -55,7 +55,7 @@ module.exports = withMDX({
         //     // },
         {
           destination: "https://raw-words.vercel.app/:path*",
-          source: "/words/raw/:path*",
+          source: "notes.ryankubik.com/:path*",
         },
         //     // {
         //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
