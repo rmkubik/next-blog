@@ -34,40 +34,45 @@ const createCopyWebpackPattern = (
 
 module.exports = withMDX({
   pageExtensions: ["js", "jsx", "md", "mdx"],
-  // redirects: () => [
-  //   // {
-  //   //   destination: "/words/raw/",
-  //   //   permanent: false,
-  //   //   source: "/words/raw",
-  //   // },
-  // ],
-  rewrites: () => {
-    return {
-      beforeFiles: [
-        //     // {
-        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
-        //     //   source: "/words/raw",
-        //     // },
-        //     // {
-        //     //   destination:
-        //     //     "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
-        //     //   source: "/words/raw/:path*/",
-        //     // },
-        {
-          destination: "https://notes.ryankubik.com/notes/now",
-          source: "/now",
-        },
-        //     // {
-        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
-        //     //   source: "/words",
-        //     // },
-        //     // {
-        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
-        //     //   source: "/words/:path*",
-        //     // },
-      ],
-    };
-  },
+  redirects: () => [
+    // {
+    //   destination: "/words/raw/",
+    //   permanent: false,
+    //   source: "/words/raw",
+    // },
+    {
+      destination: "https://notes.ryankubik.com/notes/now",
+      permanent: true,
+      source: "/now",
+    },
+  ],
+  // rewrites: () => {
+  //   return {
+  //     beforeFiles: [
+  //       //     // {
+  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+  //       //     //   source: "/words/raw",
+  //       //     // },
+  //       //     // {
+  //       //     //   destination:
+  //       //     //     "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
+  //       //     //   source: "/words/raw/:path*/",
+  //       //     // },
+  //       // {
+  //       //   destination: "https://notes.ryankubik.com/notes/now",
+  //       //   source: "/now",
+  //       // },
+  //       //     // {
+  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+  //       //     //   source: "/words",
+  //       //     // },
+  //       //     // {
+  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+  //       //     //   source: "/words/:path*",
+  //       //     // },
+  //     ],
+  //   };
+  // },
   webpack: (config) => {
     /**
      * Copy images from the posts directory into the next.js
