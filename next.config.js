@@ -54,8 +54,8 @@ module.exports = withMDX({
         //     //   source: "/words/raw/:path*/",
         //     // },
         {
-          destination: "/now",
-          source: "notes.ryankubik.com/notes/now",
+          destination: "notes.ryankubik.com/notes/now",
+          source: "/now",
         },
         //     // {
         //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
