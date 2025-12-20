@@ -41,33 +41,33 @@ module.exports = withMDX({
   //   //   source: "/words/raw",
   //   // },
   // ],
-  // rewrites: () => {
-  //   return {
-  //     beforeFiles: [
-  //       //     // {
-  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
-  //       //     //   source: "/words/raw",
-  //       //     // },
-  //       //     // {
-  //       //     //   destination:
-  //       //     //     "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
-  //       //     //   source: "/words/raw/:path*/",
-  //       //     // },
-  //       {
-  //         destination: "https://raw-words.vercel.app/:path*",
-  //         source: "notes.ryankubik.com/:path*",
-  //       },
-  //       //     // {
-  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
-  //       //     //   source: "/words",
-  //       //     // },
-  //       //     // {
-  //       //     //   destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
-  //       //     //   source: "/words/:path*",
-  //       //     // },
-  //     ],
-  //   };
-  // },
+  rewrites: () => {
+    return {
+      beforeFiles: [
+        //     // {
+        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+        //     //   source: "/words/raw",
+        //     // },
+        //     // {
+        //     //   destination:
+        //     //     "https://eclectic-sunburst-792731.netlify.app/:path*/index.html",
+        //     //   source: "/words/raw/:path*/",
+        //     // },
+        {
+          destination: "/now",
+          source: "notes.ryankubik.com/notes/now",
+        },
+        //     // {
+        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/",
+        //     //   source: "/words",
+        //     // },
+        //     // {
+        //     //   destination: "https://eclectic-sunburst-792731.netlify.app/:path*",
+        //     //   source: "/words/:path*",
+        //     // },
+      ],
+    };
+  },
   webpack: (config) => {
     /**
      * Copy images from the posts directory into the next.js
