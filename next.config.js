@@ -54,7 +54,7 @@ module.exports = withMDX({
         //     //   source: "/words/raw/:path*/",
         //     // },
         {
-          destination: "notes.ryankubik.com/notes/now",
+          destination: "https://notes.ryankubik.com/notes/now",
           source: "/now",
         },
         //     // {
