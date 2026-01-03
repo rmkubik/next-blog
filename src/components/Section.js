@@ -1,8 +1,15 @@
-const Section = ({ children, area, className, backgroundColor = "white" }) => {
+const Section = ({
+  children,
+  area,
+  className,
+  backgroundColor = "white",
+  id,
+}) => {
   return (
     <>
       <section
         className={className}
+        id={id}
         style={{
           gridArea: area,
         }}

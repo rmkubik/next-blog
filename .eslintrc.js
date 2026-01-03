@@ -2,6 +2,12 @@ module.exports = {
   extends: "get-off-my-lawn",
   rules: {
     "arrow-body-style": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        ignore: ["^p5$"],
+      },
+    ],
     "no-console": ["error", { allow: ["warn", "error"] }],
     "node/no-unsupported-features/node-builtins": [
       "error",
