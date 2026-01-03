@@ -46,7 +46,7 @@ const PlayButton = ({ p }) => {
   );
 };
 
-const Day = ({ day, sketch, desc }) => {
+const Day = ({ day, sketch, desc, sketchString }) => {
   const [p5, setP5] = useState(undefined);
   const [p, setP] = useState(undefined);
   const [sketchText, setSketchText] = useState(undefined);
@@ -63,14 +63,14 @@ const Day = ({ day, sketch, desc }) => {
   }, []);
 
   useEffect(() => {
-    const sketchString = sketch.toString();
-    const firstLineBreakIndex = sketchString.indexOf("\n");
-    const firstLine = sketchString.slice(0, firstLineBreakIndex);
-    const remainingLines = sketchString.slice(firstLineBreakIndex);
-    const finalText = `${firstLine}\n  ${stripIndent(remainingLines)}`;
+    // const firstLineBreakIndex = sketchString.indexOf("\n");
+    // const firstLine = sketchString.slice(0, firstLineBreakIndex);
+    // const remainingLines = sketchString.slice(firstLineBreakIndex);
+    // const finalText = `${firstLine}\n  ${stripIndent(remainingLines)}`;
+    const finalText = stripIndent(sketchString);
 
     setSketchText(finalText);
-  }, [sketch]);
+  }, [sketchString]);
 
   const id = `day-${day}`;
 
@@ -123,6 +123,21 @@ const Genuary = () => {
             p.circle(p.mouseX, p.mouseY, 50);
           };
         }}
+        sketchString={`
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-1");
+
+            p.background(0);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.circle(p.mouseX, p.mouseY, 50);
+          };
+        `}
       />
       <Day
         day={2}
@@ -148,6 +163,27 @@ const Genuary = () => {
             p.pop();
           };
         }}
+        sketchString={`
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-2");
+
+            p.background(0);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.background(0);
+
+            p.push();
+            p.translate(p.mouseX, p.mouseY);
+            p.scale(1, (400 - p.mouseY) / 200 + 0.2);
+            p.circle(0, 0, 50);
+            p.pop();
+          };
+        `}
       />
       <Day
         day={3}
@@ -183,6 +219,37 @@ const Genuary = () => {
             p.rect(fib(val), fib(val), fib(val), fib(val));
           };
         }}
+        sketchString={`
+          let frame = 0;
+
+          const fib = (n) => {
+            if (n <= 0) {
+              return 0;
+            } else if (n === 1) {
+              return 1;
+            }
+
+            return fib(n - 1) + fib(n - 2);
+          };
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-3");
+
+            p.background(0);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            frame++;
+
+            const val = frame / 16;
+
+            p.rect(fib(val), fib(val), fib(val), fib(val));
+          };
+        `}
       />
       <style jsx>{`
         :global(section.day) {
