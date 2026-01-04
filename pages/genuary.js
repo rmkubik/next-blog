@@ -251,6 +251,58 @@ const Genuary = () => {
           };
         `}
       />
+      <Day
+        day={4}
+        desc="Lowres"
+        sketch={(p) => {
+          let capture;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-4");
+
+            p.background(0);
+
+            p.noLoop();
+            p.noSmooth();
+
+            capture = p.createCapture(p.VIDEO);
+            capture.size(50, 50);
+            capture.hide();
+          };
+
+          p.draw = () => {
+            p.scale(8);
+            p.image(capture, 0, 0, 50, 50);
+            p.filter(p.POSTERIZE);
+          };
+        }}
+        sketchString={`
+          let capture;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-4");
+
+            p.background(0);
+
+            p.noLoop();
+            p.noSmooth();
+
+            capture = p.createCapture(p.VIDEO);
+            capture.size(50, 50);
+            capture.hide();
+          };
+
+          p.draw = () => {
+            p.scale(8);
+            p.image(capture, 0, 0, 50, 50);
+            p.filter(p.POSTERIZE);
+          };
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
