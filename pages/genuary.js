@@ -87,7 +87,7 @@ const Day = ({ day, sketch, desc, sketchString }) => {
       <p className="desc">{desc}</p>
       <div className="container">
         <div>
-          <div id={id} />
+          <div className="canvas-container" id={id} />
           <PlayButton p={p} />
         </div>
         <pre>{sketchText}</pre>
@@ -334,7 +334,7 @@ const Genuary = () => {
               flex-direction: column;
             }
 
-            & > :global(div) {
+            :global(.canvas-container) {
               max-width: 400px;
               max-height: 400px;
             }
