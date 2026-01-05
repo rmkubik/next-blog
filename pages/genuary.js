@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { stripIndent } from "common-tags";
 
 import Section from "../src/components/Section";
+import { H2 } from "../src/components/headings";
 
 const PlayButton = ({ p }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -82,7 +83,7 @@ const Day = ({ day, sketch, desc, sketchString }) => {
 
   return (
     <Section className="day">
-      <h2>Day {day}</h2>
+      <H2>Day {day}</H2>
       <p className="desc">{desc}</p>
       <div className="container">
         <div>
