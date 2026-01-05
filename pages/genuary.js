@@ -337,6 +337,8 @@ const Genuary = () => {
             :global(.canvas-container) {
               max-width: 400px;
               max-height: 400px;
+
+              margin-bottom: 0.5rem;
             }
 
             :global(canvas) {
