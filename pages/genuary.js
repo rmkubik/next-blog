@@ -73,7 +73,7 @@ const Day = ({ day, sketch, desc, sketchString }) => {
     setSketchText(finalText);
   }, [sketchString]);
 
-  const id = `day-${day}`;
+  const id = `day-${day}-container`;
 
   useEffect(() => {
     if (!p5) return;
@@ -117,7 +117,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-1");
+            canvas.parent("day-1-container");
 
             p.background(0);
 
@@ -132,7 +132,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-1");
+            canvas.parent("day-1-container");
 
             p.background(0);
 
@@ -151,7 +151,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-2");
+            canvas.parent("day-2-container");
 
             p.background(0);
 
@@ -172,7 +172,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-2");
+            canvas.parent("day-2-container");
 
             p.background(0);
 
@@ -209,7 +209,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-3");
+            canvas.parent("day-3-container");
 
             p.background(0);
 
@@ -240,7 +240,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-3");
+            canvas.parent("day-3-container");
 
             p.background(0);
 
@@ -265,7 +265,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-4");
+            canvas.parent("day-4-container");
 
             p.background(0);
 
@@ -289,7 +289,7 @@ const Genuary = () => {
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
-            canvas.parent("day-4");
+            canvas.parent("day-4-container");
 
             p.background(0);
 
@@ -329,6 +329,20 @@ const Genuary = () => {
             display: flex;
             flex-direction: row;
             gap: 1rem;
+
+            @media (max-width: 750px) {
+              flex-direction: column;
+            }
+
+            & > :global(div) {
+              max-width: 400px;
+              max-height: 400px;
+            }
+
+            :global(canvas) {
+              width: 100% !important;
+              height: 100% !important;
+            }
 
             :global(pre) {
               font-size: 0.9rem;
