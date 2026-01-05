@@ -105,6 +105,10 @@ const Genuary = () => {
           <a href="https://genuary.art/">Genuary</a> is an annual event where
           you write little bits of code that generate little bits of graphics.
         </p>
+        <p>
+          These sketches were created with <a href="https://p5js.org/">p5.js</a>
+          .
+        </p>
       </Section>
       <Day
         day={1}
