@@ -308,6 +308,204 @@ const Genuary = () => {
           };
         `}
       />
+      <Day
+        day={5}
+        desc="Write “Genuary”. Avoid using a font."
+        sketch={(p) => {
+          const frames = [
+            () => p.ellipse(65, 325, 80, 80), // G
+            () => p.ellipse(120, 270, 60, 60), // e
+            () => p.ellipse(165, 225, 60, 60), // n
+            () => p.ellipse(210, 180, 60, 60), // u
+            () => p.ellipse(255, 135, 60, 60), // a
+            () => p.ellipse(300, 90, 60, 60), // r
+            () => p.ellipse(345, 45, 60, 60), // y
+            // G
+            () => {
+              p.triangle(65, 325, 75, 275, 115, 315);
+            },
+
+            // e
+            () => {
+              p.translate(112, 262);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 0, 30, 15);
+            },
+            () => {
+              p.triangle(123, 280, 143, 245, 153, 265);
+            },
+
+            // n
+            () => {
+              p.translate(165, 225);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 14, 36, 48);
+            },
+            () => {
+              p.translate(165, 225);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(0, -22);
+              p.triangle(8, -15, -15, -20, -15, 12);
+            },
+
+            // u
+            () => {
+              p.translate(210, 180);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, -14, 36, 48);
+            },
+
+            // a
+            () => {
+              p.translate(255, 135);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 0, 36, 36);
+            },
+            () => {
+              p.translate(255, 135);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(18, 12);
+              p.triangle(0, 0, 10, 20, -10, 20);
+            },
+
+            // r
+            () => {
+              p.translate(300, 90);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(8, 12, 42, 50);
+            },
+            () => {
+              p.translate(300, 90);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(-20, -50);
+              p.triangle(0, 40, 10, 20, -10, 20);
+            },
+
+            // y
+            () => {
+              p.translate(345, 45);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, -12, 40, 40);
+            },
+            () => {
+              p.translate(345, 45);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(-2, 16);
+              p.triangle(0, 0, -30, -10, -30, 10);
+            },
+          ];
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-5-container");
+
+            p.background(0);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            frames[Math.floor(p.frameCount * 0.05)]?.();
+          };
+        }}
+        sketchString={`
+          const frames = [
+            () => p.ellipse(65, 325, 80, 80), // G
+            () => p.ellipse(120, 270, 60, 60), // e
+            () => p.ellipse(165, 225, 60, 60), // n
+            () => p.ellipse(210, 180, 60, 60), // u
+            () => p.ellipse(255, 135, 60, 60), // a
+            () => p.ellipse(300, 90, 60, 60), // r
+            () => p.ellipse(345, 45, 60, 60), // y
+            // G
+            () => {
+              p.triangle(65, 325, 75, 275, 115, 315);
+            },
+
+            // e
+            () => {
+              p.translate(112, 262);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 0, 30, 15);
+            },
+            () => {
+              p.triangle(123, 280, 143, 245, 153, 265);
+            },
+
+            // n
+            () => {
+              p.translate(165, 225);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 14, 36, 48);
+            },
+            () => {
+              p.translate(165, 225);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(0, -22);
+              p.triangle(8, -15, -15, -20, -15, 12);
+            },
+
+            // u
+            () => {
+              p.translate(210, 180);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, -14, 36, 48);
+            },
+
+            // a
+            () => {
+              p.translate(255, 135);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, 0, 36, 36);
+            },
+            () => {
+              p.translate(255, 135);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(18, 12);
+              p.triangle(0, 0, 10, 20, -10, 20);
+            },
+
+            // r
+            () => {
+              p.translate(300, 90);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(8, 12, 42, 50);
+            },
+            () => {
+              p.translate(300, 90);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(-20, -50);
+              p.triangle(0, 40, 10, 20, -10, 20);
+            },
+
+            // y
+            () => {
+              p.translate(345, 45);
+              p.rotate(-p.QUARTER_PI);
+              p.ellipse(0, -12, 40, 40);
+            },
+            () => {
+              p.translate(345, 45);
+              p.rotate(-p.QUARTER_PI);
+              p.translate(-2, 16);
+              p.triangle(0, 0, -30, -10, -30, 10);
+            },
+          ];
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-5-container");
+
+            p.background(0);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            frames[Math.floor(p.frameCount * 0.05)]?.();
+          };
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
@@ -353,6 +551,7 @@ const Genuary = () => {
               margin: 0;
               flex: 1;
               overflow: scroll;
+              max-height: 600px;
             }
           }
         }
