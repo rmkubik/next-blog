@@ -506,6 +506,62 @@ const Genuary = () => {
           };
         `}
       />
+      <Day
+        day={6}
+        desc="Lights on/off"
+        sketch={(p) => {
+          let isLit = false;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-6-container");
+
+            p.background(0);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.orbitControl();
+
+            if (isLit === true) {
+              p.lights();
+            }
+
+            p.box();
+          };
+
+          p.doubleClicked = () => {
+            isLit = !isLit;
+          };
+        }}
+        sketchString={`
+          let isLit = false;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-6-container");
+
+            p.background(0);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.orbitControl();
+
+            if (isLit === true) {
+              p.lights();
+            }
+
+            p.box();
+          };
+
+          p.doubleClicked = () => {
+            isLit = !isLit;
+          };
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
