@@ -5,6 +5,7 @@ import { stripIndent } from "common-tags";
 
 import Section from "../src/components/Section";
 import { H2 } from "../src/components/headings";
+import { pickRandomlyFromArray } from "../src/services/utils";
 
 const PlayButton = ({ p }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -559,6 +560,106 @@ const Genuary = () => {
 
           p.doubleClicked = () => {
             isLit = !isLit;
+          };
+        `}
+      />
+      <Day
+        day={7}
+        desc="Boolean algebra"
+        sketch={(p) => {
+          const circles = [];
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-7-container");
+
+            p.blendMode(p.MULTIPLY);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            circles.forEach(({ x, y, w, h, color }) => {
+              switch (color) {
+                case "red":
+                  p.stroke("rgb(255,0,0)");
+                  p.fill("rgba(255,0,0, 0.5)");
+
+                  break;
+                case "yellow":
+                  p.stroke("rgb(255,255,0)");
+                  p.fill("rgba(255,255,0, 0.5)");
+
+                  break;
+                case "blue":
+                  p.stroke("rgb(0,0,255)");
+                  p.fill("rgba(0,0,255, 0.5)");
+
+                  break;
+                default:
+                  break;
+              }
+
+              p.ellipse(x, y, w, h);
+            });
+          };
+
+          p.mouseClicked = () => {
+            circles.push({
+              color: pickRandomlyFromArray(["red", "yellow", "blue"]),
+              h: 125,
+              w: 125,
+              x: p.mouseX,
+              y: p.mouseY,
+            });
+          };
+        }}
+        sketchString={`
+                    const circles = [];
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-7-container");
+
+            p.blendMode(p.MULTIPLY);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            circles.forEach(({ x, y, w, h, color }) => {
+              switch (color) {
+                case "red":
+                  p.stroke("rgb(255,0,0)");
+                  p.fill("rgba(255,0,0, 0.5)");
+
+                  break;
+                case "yellow":
+                  p.stroke("rgb(255,255,0)");
+                  p.fill("rgba(255,255,0, 0.5)");
+
+                  break;
+                case "blue":
+                  p.stroke("rgb(0,0,255)");
+                  p.fill("rgba(0,0,255, 0.5)");
+
+                  break;
+                default:
+                  break;
+              }
+
+              p.ellipse(x, y, w, h);
+            });
+          };
+
+          p.mouseClicked = () => {
+            circles.push({
+              color: pickRandomlyFromArray(["red", "yellow", "blue"]),
+              h: 125,
+              w: 125,
+              x: p.mouseX,
+              y: p.mouseY,
+            });
           };
         `}
       />
