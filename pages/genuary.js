@@ -615,7 +615,7 @@ const Genuary = () => {
           };
         }}
         sketchString={`
-                    const circles = [];
+          const circles = [];
 
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
@@ -660,6 +660,148 @@ const Genuary = () => {
               x: p.mouseX,
               y: p.mouseY,
             });
+          };
+        `}
+      />
+      <Day
+        day={8}
+        desc="A City"
+        sketch={(p) => {
+          let heights = [];
+
+          const buildingCount = 100;
+          const cityWidth = 10;
+          const buildingWidth = 50;
+
+          const randHeights = () => {
+            heights = Array.from({ length: buildingCount })
+              .fill(0)
+              .map(() =>
+                pickRandomlyFromArray([
+                  50, 50, 50, 50, 50, 60, 60, 60, 70, 70, 100, 120, 180,
+                ])
+              );
+          };
+
+          randHeights();
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-8-container");
+
+            p.background(0);
+
+            const cam = p.createCamera();
+
+            cam.setPosition(600, -800, 600);
+            cam.lookAt(0, 0, 0);
+
+            p.setCamera(cam);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.background(0);
+            p.orbitControl();
+            p.lights();
+
+            heights.forEach((height, index) => {
+              p.resetMatrix();
+
+              const row = Math.floor(index % cityWidth);
+              const col = Math.floor(index / cityWidth);
+
+              // center city on 0,0
+              p.translate(
+                -(cityWidth / 2) * buildingWidth,
+                0,
+                -(cityWidth / 2) * buildingWidth
+              );
+
+              // position building
+              p.translate(
+                buildingWidth * col,
+                -height / 2,
+                buildingWidth * row
+              );
+
+              p.box(buildingWidth, height, buildingWidth);
+            });
+          };
+
+          p.doubleClicked = () => {
+            randHeights();
+          };
+        }}
+        sketchString={`
+        let heights = [];
+
+          const buildingCount = 100;
+          const cityWidth = 10;
+          const buildingWidth = 50;
+
+          const randHeights = () => {
+            heights = Array.from({ length: buildingCount })
+              .fill(0)
+              .map(() =>
+                pickRandomlyFromArray([
+                  50, 50, 50, 50, 50, 60, 60, 60, 70, 70, 100, 120, 180,
+                ])
+              );
+          };
+
+          randHeights();
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-8-container");
+
+            p.background(0);
+
+            const cam = p.createCamera();
+
+            cam.setPosition(600, -800, 600);
+            cam.lookAt(0, 0, 0);
+
+            p.setCamera(cam);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.background(0);
+            p.orbitControl();
+            p.lights();
+
+            heights.forEach((height, index) => {
+              p.resetMatrix();
+
+              const row = Math.floor(index % cityWidth);
+              const col = Math.floor(index / cityWidth);
+
+              // center city on 0,0
+              p.translate(
+                -(cityWidth / 2) * buildingWidth,
+                0,
+                -(cityWidth / 2) * buildingWidth
+              );
+
+              // position building
+              p.translate(
+                buildingWidth * col,
+                -height / 2,
+                buildingWidth * row
+              );
+
+              p.box(buildingWidth, height, buildingWidth);
+            });
+          };
+
+          p.doubleClicked = () => {
+            randHeights();
           };
         `}
       />
