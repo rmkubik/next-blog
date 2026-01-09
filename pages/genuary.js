@@ -48,7 +48,7 @@ const PlayButton = ({ p }) => {
   );
 };
 
-const Day = ({ day, sketch, desc, sketchString }) => {
+const Day = ({ day, sketch, desc, sketchString, withP5 }) => {
   const [p5, setP5] = useState(undefined);
   const [p, setP] = useState(undefined);
   const [sketchText, setSketchText] = useState(undefined);
@@ -57,6 +57,10 @@ const Day = ({ day, sketch, desc, sketchString }) => {
     const loadP5 = async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
       const p5module = (await import("p5")).default;
+
+      window.p5 = p5module;
+
+      await import("p5.sound");
 
       setP5(() => p5module);
     };
@@ -79,8 +83,8 @@ const Day = ({ day, sketch, desc, sketchString }) => {
   useEffect(() => {
     if (!p5) return;
 
-    setP(new p5(sketch));
-  }, [p5, sketch]);
+    setP(new p5(withP5 ? sketch(p5) : sketch));
+  }, [p5, sketch, withP5]);
 
   return (
     <Section className="day">
@@ -804,6 +808,92 @@ const Genuary = () => {
             randHeights();
           };
         `}
+      />
+      <Day
+        day={9}
+        desc="Crazy automaton. Cellular automata with crazy rules."
+        sketch={(p5) => (p) => {
+          let cells = [];
+
+          let mic;
+          let amp;
+
+          const cellCount = 100;
+          const gridWidth = 10;
+          const cellWidth = 40;
+
+          const randCells = () => {
+            cells = Array.from({ length: cellCount })
+              .fill(0)
+              .map(() =>
+                pickRandomlyFromArray([
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "blue" },
+                ])
+              );
+          };
+
+          randCells();
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-9-container");
+
+            p.background(0);
+
+            // Create an Audio input
+            mic = new p5.AudioIn();
+
+            // start the Audio Input.
+            // By default, it does not .connect() (to the computer speakers)
+            mic.start();
+            amp = new p5.Amplitude();
+            amp.setInput(mic);
+
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.background(0);
+
+            p.text(amp ? amp.getLevel() : "no mic", 20, 20);
+
+            cells.forEach(({ color }, index) => {
+              switch (color) {
+                case "red":
+                  p.stroke("rgb(255,0,0)");
+                  p.fill("rgba(255,0,0, 0.5)");
+
+                  break;
+                case "yellow":
+                  p.stroke("rgb(255,255,0)");
+                  p.fill("rgba(255,255,0, 0.5)");
+
+                  break;
+                case "blue":
+                  p.stroke("rgb(0,0,255)");
+                  p.fill("rgba(0,0,255, 0.5)");
+
+                  break;
+                default:
+                  break;
+              }
+
+              const row = Math.floor(index % gridWidth);
+              const col = Math.floor(index / gridWidth);
+
+              p.rect(cellWidth * col, cellWidth * row, cellWidth, cellWidth);
+            });
+          };
+        }}
+        sketchString={`
+
+        `}
+        withP5
       />
       <style jsx>{`
         :global(section.day) {
