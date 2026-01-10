@@ -5,7 +5,7 @@ import { stripIndent } from "common-tags";
 
 import Section from "../src/components/Section";
 import { H2 } from "../src/components/headings";
-import { pickRandomlyFromArray } from "../src/services/utils";
+import { pickRandomlyFromArray, randIntBetween } from "../src/services/utils";
 
 const PlayButton = ({ p }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -57,10 +57,6 @@ const Day = ({ day, sketch, desc, sketchString, withP5 }) => {
     const loadP5 = async () => {
       // eslint-disable-next-line unicorn/no-await-expression-member
       const p5module = (await import("p5")).default;
-
-      window.p5 = p5module;
-
-      await import("p5.sound");
 
       setP5(() => p5module);
     };
@@ -812,11 +808,8 @@ const Genuary = () => {
       <Day
         day={9}
         desc="Crazy automaton. Cellular automata with crazy rules."
-        sketch={(p5) => (p) => {
+        sketch={(p) => {
           let cells = [];
-
-          let mic;
-          let amp;
 
           const cellCount = 100;
           const gridWidth = 10;
@@ -838,6 +831,36 @@ const Genuary = () => {
 
           randCells();
 
+          const update = () => {
+            cells = cells.map((cell, index) => {
+              let count = 0;
+
+              for (let i = 0; i < 5; i++) {
+                if (cells[randIntBetween(0, cellCount)]?.color === "blue") {
+                  count += 1;
+                }
+              }
+
+              if (count > 2) {
+                return { color: "red" };
+              }
+
+              if (index % 13 === 0 && Math.random() > 0.5) {
+                return { color: "blue" };
+              }
+
+              if (cells[index - gridWidth]?.color === "blue") {
+                return { color: "blue" };
+              }
+
+              if (cells[index - gridWidth - 2]?.color === "blue") {
+                return { color: "blue" };
+              }
+
+              return { color: "red" };
+            });
+          };
+
           p.setup = () => {
             const canvas = p.createCanvas(400, 400);
 
@@ -845,33 +868,25 @@ const Genuary = () => {
 
             p.background(0);
 
-            // Create an Audio input
-            mic = new p5.AudioIn();
-
-            // start the Audio Input.
-            // By default, it does not .connect() (to the computer speakers)
-            mic.start();
-            amp = new p5.Amplitude();
-            amp.setInput(mic);
-
             p.noLoop();
           };
 
-          p.draw = () => {
-            p.background(0);
+          p.doubleClicked = () => {
+            randCells();
+          };
 
-            p.text(amp ? amp.getLevel() : "no mic", 20, 20);
+          p.draw = () => {
+            if (p.frameCount % 10 === 0) {
+              update();
+            }
+
+            p.background(0);
 
             cells.forEach(({ color }, index) => {
               switch (color) {
                 case "red":
                   p.stroke("rgb(255,0,0)");
                   p.fill("rgba(255,0,0, 0.5)");
-
-                  break;
-                case "yellow":
-                  p.stroke("rgb(255,255,0)");
-                  p.fill("rgba(255,255,0, 0.5)");
 
                   break;
                 case "blue":
@@ -891,9 +906,101 @@ const Genuary = () => {
           };
         }}
         sketchString={`
+          let cells = [];
 
+          const cellCount = 100;
+          const gridWidth = 10;
+          const cellWidth = 40;
+
+          const randCells = () => {
+            cells = Array.from({ length: cellCount })
+              .fill(0)
+              .map(() =>
+                pickRandomlyFromArray([
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "red" },
+                  { color: "blue" },
+                ])
+              );
+          };
+
+          randCells();
+
+          const update = () => {
+            cells = cells.map((cell, index) => {
+              let count = 0;
+
+              for (let i = 0; i < 5; i++) {
+                if (cells[randIntBetween(0, cellCount)]?.color === "blue") {
+                  count += 1;
+                }
+              }
+
+              if (count > 2) {
+                return { color: "red" };
+              }
+
+              if (index % 13 === 0 && Math.random() > 0.5) {
+                return { color: "blue" };
+              }
+
+              if (cells[index - gridWidth]?.color === "blue") {
+                return { color: "blue" };
+              }
+
+              if (cells[index - gridWidth - 2]?.color === "blue") {
+                return { color: "blue" };
+              }
+
+              return { color: "red" };
+            });
+          };
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-9-container");
+
+            p.background(0);
+
+            p.noLoop();
+          };
+
+          p.doubleClicked = () => {
+            randCells();
+          };
+
+          p.draw = () => {
+            if (p.frameCount % 10 === 0) {
+              update();
+            }
+
+            p.background(0);
+
+            cells.forEach(({ color }, index) => {
+              switch (color) {
+                case "red":
+                  p.stroke("rgb(255,0,0)");
+                  p.fill("rgba(255,0,0, 0.5)");
+
+                  break;
+                case "blue":
+                  p.stroke("rgb(0,0,255)");
+                  p.fill("rgba(0,0,255, 0.5)");
+
+                  break;
+                default:
+                  break;
+              }
+
+              const row = Math.floor(index % gridWidth);
+              const col = Math.floor(index / gridWidth);
+
+              p.rect(cellWidth * col, cellWidth * row, cellWidth, cellWidth);
+            });
         `}
-        withP5
       />
       <style jsx>{`
         :global(section.day) {
