@@ -1002,6 +1002,92 @@ const Genuary = () => {
             });
         `}
       />
+      <Day
+        day={10}
+        desc="Polar coordinates"
+        sketch={(p) => {
+          let direction = 1;
+          let r = 50;
+          let theta = 0;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-10-container");
+
+            canvas.mouseClicked(() => {
+              direction *= -1;
+            });
+
+            p.background(0);
+            p.noLoop();
+            p.angleMode(p.DEGREES);
+          };
+
+          p.draw = () => {
+            p.background(0);
+            p.fill("black");
+            p.stroke("white");
+            p.strokeWeight(1);
+            p.translate(p.width / 2, p.height / 2);
+            p.circle(0, 0, r * 2);
+
+            p.strokeWeight(8);
+            const x = p.cos(theta) * r;
+            const y = p.sin(theta) * r;
+
+            theta = theta + 1 * Number(direction);
+            r += 0.1 * direction;
+
+            p.point(x, y);
+            p.stroke(0);
+            p.fill("white");
+            p.text(`r: ${r.toFixed(2)}`, -20, -10);
+            p.text(`Θ: ${theta}`, -20, 10);
+          };
+        }}
+        sketchString={`
+          let direction = 1;
+          let r = 50;
+          let theta = 0;
+
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-10-container");
+
+            canvas.mouseClicked(() => {
+              direction *= -1;
+            });
+
+            p.background(0);
+            p.noLoop();
+            p.angleMode(p.DEGREES);
+          };
+
+          p.draw = () => {
+            p.background(0);
+            p.fill("black");
+            p.stroke("white");
+            p.strokeWeight(1);
+            p.translate(p.width / 2, p.height / 2);
+            p.circle(0, 0, r * 2);
+
+            p.strokeWeight(8);
+            const x = p.cos(theta) * r;
+            const y = p.sin(theta) * r;
+
+            theta = theta + 1 * Number(direction);
+            r += 0.1 * direction;
+
+            p.point(x, y);
+            p.stroke(0);
+            p.fill("white");
+            p.text(\`r: \${r.toFixed(2)}\`, -20, -10);
+            p.text(\`Θ: \${theta}\`, -20, 10);
+          };
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
