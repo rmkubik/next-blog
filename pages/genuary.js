@@ -1088,6 +1088,41 @@ const Genuary = () => {
           };
         `}
       />
+      <Day
+        day={11}
+        desc="Quine. A computer program that outputs exactly its own source code. Unfortunately, my sites minifier kinda clobbers this one, but I don't feel like sorting that out for just this page!"
+        // eslint-disable-next-line get-off-my-lawn/prefer-arrow-functions
+        sketch={function sketch11(p) {
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-11-container");
+            p.background(0);
+            p.fill("white");
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.text(sketch11.toString(), 20, 20);
+          };
+        }}
+        sketchString={`
+        function sketch11(p) {
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400);
+
+            canvas.parent("day-11-container");
+            p.background(0);
+            p.fill("white");
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            p.text(sketch11.toString(), 20, 20);
+          };
+        }
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
