@@ -1123,6 +1123,62 @@ const Genuary = () => {
         }
         `}
       />
+      <Day
+        day={12}
+        desc="Boxes only"
+        sketch={(p) => {
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-12-container");
+            p.background(0);
+            const cam = p.createCamera();
+
+            cam.setPosition(600, -800, 600);
+            cam.lookAt(0, 0, 0);
+
+            p.setCamera(cam);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            const frame = Math.floor(p.frameCount / 16);
+
+            p.translate(
+              Math.sin(frame) * 100,
+              Math.cos(frame) * 100,
+              Math.tan(frame) * 100
+            );
+            p.box(50, 50, 50);
+          };
+        }}
+        sketchString={`
+          p.setup = () => {
+            const canvas = p.createCanvas(400, 400, p.WEBGL);
+
+            canvas.parent("day-12-container");
+            p.background(0);
+            const cam = p.createCamera();
+
+            cam.setPosition(600, -800, 600);
+            cam.lookAt(0, 0, 0);
+
+            p.setCamera(cam);
+            p.noLoop();
+          };
+
+          p.draw = () => {
+            const frame = Math.floor(p.frameCount / 16);
+
+            p.translate(
+              Math.sin(frame) * 100,
+              Math.cos(frame) * 100,
+              Math.tan(frame) * 100
+            );
+            p.box(50, 50, 50);
+          };
+        `}
+      />
       <style jsx>{`
         :global(section.day) {
           padding: 0.5rem;
